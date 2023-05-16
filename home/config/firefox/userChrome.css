@@ -1,0 +1,67 @@
+.titlebar-buttonbox-container, .titlebar-spacer,
+#alltabs-button, #back-button, #forward-button,
+#reload-button, #stop-reload-button, toolbarspring,
+#unified-extensions-button, #page-action-buttons,
+#tabs-newtab-button, .tab-close-button {
+   display: none;
+}
+
+#navigator-toolbox {
+   display: flex;
+}
+
+#navigator-toolbox * {
+   box-shadow: none !important;
+   border-radius: 0 !important;
+}
+
+#titlebar {
+   width: 0;
+   flex-grow: 1;
+   overflow: hidden;
+}
+
+#TabsToolbar {
+   display: flex !important;
+   align-items: center;
+}
+
+.toolbar-items {
+   flex-grow: 1 !important;
+}
+
+#TabsToolbar-customization-target {
+   display: flex !important;
+   margin-block: auto !important;
+   align-items: center;
+}
+
+#tabbrowser-tabs {
+   overflow: hidden !important;
+   width: 0 !important;
+   flex-grow: 1 !important;
+}
+
+.tab-background {
+   transition: background 0.2s;
+}
+
+.tabbrowser-tab:not([pinned]) {
+   max-width: 15vw !important;
+}
+
+.tabbrowser-tab:not([pinned]):not([visuallyselected]) {
+   max-width: 10vw !important;
+}
+
+#nav-bar {
+   background: none !important;
+}
+
+#urlbar-container {
+   max-width: 15vw !important;
+}
+
+#urlbar-container:focus-within, #urlbar-container:hover {
+   max-width: 20vw !important;
+}
