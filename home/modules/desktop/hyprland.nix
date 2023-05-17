@@ -96,7 +96,7 @@
 
    xdg.configFile."hypr/hyprpaper.conf".text =
    let
-      wp = ../../wallpapers/snotacon.jpg;
+      wp = ../../wallpapers/snotacon-desat.jpg;
    in ''
       preload = ${wp}
       wallpaper = eDP-1,${wp}
