@@ -24,8 +24,8 @@
       env = XCURSOR_SIZE,${toString config.home.pointerCursor.size}
 
       general {
-         gaps_in = 2
-         gaps_out = 4
+         gaps_in = 4
+         gaps_out = 8
          border_size = 2
          col.active_border = rgb(969896)
          col.inactive_border = rgb(4d5057)
@@ -33,7 +33,7 @@
       }
 
       decoration {
-         rounding = 4
+         rounding = 0
          drop_shadow = no
       }
 
@@ -96,7 +96,7 @@
 
    xdg.configFile."hypr/hyprpaper.conf".text =
    let
-      wp = ../../wallpapers/snotacon-desat.jpg;
+      wp = ../../wallpapers/asukarei.jpg;
    in ''
       preload = ${wp}
       wallpaper = eDP-1,${wp}
