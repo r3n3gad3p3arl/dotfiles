@@ -23,7 +23,7 @@
       keyMap = "us";
    };
 
-   environment.systemPackages = with pkgs; [ wget ];
+   environment.systemPackages = with pkgs; [ wget unzip ];
    hardware.enableRedistributableFirmware = true;
 
    services = {

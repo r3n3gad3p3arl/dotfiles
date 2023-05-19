@@ -36,12 +36,12 @@ require("lualine").setup {
       lualine_b = { "branch" },
 
       lualine_c = {
-         { "diagnostics", symbols = { error = "󰅙 ", warn = "󰀨 ", info = "󰋼 ", hint = "󰋗 " } },
-         { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
-         { "filename", path = 1, symbols = { modified = "󰳻", readonly = "󰌾", unnamed = "" } },
+         { "diagnostics" },
+         { "filetype", icon_only = true },
+         { "filename", path = 1 },
       },
 
-      lualine_x = {{ "diff", symbols = { added = "󰐗 ", modified = "󰛿 ", removed = "󰍶 " } }},
+      lualine_x = { "diff" },
       lualine_y = { "progress" },
       lualine_z = { "location" },
    },

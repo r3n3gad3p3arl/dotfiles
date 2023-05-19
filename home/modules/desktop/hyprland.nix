@@ -18,15 +18,16 @@
 
       exec-once = hyprpaper
       exec-once = mako
+      exec-once = foot --server
       exec-once = swayidle -w before-sleep "swaylock" idlehint 120
       exec-once = hyprctl setcursor ${config.home.pointerCursor.name} ${toString config.home.pointerCursor.size}
 
       env = XCURSOR_SIZE,${toString config.home.pointerCursor.size}
 
       general {
-         gaps_in = 4
-         gaps_out = 8
-         border_size = 2
+         gaps_in = 0
+         gaps_out = 0
+         border_size = 1
          col.active_border = rgb(969896)
          col.inactive_border = rgb(4d5057)
          layout = dwindle
@@ -43,8 +44,8 @@
 
       $mod = SUPER
 
-      bind = $mod,Return,exec,alacritty
-      bind = $mod,R,exec,$(tofi-drun)
+      bind = $mod,Return,exec,footclient
+      bind = $mod,R,exec,rofi -show drun
       bind = $mod,B,exec,firefox
       bind = $mod CTRL,L,exec,swaylock
 

@@ -1,7 +1,7 @@
 { pkgs, ... }: {
    imports = [
-      ./alacritty.nix
-      ./tofi.nix
+      ./foot.nix
+      ./rofi.nix
       ./firefox
       ./mako.nix
       ./swaylock.nix
@@ -26,7 +26,11 @@
          keepassxc
          virt-manager
          fantasque-sans-mono
-         (nerdfonts.override { fonts = [ "FantasqueSansMono" "NerdFontsSymbolsOnly" ]; })
+         #envypn-font
+         dina-font
+         cozette
+         unifont
+         #(nerdfonts.override { fonts = [ "FantasqueSansMono" "NerdFontsSymbolsOnly" ]; })
       ];
    };
 
