@@ -1,20 +1,16 @@
 { pkgs, ... }: {
    programs.swaylock = {
       enable = true;
-      package = pkgs.swaylock-effects;
 
       settings = {
          image = "${../../wallpapers/rei.jpg}";
 
-         font = "Fantasque Sans Mono";
+         font = "Dina";
 
-         clock = true;
-
-         indicator-radius = 100;
-         indicator-thickness = 5;
-         indicator-x-position = 140;
-         indicator-y-position = 140;
-         indicator-idle-visible = true;
+         indicator-radius = 40;
+         indicator-thickness = 4;
+         indicator-x-position = 60;
+         indicator-y-position = 60;
 
          inside-color = "1d1f21";
          inside-caps-lock-color = "1d1f21";

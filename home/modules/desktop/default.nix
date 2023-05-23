@@ -1,12 +1,12 @@
 { pkgs, ... }: {
    imports = [
       ./foot.nix
-      ./rofi.nix
+      ./rofi
       ./firefox
-      ./mako.nix
+      ./dunst.nix
       ./swaylock.nix
       ./mpv.nix
-      ./hyprland.nix
+      ./hyprland
    ];
 
    fonts.fontconfig.enable = true;
@@ -25,13 +25,25 @@
          osu-lazer-bin
          keepassxc
          virt-manager
-         fantasque-sans-mono
-         #envypn-font
+
          dina-font
          cozette
          unifont
-         #(nerdfonts.override { fonts = [ "FantasqueSansMono" "NerdFontsSymbolsOnly" ]; })
       ];
+   };
+
+   gtk = {
+      enable = true;
+
+      font = {
+         name = "Dina";
+         size = 11;
+      };
+
+      theme = {
+         package = pkgs.materia-theme;
+         name = "Materia-dark";
+      };
    };
 
    xdg = {

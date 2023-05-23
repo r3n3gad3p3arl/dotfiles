@@ -50,7 +50,7 @@
             };
          };
 
-         userChrome = builtins.readFile ../../../config/firefox/userChrome.css;
+         userChrome = builtins.readFile ./userChrome.css;
       };
    };
 }

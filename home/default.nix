@@ -1,10 +1,12 @@
 { pkgs, ... }: {
    imports = [
       ./modules/desktop
-      ./modules/neovim.nix
+      ./modules/neovim
       ./modules/zsh.nix
       ./modules/starship.nix
       ./modules/btop.nix
+      ./modules/git.nix
+      ./modules/exa.nix
    ];
 
    home = {
@@ -13,22 +15,6 @@
       stateVersion = "23.05";
    };
 
-   programs = {
-      home-manager.enable = true;
-
-      git = {
-         enable = true;
-         userName = "r3n3gad3p3arl";
-         userEmail = "r3n3gad3p3arl@noreply.codeberg.org";
-         extraConfig = { init.defaultBranch = "main"; };
-      };
-
-      exa = {
-         enable = true;
-         enableAliases = true;
-         extraOptions = [ "--group-directories-first" ];
-      };
-   };
-
+   programs.home-manager.enable = true;
    systemd.user.startServices = "sd-switch";
 }

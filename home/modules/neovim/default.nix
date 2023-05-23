@@ -2,7 +2,7 @@
    programs.neovim = {
       enable = true;
       defaultEditor = true;
-      extraLuaConfig = builtins.readFile ../config/nvim/init.lua;
+      extraLuaConfig = builtins.readFile ./init.lua;
 
       plugins = with pkgs.vimPlugins; [
          lualine-nvim

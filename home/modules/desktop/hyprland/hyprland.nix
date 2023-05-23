@@ -1,28 +1,16 @@
-{ config, pkgs, ... }: {
-   home.packages = with pkgs; [
-      wl-clipboard
-      hyprpaper
-      playerctl
-      brightnessctl
-      swayidle
-   ];
-
-   programs.eww = {
-      enable = true;
-      package = pkgs.eww-wayland;
-      configDir = ../../config/eww;
-   };
-
+{ config, ... }:
+let cursor = config.home.pointerCursor;
+in {
    xdg.configFile."hypr/hyprland.conf".text = ''
       monitor = eDP-1,preferred,auto,auto
 
       exec-once = hyprpaper
-      exec-once = mako
+      exec-once = dunst
       exec-once = foot --server
       exec-once = swayidle -w before-sleep "swaylock" idlehint 120
-      exec-once = hyprctl setcursor ${config.home.pointerCursor.name} ${toString config.home.pointerCursor.size}
+      exec-once = hyprctl setcursor ${cursor.name} ${toString cursor.size}
 
-      env = XCURSOR_SIZE,${toString config.home.pointerCursor.size}
+      env = XCURSOR_SIZE,${toString cursor.size}
 
       general {
          gaps_in = 0
@@ -87,19 +75,19 @@
       bindm = $mod,mouse:273,resizewindow
 
       bindle = ,XF86AudioRaiseVolume,exec,wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 4%+
+      bind = ,XF86AudioRaiseVolume,exec,notify-send -h int:value:$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2*100}') "Volume"
       bindle = ,XF86AudioLowerVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 4%-
+      bind = ,XF86AudioLowerVolume,exec,notify-send -h int:value:$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2*100}') "Volume"
       bindl = ,XF86AudioMute,exec,wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
       bindl = ,XF86AudioPlay,exec,playerctl play-pause
 
       bindle = ,XF86MonBrightnessUp,exec,brightnessctl set 4%+
       bindle = ,XF86MonBrightnessDown,exec,brightnessctl set 4%-
-   '';
 
-   xdg.configFile."hypr/hyprpaper.conf".text =
-   let
-      wp = ../../wallpapers/asukarei.jpg;
-   in ''
-      preload = ${wp}
-      wallpaper = eDP-1,${wp}
+      bind = $mod,T,exec,notify-send "Date/Time" "$(date)"
+      bind = $mod,P,exec,notify-send -h int:value:$(cat /sys/class/power_supply/BAT0/capacity) "Battery"
+
+      bind = $mod SHIFT,M,exec,mpv "https://youtube.com/playlist?list=PLksUtCwP9dNDw7oixTORlap_fsNHM2bf9" --shuffle --no-video
+      bind = $mod CTRL,M,exec,pkill mpv
    '';
 }
