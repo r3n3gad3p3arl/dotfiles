@@ -10,5 +10,6 @@
 
    networking.hostName = "dell-laptop";
    virtualisation.libvirtd.enable = true;
+   powerManagement.cpuFreqGovernor = "performance";
    system.stateVersion = "23.05";
 }

@@ -1,8 +1,4 @@
 { pkgs, ... }: {
-   imports = [
-      ./settings.nix
-   ];
-
    programs.firefox = {
       enable = true;
 
@@ -51,6 +47,7 @@
          };
 
          userChrome = builtins.readFile ./userChrome.css;
+         settings = import ./settings.nix;
       };
    };
 }

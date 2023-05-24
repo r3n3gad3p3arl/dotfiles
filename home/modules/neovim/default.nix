@@ -9,7 +9,7 @@
          #nvim-web-devicons
          indent-blankline-nvim
          nvim-base16
-         (nvim-treesitter.withPlugins (p: with p; [ c lua vim vimdoc query nix css scss yuck ]))
+         (nvim-treesitter.withPlugins (p: with p; [ c lua vim vimdoc query nix css python ]))
       ];
    };
 }

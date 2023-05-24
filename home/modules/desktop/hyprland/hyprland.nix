@@ -79,7 +79,11 @@ in {
       bindle = ,XF86AudioLowerVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 4%-
       bind = ,XF86AudioLowerVolume,exec,notify-send -h int:value:$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2*100}') "Volume"
       bindl = ,XF86AudioMute,exec,wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+
       bindl = ,XF86AudioPlay,exec,playerctl play-pause
+      bindl = $mod,period,exec,playerctl next
+      bindl = $mod,comma,exec,playerctl previous
+      bindl = $mod,S,exec,playerctl stop
 
       bindle = ,XF86MonBrightnessUp,exec,brightnessctl set 4%+
       bindle = ,XF86MonBrightnessDown,exec,brightnessctl set 4%-
@@ -88,6 +92,5 @@ in {
       bind = $mod,P,exec,notify-send -h int:value:$(cat /sys/class/power_supply/BAT0/capacity) "Battery"
 
       bind = $mod SHIFT,M,exec,mpv "https://youtube.com/playlist?list=PLksUtCwP9dNDw7oixTORlap_fsNHM2bf9" --shuffle --no-video
-      bind = $mod CTRL,M,exec,pkill mpv
    '';
 }

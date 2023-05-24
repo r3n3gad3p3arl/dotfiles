@@ -21,6 +21,7 @@
          };
 
          git_branch.symbol = " ";
+         python.symbol = " ";
       };
    };
 }
