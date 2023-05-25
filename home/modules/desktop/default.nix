@@ -7,6 +7,7 @@
       ./swaylock.nix
       ./mpv.nix
       ./hyprland
+      #./osu.nix
    ];
 
    fonts.fontconfig.enable = true;
@@ -22,9 +23,12 @@
       packages = with pkgs; [
          krita
          gimp
-         osu-lazer-bin
          keepassxc
          virt-manager
+         wl-clipboard
+         swayidle
+         playerctl
+         brightnessctl
 
          dina-font
          cozette
