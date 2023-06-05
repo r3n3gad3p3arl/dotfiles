@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, config, ... }: {
    home.packages = with pkgs; [ libsixel ];
 
    programs.foot = {
@@ -10,27 +10,29 @@
             pad = "8x8";
          };
 
-         colors = {
-            background = "1d1f21";
-            foreground = "c5c8c6";
+         colors =
+         let colors = config.colorScheme.colors;
+         in {
+            background = colors.base00;
+            foreground = colors.base05;
 
-            regular0 = "1d1f21";
-            regular1 = "cc6666";
-            regular2 = "b5bd68";
-            regular3 = "f0c674";
-            regular4 = "81a2be";
-            regular5 = "b294bb";
-            regular6 = "8abeb7";
-            regular7 = "c5c8c6";
+            regular0 = colors.base00;
+            regular1 = colors.base08;
+            regular2 = colors.base0B;
+            regular3 = colors.base0A;
+            regular4 = colors.base0D;
+            regular5 = colors.base0E;
+            regular6 = colors.base0C;
+            regular7 = colors.base05;
 
-            bright0 = "969896";
-            bright1 = "de935f";
-            bright2 = "282a2e";
-            bright3 = "373b41";
-            bright4 = "b4b7b4";
-            bright5 = "e0e0e0";
-            bright6 = "a3685a";
-            bright7 = "ffffff";
+            bright0 = colors.base03;
+            bright1 = colors.base09;
+            bright2 = colors.base01;
+            bright3 = colors.base02;
+            bright4 = colors.base04;
+            bright5 = colors.base06;
+            bright6 = colors.base0F;
+            bright7 = colors.base07;
          };
       };
    };

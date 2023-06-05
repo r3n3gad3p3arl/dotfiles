@@ -1,8 +1,10 @@
-{ pkgs, ... }: {
+{ pkgs, config, ... }: {
    programs.swaylock = {
       enable = true;
 
-      settings = {
+      settings =
+      let colors = config.colorScheme.colors;
+      in {
          image = "${../../wallpapers/rei.jpg}";
 
          font = "Dina";
@@ -12,27 +14,27 @@
          indicator-x-position = 60;
          indicator-y-position = 60;
 
-         inside-color = "1d1f21";
-         inside-caps-lock-color = "1d1f21";
-         inside-clear-color = "f0c674";
-         inside-ver-color = "b5bd68";
-         inside-wrong-color = "cc6666";
+         inside-color = colors.base00;
+         inside-caps-lock-color = colors.base00;
+         inside-clear-color = colors.base0A;
+         inside-ver-color = colors.base0B;
+         inside-wrong-color = colors.base08;
 
-         bs-hl-color = "cc6666";
-         key-hl-color = "c5c8c6";
+         bs-hl-color = colors.base08;
+         key-hl-color = colors.base05;
          separator-color = "00000000";
 
-         text-color = "c5c8c6";
-         text-caps-lock-color = "de935f";
-         text-clear-color = "1d1f21";
-         text-ver-color = "1d1f21";
-         text-wrong-color = "1d1f21";
+         text-color = colors.base05;
+         text-caps-lock-color = colors.base09;
+         text-clear-color = colors.base00;
+         text-ver-color = colors.base00;
+         text-wrong-color = colors.base00;
 
-         ring-color = "81a2be";
-         ring-caps-lock-color = "de935f";
-         ring-clear-color = "f0c674";
-         ring-ver-color = "b5bd68";
-         ring-wrong-color = "cc6666";
+         ring-color = colors.base0D;
+         ring-caps-lock-color = colors.base09;
+         ring-clear-color = colors.base0A;
+         ring-ver-color = colors.base0B;
+         ring-wrong-color = colors.base08;
 
          line-uses-inside = true;
       };

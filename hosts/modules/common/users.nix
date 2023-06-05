@@ -9,7 +9,7 @@
 
       users.meow = {
          isNormalUser = true;
-         extraGroups = [ "wheel" "networkmanager" "libvirtd" ];
+         extraGroups = [ "wheel" "networkmanager" "libvirtd" "docker" ];
          initialPassword = "nixos";
       };
    };
@@ -17,6 +17,7 @@
    home-manager = {
       useGlobalPkgs = true;
       useUserPackages = true;
-      users.meow = import ../../home;
+      extraSpecialArgs = { inherit inputs; };
+      users.meow = import ../../../home;
    };
 }

@@ -1,22 +1,24 @@
-{ pkgs, ... }: {
+{ pkgs, config, ... }: {
    home.packages = with pkgs; [ libnotify ];
 
    services.dunst = {
       enable = true;
 
-      settings = {
+      settings =
+      let colors = config.colorScheme.colors;
+      in {
          global = {
             enable_posix_regex = true;
             width = 300;
             notification_limit = 8;
-            offset = "10x10";
+            offset = "8x8";
             frame_width = 1;
             gap_size = 8;
             font = "Dina 11";
-            background = "#1d1f21";
-            foreground = "#c5c8c6";
-            highlight = "#81a2be";
-            frame_color = "#969896";
+            background = "#${colors.base00}";
+            foreground = "#${colors.base05}";
+            highlight = "#${colors.base0D}";
+            frame_color = "#${colors.base03}";
             markup = "full";
          };
       };

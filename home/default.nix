@@ -1,13 +1,5 @@
-{ pkgs, ... }: {
-   imports = [
-      ./modules/desktop
-      ./modules/neovim
-      ./modules/zsh.nix
-      ./modules/starship.nix
-      ./modules/btop.nix
-      ./modules/git.nix
-      ./modules/exa.nix
-   ];
+{ lib, ... }: {
+   imports = lib.meow.mapModules { dir = ./modules; };
 
    home = {
       username = "meow";

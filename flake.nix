@@ -10,13 +10,18 @@
       };
 
       nur.url = "github:nix-community/nur";
+      nix-colors.url = "github:misterio77/nix-colors";
    };
 
-   outputs = { nixpkgs, ... }@inputs: {
+   outputs = { nixpkgs, ... }@inputs:
+   let
+      lib = nixpkgs.lib.extend (final: prev: { meow = import ./lib; });
+   in {
       nixosConfigurations = {
-         dell-laptop = nixpkgs.lib.nixosSystem {
+         dell-laptop = lib.nixosSystem {
+            inherit lib;
             specialArgs = { inherit inputs; };
-            modules = [ ./hosts/dell-laptop ];
+            modules = lib.meow.mapModules { dir = ./hosts/modules; extraModules = [ ./hosts/dell-laptop ]; };
          };
       };
    };

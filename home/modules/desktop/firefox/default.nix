@@ -1,4 +1,6 @@
 { pkgs, ... }: {
+   imports = [ ./tridactyl.nix ];
+
    programs.firefox = {
       enable = true;
 
@@ -32,6 +34,7 @@
             ublock-origin
             tridactyl
             darkreader
+            to-deepl
          ];
 
          search = {
@@ -42,6 +45,16 @@
                "SearXNG (tiekoetter)" = {
                   urls = [{ template = "https://searx.tiekoetter.com/search?q={searchTerms}"; }];
                   definedAliases = [ "@searx" "@sx" ];
+               };
+
+               "NixOS Packages" = {
+                  urls = [{ template = "https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={searchTerms}"; }];
+                  definedAliases = [ "@nixpkgs" "@np" ];
+               };
+
+               "NixOS Options" = {
+                  urls = [{ template = "https://search.nixos.org/options?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={searchTerms}"; }];
+                  definedAliases = [ "@nixopts" "@no" ];
                };
             };
          };

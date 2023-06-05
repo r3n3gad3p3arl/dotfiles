@@ -23,7 +23,7 @@
       keyMap = "us";
    };
 
-   environment.systemPackages = with pkgs; [ wget unzip ];
+   environment.systemPackages = with pkgs; [ wget unzrip ffmpeg ];
    hardware.enableRedistributableFirmware = true;
 
    services = {
@@ -31,7 +31,10 @@
 
       logind = {
          lidSwitch = "hibernate";
-         extraConfig = "IdleAction=suspend";
+         extraConfig = ''
+            IdleAction=suspend
+            IdleActionSec=0
+         '';
       };
    };
 }

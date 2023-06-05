@@ -1,65 +1,67 @@
-{
+{ config, ... }: {
    programs.btop = {
       enable = true;
 
       settings = {
-         color_theme = "tomorrow-night";
+         color_theme = config.colorScheme.slug;
          theme_background = false;
          vim_keys = true;
       };
    };
 
-   xdg.configFile."btop/themes/tomorrow-night.theme".text = ''
-      theme[main_bg]="#1d1f21"
-      theme[main_fg]="#c5c8c6"
+   xdg.configFile."btop/themes/${config.colorScheme.slug}.theme".text =
+   let colors = config.colorScheme.colors;
+   in ''
+      theme[main_bg]="#${colors.base00}"
+      theme[main_fg]="#${colors.base05}"
 
-      theme[title]="#c5c8c6"
+      theme[title]="#${colors.base05}"
 
-      theme[hi_fg]="#81beb7"
+      theme[hi_fg]="#${colors.base0C}"
 
-      theme[selected_bg]="#282a2e"
-      theme[selected_fg]="#c5c8c6"
+      theme[selected_bg]="#${colors.base01}"
+      theme[selected_fg]="#${colors.base05}"
 
-      theme[inactive_fg]="#373b41"
+      theme[inactive_fg]="#${colors.base02}"
 
-      theme[proc_misc]="#969896"
+      theme[proc_misc]="#${colors.base03}"
 
-      theme[cpu_box]="#81a2be"
-      theme[mem_box]="#81a2be"
-      theme[net_box]="#81a2be"
-      theme[proc_box]="#81a2be"
-      theme[div_line]="#81a2be"
+      theme[cpu_box]="#${colors.base0D}"
+      theme[mem_box]="#${colors.base0D}"
+      theme[net_box]="#${colors.base0D}"
+      theme[proc_box]="#${colors.base0D}"
+      theme[div_line]="#${colors.base0D}"
 
-      theme[temp_start]="#b5bd68"
-      theme[temp_mid]="#f0c674"
-      theme[temp_end]="#cc6666"
+      theme[temp_start]="#${colors.base0B}"
+      theme[temp_mid]="#${colors.base0A}"
+      theme[temp_end]="#${colors.base08}"
 
-      theme[cpu_start]="#b5bd68"
-      theme[cpu_mid]="#f0c674"
-      theme[cpu_end]="#cc6666"
+      theme[cpu_start]="#${colors.base0B}"
+      theme[cpu_mid]="#${colors.base0A}"
+      theme[cpu_end]="#${colors.base08}"
 
-      theme[free_start]="#b5bd68"
-      theme[free_mid]="#f0c674"
-      theme[free_end]="#cc6666"
+      theme[free_start]="#${colors.base0B}"
+      theme[free_mid]="#${colors.base0A}"
+      theme[free_end]="#${colors.base08}"
 
-      theme[cached_start]="#b5bd68"
-      theme[cached_mid]="#f0c674"
-      theme[cached_end]="#cc6666"
+      theme[cached_start]="#${colors.base0B}"
+      theme[cached_mid]="#${colors.base0A}"
+      theme[cached_end]="#${colors.base08}"
 
-      theme[available_start]="#b5bd68"
-      theme[available_mid]="#f0c674"
-      theme[available_end]="#cc6666"
+      theme[available_start]="#${colors.base0B}"
+      theme[available_mid]="#${colors.base0A}"
+      theme[available_end]="#${colors.base08}"
 
-      theme[used_start]="#b5bd68"
-      theme[used_mid]="#f0c674"
-      theme[used_end]="#cc6666"
+      theme[used_start]="#${colors.base0B}"
+      theme[used_mid]="#${colors.base0A}"
+      theme[used_end]="#${colors.base08}"
 
-      theme[download_start]="#b5bd68"
-      theme[download_mid]="#f0c674"
-      theme[download_end]="#cc6666"
+      theme[download_start]="#${colors.base0B}"
+      theme[download_mid]="#${colors.base0A}"
+      theme[download_end]="#${colors.base08}"
 
-      theme[upload_start]="#b5bd68"
-      theme[upload_mid]="#f0c674"
-      theme[upload_end]="#cc6666"
+      theme[upload_start]="#${colors.base0B}"
+      theme[upload_mid]="#${colors.base0A}"
+      theme[upload_end]="#${colors.base08}"
    '';
 }

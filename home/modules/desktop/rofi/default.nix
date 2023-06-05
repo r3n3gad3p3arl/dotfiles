@@ -5,6 +5,6 @@
       cycle = true;
       font = "Dina 11";
       terminal = "footclient";
-      theme = import ./theme.nix { inherit (config.lib.formats.rasi) mkLiteral; };
+      theme = import ./theme.nix { inherit config; };
    };
 }

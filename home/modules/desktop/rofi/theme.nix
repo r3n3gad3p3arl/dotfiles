@@ -1,9 +1,13 @@
-{ mkLiteral, ... }: {
+{ config, ... }:
+let
+   mkLiteral = config.lib.formats.rasi.mkLiteral;
+   colors = config.colorScheme.colors;
+in {
    "*" = {
-      bg = mkLiteral "#1d1f21";
-      fg = mkLiteral "#c5c8c6";
-      light-grey = mkLiteral "#969896";
-      blue = mkLiteral "#81a2be";
+      bg = mkLiteral "#${colors.base00}";
+      fg = mkLiteral "#${colors.base05}";
+      light-grey = mkLiteral "#${colors.base03}";
+      blue = mkLiteral "#${colors.base0D}";
 
       background-color = mkLiteral "transparent";
    };
@@ -34,6 +38,6 @@
 
    "element-text" = {
       text-color = mkLiteral "inherit";
-      highlight = mkLiteral "none #81a2be";
+      highlight = mkLiteral "none #${colors.base0D}";
    };
 }

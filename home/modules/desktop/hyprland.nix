@@ -1,12 +1,12 @@
 { config, ... }:
-let cursor = config.home.pointerCursor;
+let
+   cursor = config.home.pointerCursor;
+   colors = config.colorScheme.colors;
 in {
-   imports = [ ./hyprpaper.nix ];
-
    xdg.configFile."hypr/hyprland.conf".text = ''
       monitor = eDP-1,preferred,auto,auto
 
-      exec-once = hyprpaper
+      exec-once = swaybg -i ${../../wallpapers/asukarei.jpg} -m fill
       exec-once = dunst
       exec-once = foot --server
       exec-once = swayidle -w before-sleep swaylock idlehint 120
@@ -18,8 +18,8 @@ in {
          gaps_in = 0
          gaps_out = 0
          border_size = 1
-         col.active_border = rgb(969896)
-         col.inactive_border = rgb(4d5057)
+         col.active_border = rgb(${colors.base03})
+         col.inactive_border = rgb(${colors.base01})
          layout = dwindle
       }
 
