@@ -1,7 +1,7 @@
 { config, pkgs, ... }: {
    programs.zsh = {
-      enable = true;
       enableSyntaxHighlighting = true;
+      enableVteIntegration = true;
       autocd = true;
       defaultKeymap = "viins";
       dotDir = ".config/zsh";
@@ -13,7 +13,7 @@
          music = config.xdg.userDirs.music;
          pics = config.xdg.userDirs.pictures;
          vids = config.xdg.userDirs.videos;
-         nixconf = "${config.xdg.configHome}/nixos";
+         nixcfg = "${config.xdg.configHome}/nixos";
       };
 
       shellAliases = {

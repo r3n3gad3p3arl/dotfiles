@@ -1,39 +1,46 @@
-{ pkgs, ... }: {
-   security = {
-      rtkit.enable = true;
-      pam.services.swaylock = {};
-   };
+{ lib, pkgs, config, ... }: with lib;
+let
+   cfg = config.system.desktop;
+in {
+   options.system.desktop.enable = mkEnableOption (mdDoc "desktop");
 
-   services.pipewire = {
-      enable = true;
-
-      alsa = {
-         enable = true;
-         support32Bit = true;
+   config = mkIf cfg.enable {
+      security = {
+         rtkit.enable = true;
+         pam.services.swaylock = {};
       };
 
-      pulse.enable = true;
-      jack.enable = true;
-   };
+      services.pipewire = {
+         enable = true;
 
-   programs = {
-      hyprland.enable = true;
-      steam.enable = true;
-      gamemode.enable = true;
-   };
+         alsa = {
+            enable = true;
+            support32Bit = true;
+         };
 
-   fonts = {
-      fonts = with pkgs; [
-         noto-fonts
-         noto-fonts-cjk
-         noto-fonts-emoji
-      ];
+         pulse.enable = true;
+         jack.enable = true;
+      };
 
-      fontconfig.defaultFonts = {
-         serif = [ "Noto Serif" ];
-         sansSerif = [ "Noto Sans" ];
-         monospace = [ "Noto Sans Mono" ];
-         emoji = [ "Noto Color Emoji" ];
+      programs = {
+         hyprland.enable = true;
+         steam.enable = true;
+         gamemode.enable = true;
+      };
+
+      fonts = {
+         fonts = with pkgs; [
+            noto-fonts
+            noto-fonts-cjk
+            noto-fonts-emoji
+         ];
+
+         fontconfig.defaultFonts = {
+            serif = [ "Noto Serif" ];
+            sansSerif = [ "Noto Sans" ];
+            monospace = [ "Noto Sans Mono" ];
+            emoji = [ "Noto Color Emoji" ];
+         };
       };
    };
 }

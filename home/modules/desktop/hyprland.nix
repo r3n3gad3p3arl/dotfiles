@@ -1,9 +1,9 @@
-{ config, ... }:
-let
-   cursor = config.home.pointerCursor;
-   colors = config.colorScheme.colors;
-in {
-   xdg.configFile."hypr/hyprland.conf".text = ''
+{ config, inputs, ... }: {
+   wayland.windowManager.hyprland.extraConfig =
+   let
+      cursor = config.home.pointerCursor;
+      colors = config.colorScheme.colors;
+   in ''
       monitor = eDP-1,preferred,auto,auto
 
       exec-once = swaybg -i ${../../wallpapers/asukarei.jpg} -m fill

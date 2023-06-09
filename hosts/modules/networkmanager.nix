@@ -1,6 +1,13 @@
-{
-   networking.networkmanager.enable = true;
+{ lib, config, ... }: with lib;
+let
+   cfg = config.system.networkmanager;
+in {
+   options.system.networkmanager.enable = mkEnableOption (mdDoc "Network Manager");
 
-   # slows down boot time + unecessary for regular desktop usage
-   systemd.services."NetworkManager-wait-online".enable = false;
+   config = mkIf cfg.enable {
+      networking.networkmanager.enable = true;
+
+      # slows down boot time + unecessary for local booting
+      systemd.services."NetworkManager-wait-online".enable = false;
+   };
 }

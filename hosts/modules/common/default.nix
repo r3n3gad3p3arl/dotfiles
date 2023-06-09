@@ -1,7 +1,5 @@
 { inputs, pkgs, ... }: {
-   imports = [
-      ./users.nix
-   ];
+   imports = [ ./users.nix ];
 
    nixpkgs = {
       config.allowUnfree = true;

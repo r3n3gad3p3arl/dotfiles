@@ -1,6 +1,5 @@
 { pkgs, config, ... }: {
    programs.rofi = {
-      enable = true;
       package = pkgs.rofi-wayland;
       cycle = true;
       font = "Dina 11";
