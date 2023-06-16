@@ -31,6 +31,5 @@ in {
 
       services.xserver.videoDrivers = [ "nvidia" ];
       programs.hyprland.nvidiaPatches = true;
-      powerManagement.cpuFreqGovernor = "performance";
    };
 }

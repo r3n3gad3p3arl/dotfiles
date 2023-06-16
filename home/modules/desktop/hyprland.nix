@@ -3,13 +3,12 @@
    let
       cursor = config.home.pointerCursor;
       colors = config.colorScheme.colors;
+      bin = ../../bin;
    in ''
       monitor = eDP-1,preferred,auto,auto
 
       exec-once = swaybg -i ${../../wallpapers/asukarei.jpg} -m fill
-      exec-once = dunst
       exec-once = foot --server
-      exec-once = swayidle -w before-sleep swaylock idlehint 120
       exec-once = hyprctl setcursor ${cursor.name} ${toString cursor.size}
 
       env = XCURSOR_SIZE,${toString cursor.size}
@@ -37,7 +36,7 @@
       bind = $mod,Return,exec,footclient
       bind = $mod,R,exec,rofi -show drun
       bind = $mod,B,exec,firefox
-      bind = $mod CTRL,L,exec,swaylock
+      bind = $mod CTRL,L,exec,swaylock -f
 
       bind = $mod SHIFT,C,killactive,
       bind = $mod SHIFT,Q,exit,
@@ -76,23 +75,23 @@
       bindm = $mod,mouse:272,movewindow
       bindm = $mod,mouse:273,resizewindow
 
-      bindle = ,XF86AudioRaiseVolume,exec,wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 4%+
-      bind = ,XF86AudioRaiseVolume,exec,notify-send -h int:value:$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2*100}') "Volume"
-      bindle = ,XF86AudioLowerVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 4%-
-      bind = ,XF86AudioLowerVolume,exec,notify-send -h int:value:$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2*100}') "Volume"
-      bindl = ,XF86AudioMute,exec,wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+      bindl = ,switch:on:Lid Switch,exec,swaylock -f
+
+      bindle = ,XF86AudioRaiseVolume,exec,${bin + /volume.sh} raise_volume
+      bindle = ,XF86AudioLowerVolume,exec,${bin + /volume.sh} lower_volume
+      bindl = ,XF86AudioMute,exec,${bin + /volume.sh} toggle_volume_mute
 
       bindl = ,XF86AudioPlay,exec,playerctl play-pause
       bindl = $mod,period,exec,playerctl next
       bindl = $mod,comma,exec,playerctl previous
       bindl = $mod,S,exec,playerctl stop
 
-      bindle = ,XF86MonBrightnessUp,exec,brightnessctl set 4%+
-      bindle = ,XF86MonBrightnessDown,exec,brightnessctl set 4%-
+      bindle = ,XF86MonBrightnessUp,exec,${bin + /brightness.sh} raise_brightness
+      bindle = ,XF86MonBrightnessDown,exec,${bin + /brightness.sh} lower_brightness
 
-      bind = $mod,T,exec,notify-send "Date/Time" "$(date)"
-      bind = $mod,P,exec,notify-send -h int:value:$(cat /sys/class/power_supply/BAT0/capacity) "Battery"
+      bind = $mod,T,exec,notify-send 'Date/Time' "$(date)"
+      bind = $mod,P,exec,${bin + /battery.sh} send_current_battery_notif
 
-      bind = $mod SHIFT,M,exec,mpv "https://youtube.com/playlist?list=PLksUtCwP9dNDw7oixTORlap_fsNHM2bf9" --shuffle --no-video
+      bind = $mod SHIFT,M,exec,mpv 'https://youtube.com/playlist?list=PLksUtCwP9dNDw7oixTORlap_fsNHM2bf9' --shuffle --no-video
    '';
 }

@@ -3,7 +3,10 @@
 
    nixpkgs = {
       config.allowUnfree = true;
-      overlays = [ inputs.nur.overlay ];
+      overlays = [
+         inputs.nur.overlay
+         inputs.nixd.overlays.default
+      ];
    };
 
    nix.settings = {
@@ -26,13 +29,6 @@
 
    services = {
       fstrim.enable = true;
-
-      logind = {
-         lidSwitch = "hibernate";
-         extraConfig = ''
-            IdleAction=suspend
-            IdleActionSec=0
-         '';
-      };
+      logind.lidSwitch = "hibernate";
    };
 }

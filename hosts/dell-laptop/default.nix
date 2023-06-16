@@ -8,6 +8,8 @@
       distrobox.enable = true;
    };
 
+   programs.gnome-network-displays.enable = true;
+
    system = {
       desktop.enable = true;
       grub.enable = true;

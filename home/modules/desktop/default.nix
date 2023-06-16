@@ -33,15 +33,9 @@ in {
 
             # wm utils
             wl-clipboard
-            swayidle
             swaybg
             playerctl
             brightnessctl
-
-            # fonts
-            dina-font
-            cozette
-            unifont
          ];
       };
 
@@ -55,7 +49,11 @@ in {
          swaylock.enable = true;
       };
 
-      services.dunst.enable = true;
+      services = {
+         dunst.enable = true;
+         swayidle.enable = true;
+      };
+
       wayland.windowManager.hyprland.enable = osConfig.programs.hyprland.enable;
 
       gtk = {

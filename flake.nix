@@ -12,6 +12,7 @@
       hyprland.url = "github:hyprwm/hyprland";
       nur.url = "github:nix-community/nur";
       nix-colors.url = "github:misterio77/nix-colors";
+      nixd.url = "github:nix-community/nixd";
    };
 
    outputs = { nixpkgs, ... }@inputs:

@@ -20,6 +20,7 @@
 
          git_branch.symbol = " ";
          python.symbol = " ";
+         lua.symbol = " ";
       };
    };
 }

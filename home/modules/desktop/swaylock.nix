@@ -1,4 +1,4 @@
-{ pkgs, config, ... }: {
+{ pkgs, config, lib, ... }: {
    programs.swaylock.settings =
    let colors = config.colorScheme.colors;
    in {

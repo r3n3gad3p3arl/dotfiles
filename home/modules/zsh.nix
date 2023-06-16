@@ -18,6 +18,14 @@
 
       shellAliases = {
          nixupd = "sudo nixos-rebuild switch --flake ${config.xdg.configHome}/nixos#";
+         nixclean = "sudo nix-collect-garbage -d";
+         md = "mkdir -pv";
+         cp = "cp -iv";
+         cpr = "cp -ivr";
+         mv = "mv -iv";
+         rm = "rm -Iv";
+         rmr = "rm -Ivr";
+         e = "$EDITOR";
       };
    };
 }

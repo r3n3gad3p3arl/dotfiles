@@ -33,6 +33,9 @@ in {
             noto-fonts
             noto-fonts-cjk
             noto-fonts-emoji
+            dina-font
+            cozette
+            unifont
          ];
 
          fontconfig.defaultFonts = {
