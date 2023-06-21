@@ -12,18 +12,25 @@
       hyprland.url = "github:hyprwm/hyprland";
       nur.url = "github:nix-community/nur";
       nix-colors.url = "github:misterio77/nix-colors";
-      nixd.url = "github:nix-community/nixd";
    };
 
-   outputs = { nixpkgs, ... }@inputs:
+   outputs = { self, nixpkgs, ... }@inputs:
    let
+      inherit (self) outputs;
       lib = nixpkgs.lib.extend (final: prev: { meow = import ./lib; });
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
    in {
+      packages.${system} = import ./pkgs { inherit pkgs; };
+      overlays = import ./overlays { meowPkgs = self.packages.${system}; };
+
+      nixosModules = import ./modules/nixos;
+      homeManagerModules = import ./modules/home-manager;
+
       nixosConfigurations = {
          dell-laptop = lib.nixosSystem {
-            inherit lib;
-            specialArgs = { inherit inputs; };
-            modules = lib.meow.mapModules { dir = ./hosts/modules; extraModules = [ ./hosts/dell-laptop ]; };
+            specialArgs = { inherit lib inputs outputs; };
+            modules = [ ./hosts/dell-laptop ] ++ lib.meow.mapModules ./hosts/modules;
          };
       };
    };

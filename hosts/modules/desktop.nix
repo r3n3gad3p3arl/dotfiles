@@ -2,7 +2,7 @@
 let
    cfg = config.system.desktop;
 in {
-   options.system.desktop.enable = mkEnableOption (mdDoc "desktop");
+   options.system.desktop.enable = mkEnableOption (mdDoc "desktop configuration");
 
    config = mkIf cfg.enable {
       security = {

@@ -1,5 +1,5 @@
 { lib, osConfig, ... }: {
-   imports = lib.meow.mapModules { dir = ./modules; };
+   imports = lib.meow.mapModules ./modules;
 
    home = {
       username = "meow";

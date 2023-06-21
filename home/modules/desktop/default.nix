@@ -2,10 +2,10 @@
 let
    cfg = config.home.desktop;
 in {
-   imports = meow.mapModules { dir = ./.; extraModules = [
+   imports = [
       inputs.nix-colors.homeManagerModules.default
       inputs.hyprland.homeManagerModules.default
-   ]; };
+   ] ++ meow.mapModules ./.;
 
    options.home.desktop.enable = mkEnableOption (mdDoc "desktop configuration");
 
@@ -21,6 +21,11 @@ in {
             gtk.enable = true;
          };
 
+         sessionVariables = {
+            SWWW_TRANSITION = "wipe";
+            SWWW_TRANSITION_DURATION = 0.8;
+         };
+
          packages = with pkgs; [
             # media
             krita
@@ -33,7 +38,7 @@ in {
 
             # wm utils
             wl-clipboard
-            swaybg
+            swww
             playerctl
             brightnessctl
          ];
@@ -60,7 +65,7 @@ in {
          enable = true;
 
          font = {
-            name = "Dina";
+            name = "Noto Sans";
             size = 11;
          };
 

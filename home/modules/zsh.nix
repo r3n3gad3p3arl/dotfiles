@@ -19,6 +19,8 @@
       shellAliases = {
          nixupd = "sudo nixos-rebuild switch --flake ${config.xdg.configHome}/nixos#";
          nixclean = "sudo nix-collect-garbage -d";
+         nixflup = "nix flake update";
+
          md = "mkdir -pv";
          cp = "cp -iv";
          cpr = "cp -ivr";
@@ -26,6 +28,12 @@
          rm = "rm -Iv";
          rmr = "rm -Ivr";
          e = "$EDITOR";
+
+         gst = "git status";
+         ga = "git add";
+         gcm = "git commit -m";
+         gpsh = "git push";
+         gcl = "git clone";
       };
    };
 }

@@ -2,7 +2,8 @@
    programs.swaylock.settings =
    let colors = config.colorScheme.colors;
    in {
-      image = "${../../wallpapers/rei.jpg}";
+      #image = "$(${../../bin/wallpaper.sh} get_random_wallpaper ${../../wallpapers})";
+      color = colors.base00;
 
       font = "Dina";
 

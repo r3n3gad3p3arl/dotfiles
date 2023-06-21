@@ -1,5 +1,6 @@
 ASINK='@DEFAULT_AUDIO_SINK@'
 PERCENT=4
+NOTIF_TITLE='Volume'
 
 raise_volume() {
    wpctl set-volume -l 1.0 $ASINK $PERCENT%+
@@ -13,14 +14,15 @@ lower_volume() {
 
 toggle_volume_mute() {
    wpctl set-mute $ASINK toggle
-}
 
-get_volume_percent() {
-   wpctl get-volume $ASINK | awk '{print $2*100}'
+   NOTIF_BODY=$(wpctl get-volume $ASINK | grep -o 'MUTED')
+   NOTIF_BODY="${NOTIF_BODY:-UNMUTED}"
+   notify-send $NOTIF_TITLE $NOTIF_BODY
 }
 
 send_volume_notif() {
-   notify-send -h int:value:$(get_volume_percent) 'Volume'
+   VOLUME_LEVEL=$(wpctl get-volume $ASINK | awk '{print $2*100}')
+   notify-send -h int:value:$VOLUME_LEVEL $NOTIF_TITLE
 }
 
 $1

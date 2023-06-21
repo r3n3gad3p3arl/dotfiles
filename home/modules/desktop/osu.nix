@@ -8,7 +8,7 @@ in {
 
       xdg.desktopEntries."osu!" = {
          name = "osu!";
-         exec = (if osConfig.system.nvidia.enablePrime then "nvidia-offload " else "") + "gamemoderun ${pkgs.osu-lazer-bin}/bin/osu!";
+         exec = (if osConfig.hardware.nvidia.prime.offload.enable then "nvidia-offload " else "") + "gamemoderun ${pkgs.osu-lazer-bin}/bin/osu!";
          categories = [ "Game" ];
       };
    };

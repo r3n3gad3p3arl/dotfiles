@@ -7,7 +7,7 @@
    in ''
       monitor = eDP-1,preferred,auto,auto
 
-      exec-once = swaybg -i ${../../wallpapers/asukarei.jpg} -m fill
+      exec-once = swww init
       exec-once = foot --server
       exec-once = hyprctl setcursor ${cursor.name} ${toString cursor.size}
 
@@ -36,7 +36,8 @@
       bind = $mod,Return,exec,footclient
       bind = $mod,R,exec,rofi -show drun
       bind = $mod,B,exec,firefox
-      bind = $mod CTRL,L,exec,swaylock -f
+      bind = $mod,Escape,exec,swaylock -fi $(${bin + /wallpaper.sh} get_random_wallpaper ${../../wallpapers})
+      bind = $mod, W, exec, swww img $(${bin + /wallpaper.sh} get_random_wallpaper ${../../wallpapers})
 
       bind = $mod SHIFT,C,killactive,
       bind = $mod SHIFT,Q,exit,
@@ -75,7 +76,7 @@
       bindm = $mod,mouse:272,movewindow
       bindm = $mod,mouse:273,resizewindow
 
-      bindl = ,switch:on:Lid Switch,exec,swaylock -f
+      bindl = ,switch:on:Lid Switch,exec,swaylock -fi $(${bin + /wallpaper.sh} get_random_wallpaper ${../../wallpapers})
 
       bindle = ,XF86AudioRaiseVolume,exec,${bin + /volume.sh} raise_volume
       bindle = ,XF86AudioLowerVolume,exec,${bin + /volume.sh} lower_volume

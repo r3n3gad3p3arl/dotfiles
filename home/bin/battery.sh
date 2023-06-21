@@ -1,9 +1,6 @@
 send_current_battery_notif() {
-   notify-send -h int:value:$(get_battery_percent) 'Battery'
-}
-
-get_battery_percent() {
-   cat /sys/class/power_supply/BAT0/capacity
+   BATTERY_LEVEL=$(cat /sys/class/power_supply/BAT0/capacity)
+   notify-send -h int:value:$BATTERY_LEVEL 'Battery'
 }
 
 $1

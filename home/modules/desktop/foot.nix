@@ -1,5 +1,5 @@
 { pkgs, config, lib, ... }: {
-   home.packages = lib.mkIf (config.programs.foot.enable) [ pkgs.libsixel ];
+   home.packages = lib.mkIf config.programs.foot.enable [ pkgs.libsixel ];
 
    programs.foot.settings = {
       main = {

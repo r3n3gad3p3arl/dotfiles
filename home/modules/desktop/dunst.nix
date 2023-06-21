@@ -1,5 +1,5 @@
 { pkgs, config, lib, ... }: {
-   home.packages = lib.mkIf (config.services.dunst.enable) [ pkgs.libnotify ];
+   home.packages = lib.mkIf config.services.dunst.enable [ pkgs.libnotify ];
 
    services.dunst.settings =
    let colors = config.colorScheme.colors;

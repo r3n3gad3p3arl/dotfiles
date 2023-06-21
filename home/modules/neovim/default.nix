@@ -12,7 +12,6 @@
          cmp-nvim-lsp
          cmp-buffer
          cmp-path
-         cmp-cmdline
 
          luasnip
          cmp_luasnip
@@ -31,6 +30,7 @@
             nix
             css
             python
+            supercollider
          ]))
       ];
 
