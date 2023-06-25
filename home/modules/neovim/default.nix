@@ -30,7 +30,6 @@
             nix
             css
             python
-            supercollider
          ]))
       ];
 

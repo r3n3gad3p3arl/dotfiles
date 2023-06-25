@@ -7,8 +7,8 @@ in {
 
       backend = mkOption {
          type = types.enum [ "docker" "podman" ];
-         default = "docker";
-         example = "podman";
+         default = "podman";
+         example = "docker";
          description = mdDoc "Which container manager to use as a backend for Distrobox.";
       };
    };

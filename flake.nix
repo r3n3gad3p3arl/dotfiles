@@ -24,6 +24,7 @@
       packages.${system} = import ./pkgs { inherit pkgs; };
       overlays = import ./overlays { meowPkgs = self.packages.${system}; };
 
+      # mostly made for my specific usecases, but you may find them useful
       nixosModules = import ./modules/nixos;
       homeManagerModules = import ./modules/home-manager;
 

@@ -11,6 +11,8 @@ in {
 
    config = mkIf cfg.enable {
       fonts.fontconfig.enable = true;
+      gtk.enable = true;
+
       colorScheme = inputs.nix-colors.colorSchemes.tomorrow-night;
 
       home = {
@@ -18,12 +20,7 @@ in {
             package = pkgs.capitaine-cursors;
             name = "capitaine-cursors-white";
             size = 24;
-            gtk.enable = true;
-         };
-
-         sessionVariables = {
-            SWWW_TRANSITION = "wipe";
-            SWWW_TRANSITION_DURATION = 0.8;
+            gtk.enable = config.gtk.enable;
          };
 
          packages = with pkgs; [
@@ -38,7 +35,6 @@ in {
 
             # wm utils
             wl-clipboard
-            swww
             playerctl
             brightnessctl
          ];
@@ -52,6 +48,7 @@ in {
          mpv.enable = true;
          osu-lazer.enable = true;
          swaylock.enable = true;
+         swww.enable = true;
       };
 
       services = {
@@ -60,22 +57,6 @@ in {
       };
 
       wayland.windowManager.hyprland.enable = osConfig.programs.hyprland.enable;
-
-      gtk = {
-         enable = true;
-
-         font = {
-            name = "Noto Sans";
-            size = 11;
-         };
-
-         theme =
-         let contrib = inputs.nix-colors.lib.contrib { inherit pkgs; };
-         in {
-            package = contrib.gtkThemeFromScheme { scheme = config.colorScheme; };
-            name = config.colorScheme.slug;
-         };
-      };
 
       xdg = {
          enable = true;
