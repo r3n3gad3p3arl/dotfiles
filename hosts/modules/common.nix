@@ -51,7 +51,7 @@
          initialPassword = "nixos";
 
          # give myself sudo permissions + more
-         extraGroups = [ "wheel" "networkmanager" "libvirtd" "docker" ];
+         extraGroups = [ "wheel" "networkmanager" "libvirtd" ];
       };
    };
 
