@@ -21,6 +21,7 @@ in {
             name = "capitaine-cursors-white";
             size = 24;
             gtk.enable = config.gtk.enable;
+            x11.enable = true;
          };
 
          packages = with pkgs; [

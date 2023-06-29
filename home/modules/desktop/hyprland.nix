@@ -11,8 +11,6 @@
       exec-once = foot --server
       exec-once = hyprctl setcursor ${cursor.name} ${toString cursor.size}
 
-      env = XCURSOR_SIZE,${toString cursor.size}
-
       general {
          gaps_in = 0
          gaps_out = 0

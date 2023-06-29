@@ -1,4 +1,4 @@
-{ config, outputs, ... }: {
+{ lib, config, inputs, outputs, ... }: {
    imports = [
       ./hardware.nix
       outputs.nixosModules.distrobox
@@ -27,13 +27,14 @@
       intelBusId = "PCI:0:2:0";
    };
 
-   # swapfile
    boot = {
-      kernelParams = [ "resume_offset=8298496" ];
-      resumeDevice = config.fileSystems."/".device;
-   };
+      initrd.luks.devices."crypt_root" = {
+         device = "/dev/disk/by-uuid/65a72a1d-5da0-4026-a533-6f5d75cf2de1";
+         preLVM = true;
+      };
 
-   swapDevices = [{ device = "/swapfile"; size = 16*1024; }];
+      lanzaboote.enable = true;
+   };
 
    system = {
       laptop.enable = true;

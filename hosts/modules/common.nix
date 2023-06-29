@@ -69,7 +69,7 @@
    # keep my ssds fast and healthy with periodic garbage collection
    services.fstrim.enable = true;
 
-   # simple bootloader for when i don't need full-disk encryption
+   # simple bootloader
    boot.loader = {
       systemd-boot = {
          enable = lib.mkDefault true;
