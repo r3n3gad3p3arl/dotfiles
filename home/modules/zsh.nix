@@ -1,7 +1,6 @@
 { config, pkgs, ... }: {
    programs.zsh = {
-      enableSyntaxHighlighting = true;
-      enableVteIntegration = true;
+      syntaxHighlighting.enable = true;
       autocd = true;
       defaultKeymap = "viins";
       dotDir = ".config/zsh";
