@@ -39,6 +39,10 @@ in {
             playerctl
             brightnessctl
          ];
+
+         sessionVariables = lib.mkIf osConfig.programs.gamemode.enable {
+            GAMEMODERUNEXEC = "nvidia-offload";
+         };
       };
 
       programs = {

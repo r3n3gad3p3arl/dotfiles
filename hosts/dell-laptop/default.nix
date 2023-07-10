@@ -22,13 +22,9 @@
    };
 
    boot = {
-      initrd = {
-         luks.devices."crypt_root" = {
-            device = "/dev/disk/by-uuid/65a72a1d-5da0-4026-a533-6f5d75cf2de1";
-            preLVM = true;
-         };
-
-         systemd.enable = true;
+      initrd.luks.devices."crypt_root" = {
+         device = "/dev/disk/by-uuid/65a72a1d-5da0-4026-a533-6f5d75cf2de1";
+         preLVM = true;
       };
 
       lanzaboote.enable = true;

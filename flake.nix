@@ -14,6 +14,11 @@
          inputs.nixpkgs.follows = "nixpkgs";
       };
 
+      aagl = {
+         url = "github:ezkea/aagl-gtk-on-nix";
+         inputs.nixpkgs.follows = "nixpkgs";
+      };
+
       hyprland.url = "github:hyprwm/hyprland";
       nur.url = "github:nix-community/nur";
       nix-colors.url = "github:misterio77/nix-colors";
@@ -29,9 +34,10 @@
       packages.${system} = import ./pkgs { inherit pkgs; };
       overlays = import ./overlays { meowPkgs = self.packages.${system}; };
 
-      # mostly made for my specific usecases, but you may find them useful
       nixosModules = import ./modules/nixos;
       homeManagerModules = import ./modules/home-manager;
+
+      devShells.${system}.default = import ./shell.nix { inherit pkgs; };
 
       nixosConfigurations = {
          dell-laptop = lib.nixosSystem {

@@ -1,10 +1,14 @@
-{ lib, pkgs, config, ... }: with lib;
+{ lib, pkgs, config, inputs, ... }: with lib;
 let
    cfg = config.system.desktop;
 in {
+   imports = [ inputs.aagl.nixosModules.default ];
+
    options.system.desktop.enable = mkEnableOption (mdDoc "desktop configuration");
 
    config = mkIf cfg.enable {
+      nix.settings = inputs.aagl.nixConfig;
+
       security = {
          rtkit.enable = true;
          pam.services.swaylock = {};
@@ -26,6 +30,7 @@ in {
          hyprland.enable = true;
          steam.enable = true;
          gamemode.enable = true;
+         anime-game-launcher.enable = true;
       };
 
       fonts = {
