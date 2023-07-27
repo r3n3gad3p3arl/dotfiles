@@ -3,13 +3,13 @@ let
    cfg = config.virtualisation.distrobox;
 in {
    options.virtualisation.distrobox = {
-      enable = mkEnableOption (mdDoc "Distrobox");
+      enable = mkEnableOption "Distrobox";
 
       backend = mkOption {
          type = types.enum [ "docker" "podman" ];
          default = "podman";
          example = "docker";
-         description = mdDoc "Which container manager to use as a backend for Distrobox.";
+         description = "Which container manager to use as a backend for Distrobox.";
       };
    };
 

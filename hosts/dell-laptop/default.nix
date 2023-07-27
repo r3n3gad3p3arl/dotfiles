@@ -30,7 +30,7 @@
       lanzaboote.enable = true;
    };
 
-   security.tpm2.enable = true;
+   security.tpm2.enable = false;
 
    system = {
       laptop.enable = true;

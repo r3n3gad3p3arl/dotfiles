@@ -1,7 +1,7 @@
 { lib, config, ... }: with lib;
 let cfg = config.system.laptop;
 in {
-   options.system.laptop.enable = mkEnableOption (mdDoc "laptop configuration");
+   options.system.laptop.enable = mkEnableOption "laptop configuration";
 
    config = mkIf cfg.enable {
       system.desktop.enable = mkDefault true;

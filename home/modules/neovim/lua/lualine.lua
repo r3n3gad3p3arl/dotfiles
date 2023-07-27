@@ -1,6 +1,5 @@
 require("lualine").setup {
    options = {
-      icons_enabled = false,
       globalstatus = true,
       component_separators = "|",
       section_separators = "",
@@ -8,12 +7,12 @@ require("lualine").setup {
 
    sections = {
       lualine_a = { "mode" },
-      lualine_b = { "branch" },
+      lualine_b = {{ "branch", icon = "󰘬" }},
 
       lualine_c = {
          { "diagnostics" },
+         { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
          { "filename", path = 1 },
-         { "filetype" },
       },
 
       lualine_x = { "diff" },

@@ -4,6 +4,7 @@
 
       plugins = with pkgs.vimPlugins; [
          lualine-nvim
+         nvim-web-devicons
          indent-blankline-nvim
          nvim-base16
 

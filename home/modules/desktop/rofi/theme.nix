@@ -33,6 +33,7 @@ in {
    };
 
    "entry".text-color = mkLiteral "inherit";
+   "element".margin = mkLiteral "2 0";
    "element normal.normal, element alternate.normal".text-color = mkLiteral "@light-grey";
    "element selected.normal".text-color = mkLiteral "@fg";
 

@@ -2,7 +2,7 @@
 let
    cfg = config.programs.gnome-network-displays;
 in {
-   options.programs.gnome-network-displays.enable = mkEnableOption (mdDoc "GNOME Network Displays");
+   options.programs.gnome-network-displays.enable = mkEnableOption "GNOME Network Displays";
 
    config = mkIf cfg.enable {
       environment.systemPackages = with pkgs; [ gnome-network-displays ];

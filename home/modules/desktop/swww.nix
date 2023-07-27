@@ -2,7 +2,7 @@
 let
    cfg = config.programs.swww;
 in {
-   options.programs.swww.enable = mkEnableOption (mdDoc "SWWW");
+   options.programs.swww.enable = mkEnableOption "SWWW";
 
    config = mkIf cfg.enable {
       home = {

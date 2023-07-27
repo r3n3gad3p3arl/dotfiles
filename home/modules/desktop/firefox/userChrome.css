@@ -1,8 +1,7 @@
 .titlebar-buttonbox-container, .titlebar-spacer,
 #alltabs-button, #back-button, #forward-button,
 #reload-button, #stop-reload-button, toolbarspring,
-#unified-extensions-button, #page-action-buttons,
-#tabs-newtab-button, .tab-close-button,
+#page-action-buttons, #tabs-newtab-button, .tab-close-button,
 #tracking-protection-icon-container, #identity-box {
    display: none;
 }

@@ -2,10 +2,9 @@
    programs.swaylock.settings =
    let colors = config.colorScheme.colors;
    in {
-      #image = "$(${../../bin/wallpaper.sh} get_random_wallpaper ${../../wallpapers})";
       color = colors.base00;
 
-      font = "Dina";
+      font = "Fantasque Sans Mono";
 
       indicator-radius = 40;
       indicator-thickness = 4;

@@ -4,7 +4,7 @@ let
 in {
    imports = [ inputs.aagl.nixosModules.default ];
 
-   options.system.desktop.enable = mkEnableOption (mdDoc "desktop configuration");
+   options.system.desktop.enable = mkEnableOption "desktop configuration";
 
    config = mkIf cfg.enable {
       nix.settings = inputs.aagl.nixConfig;
@@ -34,13 +34,15 @@ in {
       };
 
       fonts = {
-         fonts = with pkgs; [
+         packages = with pkgs; [
             noto-fonts
             noto-fonts-cjk
             noto-fonts-emoji
-            dina-font
-            cozette
+            #dina-font
+            #cozette
             unifont
+            fantasque-sans-mono
+            (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
          ];
 
          fontconfig.defaultFonts = {

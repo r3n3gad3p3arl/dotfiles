@@ -4,10 +4,9 @@ let
 in {
    imports = [
       inputs.nix-colors.homeManagerModules.default
-      inputs.hyprland.homeManagerModules.default
    ] ++ meow.mapModules ./.;
 
-   options.home.desktop.enable = mkEnableOption (mdDoc "desktop configuration");
+   options.home.desktop.enable = mkEnableOption "desktop configuration";
 
    config = mkIf cfg.enable {
       fonts.fontconfig.enable = true;

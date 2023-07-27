@@ -10,17 +10,11 @@
             vimcmd_symbol = "[<](bold green)";
          };
 
-         battery = {
-            full_symbol = " ";
-            charging_symbol = " ";
-            discharging_symbol = " ";
-            unknown_symbol = " ";
-            empty_symbol = " ";
-         };
-
-         git_branch.symbol = " ";
-         python.symbol = " ";
-         lua.symbol = " ";
+         directory.read_only = " 󰌾";
+         git_branch.symbol = "󰘬 ";
+         git_status.deleted = "X";
+         lua.symbol = "󰢱 ";
+         python.symbol = "󰌠 ";
       };
    };
 }

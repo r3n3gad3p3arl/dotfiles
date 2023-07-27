@@ -10,5 +10,18 @@
          package = contrib.gtkThemeFromScheme { scheme = config.colorScheme; };
          name = config.colorScheme.slug;
       };
+
+      gtk3.extraConfig = {
+         gtk-application-prefer-dark-theme = true;
+      };
+
+      gtk4.extraConfig = {
+         gtk-application-prefer-dark-theme = true;
+      };
+
+      iconTheme = {
+         name = "Colloid";
+         package = pkgs.colloid-icon-theme;
+      };
    };
 }

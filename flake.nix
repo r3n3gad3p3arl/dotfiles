@@ -19,7 +19,6 @@
          inputs.nixpkgs.follows = "nixpkgs";
       };
 
-      hyprland.url = "github:hyprwm/hyprland";
       nur.url = "github:nix-community/nur";
       nix-colors.url = "github:misterio77/nix-colors";
    };
@@ -36,8 +35,6 @@
 
       nixosModules = import ./modules/nixos;
       homeManagerModules = import ./modules/home-manager;
-
-      devShells.${system}.default = import ./shell.nix { inherit pkgs; };
 
       nixosConfigurations = {
          dell-laptop = lib.nixosSystem {
