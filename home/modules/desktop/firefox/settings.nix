@@ -43,9 +43,7 @@
    "network.captive-portal-service.enabled" = false;
    "network.connectivity-service.enabled" = false;
 
-   "browser.safebrowsing.malware.enabled" = false;
-   "browser.safebrowsing.phishing.enabled" = false;
-   "browser.safebrowsing.downloads.enabled" = false;
+   "browser.safebrowsing.downloads.remote.enabled" = false;
 
    "network.prefetch-next" = false;
    "network.dns.disablePrefetch" = true;
@@ -99,12 +97,12 @@
    "accessibility.force_disabled" = 1;
    "browser.helperApps.deleteTempFileOnExit" = true;
    "browser.uitour.enabled" = false;
-   "middlemouse.contentLoadURL" = false;
    "permissions.manager.defaultsUrl" = "";
    "webchannel.allowObject.urlWhitelist" = "";
    "network.IDN_show_punycode" = true;
    "pdfjs.enableScripting" = false;
    "permissions.delegation.enabled" = false;
+   "browser.tabs.searchclipboardfor.middleclick" = false;
    "browser.download.useDownloadDir" = false;
    "browser.dowload.alwaysOpenPanel" = false;
    "browser.dowload.manager.addToRecentDocs" = false;

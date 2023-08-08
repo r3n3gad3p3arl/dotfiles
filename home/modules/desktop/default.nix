@@ -46,6 +46,7 @@ in {
 
       programs = {
          firefox.enable = true;
+         chromium.enable = true;
          rofi.enable = true;
          foot.enable = true;
          yt-dlp.enable = true;

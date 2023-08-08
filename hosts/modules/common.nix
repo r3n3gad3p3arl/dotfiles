@@ -1,4 +1,4 @@
-{ lib, inputs, outputs, pkgs, ... }: {
+{ lib, inputs, outputs, pkgs, config, ... }: {
    imports = [ inputs.home-manager.nixosModules.home-manager ];
 
    nixpkgs = {
@@ -34,7 +34,9 @@
       users.meow = {
          isNormalUser = true;
          initialPassword = "nixos";
-         extraGroups = [ "wheel" "libvirtd" ];
+         extraGroups = [ "wheel" ]
+            ++ lib.optionals config.virtualisation.libvirtd.enable [ "libvirtd" ]
+            ++ lib.optionals config.networking.networkmanager.enable [ "networkmanager" ];
       };
    };
 
@@ -51,6 +53,9 @@
       fstrim.enable = true;
       fwupd.enable = true;
    };
+
+   # slows down boot time + unecessary for local booting
+   systemd.services."NetworkManager-wait-online".enable = lib.mkDefault false;
 
    boot.loader = {
       systemd-boot = {

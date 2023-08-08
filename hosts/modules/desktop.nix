@@ -38,8 +38,6 @@ in {
             noto-fonts
             noto-fonts-cjk
             noto-fonts-emoji
-            #dina-font
-            #cozette
             unifont
             fantasque-sans-mono
             (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })

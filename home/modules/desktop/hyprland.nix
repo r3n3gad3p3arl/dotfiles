@@ -8,7 +8,7 @@
       monitor = "eDP-1,preferred,auto,auto";
 
       exec-once = [
-         "swww init"
+         "sleep 1 && swww init" # workaround for bug where cached wallpaper doesn't load
          "foot --server"
          "hyprctl setcursor ${cursor.name} ${toString cursor.size}"
       ];
@@ -60,6 +60,8 @@
          "$mod SHIFT,M,exec,mpv 'https://youtube.com/playlist?list=PLksUtCwP9dNDw7oixTORlap_fsNHM2bf9' --shuffle --no-video"
 
          ",switch:on:Lid Switch,exec,swaylock -fi $(${bin + /wallpaper.sh} get_random_wallpaper ${../../wallpapers})"
+
+         "$mod,O,exec,sleep 1 && hyprctl dispatch dpms on"
       ];
 
       bindl = [
@@ -85,10 +87,7 @@
       ];
    };
 
-   wayland.windowManager.hyprland.extraConfig =
-   let
-      bin = ../../bin;
-   in ''
+   wayland.windowManager.hyprland.extraConfig = ''
       bind = $mod CTRL,R,submap,resize
       submap = resize
       binde = ,H,resizeactive,-10 0

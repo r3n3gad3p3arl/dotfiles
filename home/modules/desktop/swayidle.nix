@@ -15,7 +15,7 @@
             resumeCommand = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
          }
 
-         { timeout = 150; command = "${pkgs.swaylock}/bin/swaylock -f"; }
+         { timeout = 150; command = "${pkgs.swaylock}/bin/swaylock -fi $(${../../bin/wallpaper.sh} get_random_wallpaper ${../../wallpapers})"; }
          { timeout = 270; command = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on & ${pkgs.systemd}/bin/systemctl suspend"; }
       ];
    };

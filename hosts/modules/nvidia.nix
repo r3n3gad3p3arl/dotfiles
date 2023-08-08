@@ -9,7 +9,7 @@
 
       powerManagement = {
          enable = true;
-         finegrained = config.hardware.nvidia.prime.offload.enable;
+         #finegrained = config.hardware.nvidia.prime.offload.enable;
       };
    };
 }
