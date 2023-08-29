@@ -14,11 +14,18 @@
 
    programs.gnome-network-displays.enable = true;
 
-   services.xserver.videoDrivers = [ "nvidia" ];
+   services = {
+      xserver.videoDrivers = [ "nvidia" ];
+      printing.enable = true;
+   };
 
-   hardware.nvidia.prime = {
-      nvidiaBusId = "PCI:60:0:0";
-      intelBusId = "PCI:0:2:0";
+   hardware = {
+      nvidia.prime = {
+         nvidiaBusId = "PCI:60:0:0";
+         intelBusId = "PCI:0:2:0";
+      };
+
+      opentabletdriver.enable = true;
    };
 
    boot = {

@@ -2,35 +2,38 @@
 let
    cfg = config.system.desktop;
 in {
-   imports = [ inputs.aagl.nixosModules.default ];
+   imports = [
+      inputs.aagl.nixosModules.default
+   ] ++ meow.mapModules ./.;
 
    options.system.desktop.enable = mkEnableOption "desktop configuration";
 
    config = mkIf cfg.enable {
       nix.settings = inputs.aagl.nixConfig;
+      security.rtkit.enable = true;
 
-      security = {
-         rtkit.enable = true;
-         pam.services.swaylock = {};
-      };
-
-      services.pipewire = {
-         enable = true;
-
-         alsa = {
+      services = {
+         pipewire = {
             enable = true;
-            support32Bit = true;
+
+            alsa = {
+               enable = true;
+               support32Bit = true;
+            };
+
+            pulse.enable = true;
+            jack.enable = true;
          };
 
-         pulse.enable = true;
-         jack.enable = true;
+         xserver.desktopManager.plasma5.enable = true;
       };
 
       programs = {
-         hyprland.enable = true;
+         hyprland.enable = false;
          steam.enable = true;
          gamemode.enable = true;
          anime-game-launcher.enable = true;
+         dconf.enable = true;
       };
 
       fonts = {

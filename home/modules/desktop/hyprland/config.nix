@@ -5,7 +5,7 @@
       colors = config.colorScheme.colors;
       bin = ../../bin;
    in {
-      monitor = "eDP-1,preferred,auto,auto";
+      monitor = ",preferred,auto,auto";
 
       exec-once = [
          "sleep 1 && swww init" # workaround for bug where cached wallpaper doesn't load
@@ -61,7 +61,7 @@
 
          ",switch:on:Lid Switch,exec,swaylock -fi $(${bin + /wallpaper.sh} get_random_wallpaper ${../../wallpapers})"
 
-         "$mod,O,exec,sleep 1 && hyprctl dispatch dpms on"
+         "$mod,O,exec,sleep 1 && hyprctl dispatch dpms toggle"
       ];
 
       bindl = [
