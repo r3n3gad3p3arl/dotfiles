@@ -35,6 +35,7 @@
       };
 
       lanzaboote.enable = true;
+      swraid.enable = false;
    };
 
    security.tpm2.enable = true;

@@ -4,41 +4,65 @@ let
    colors = config.colorScheme.colors;
 in {
    "*" = {
-      bg = mkLiteral "#${colors.base00}";
-      fg = mkLiteral "#${colors.base05}";
-      light-grey = mkLiteral "#${colors.base03}";
-      blue = mkLiteral "#${colors.base0D}";
+      bg1 = mkLiteral "#${colors.base01}";
+      bg2 = mkLiteral "#${colors.base03}";
+      fg1 = mkLiteral "#${colors.base05}";
+      fg2 = mkLiteral "#${colors.base04}";
+      acc = mkLiteral "#${colors.base0D}";
 
       background-color = mkLiteral "transparent";
    };
 
    "window" = {
-      background-color = mkLiteral "@bg";
-      border-color = mkLiteral "@light-grey";
-      border = 1;
-      padding = 8;
+      background-color = mkLiteral "@bg1";
+      border-color = mkLiteral "@bg2";
+      border-radius = 5;
+      border = 2;
       width = 400;
+      padding = 8;
    };
 
    "inputbar" = {
-      text-color = mkLiteral "@fg";
+      text-color = mkLiteral "@fg1";
       children = [ "prompt" "entry" ];
-      margin = mkLiteral "0 0 4";
+      margin = mkLiteral "0 0 8";
    };
 
    "prompt" = {
-      text-color = mkLiteral "@blue";
-      text-transform = mkLiteral "bold";
+      text-color = mkLiteral "@bg1";
+      background-color = mkLiteral "@acc";
       margin = mkLiteral "0 4 0 0";
+      padding = mkLiteral "4 8";
+      border-radius = 5;
    };
 
-   "entry".text-color = mkLiteral "inherit";
-   "element".margin = mkLiteral "2 0";
-   "element normal.normal, element alternate.normal".text-color = mkLiteral "@light-grey";
-   "element selected.normal".text-color = mkLiteral "@fg";
+   "entry" = {
+      text-color = mkLiteral "inherit";
+      vertical-align = mkLiteral "0.5";
+   };
+
+   "listview".lines = 8;
+
+   "element" = {
+      padding = mkLiteral "8";
+      border-radius = 5;
+   };
+
+   "element normal.normal, element alternate.normal".text-color = mkLiteral "@fg2";
+
+   "element selected.normal" = {
+      text-color = mkLiteral "@fg1";
+      background-color = mkLiteral "@bg2";
+   };
 
    "element-text" = {
       text-color = mkLiteral "inherit";
       highlight = mkLiteral "none #${colors.base0D}";
+      vertical-align = mkLiteral "0.5";
+   };
+
+   "element-icon" = {
+      size = 24;
+      margin = mkLiteral "0 4 0 0";
    };
 }

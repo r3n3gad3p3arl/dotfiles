@@ -2,8 +2,13 @@
    programs.rofi = {
       package = pkgs.rofi-wayland;
       cycle = true;
-      font = "Fantasque Sans Mono 11";
+      font = "Lexend 9";
       terminal = "footclient";
       theme = import ./theme.nix { inherit config; };
+
+      extraConfig = {
+         modi = "drun,run";
+         show-icons = true;
+      };
    };
 }

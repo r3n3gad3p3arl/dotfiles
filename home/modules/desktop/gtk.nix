@@ -1,7 +1,7 @@
 { inputs, pkgs, config, ... }: {
    gtk = {
       font = {
-         name = "Noto Sans";
+         name = "Lexend";
          size = 11;
       };
 
@@ -20,8 +20,8 @@
       };
 
       iconTheme = {
-         name = "Colloid";
-         package = pkgs.colloid-icon-theme;
+         name = "Papirus";
+         package = pkgs.papirus-icon-theme;
       };
    };
 }

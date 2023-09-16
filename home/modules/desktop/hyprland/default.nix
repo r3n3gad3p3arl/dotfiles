@@ -16,6 +16,7 @@ in {
          playerctl
          brightnessctl
          xdg-utils
+         pcmanfm
       ];
    };
 

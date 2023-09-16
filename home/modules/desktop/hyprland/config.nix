@@ -1,11 +1,16 @@
-{ config, inputs, ... }: {
+{ pkgs, config, inputs, ... }: {
    wayland.windowManager.hyprland.settings =
    let
       cursor = config.home.pointerCursor;
       colors = config.colorScheme.colors;
-      bin = ../../bin;
+      bin = pkgs.meowPkgs.bin;
+      wallpapers = ../../../wallpapers;
    in {
-      monitor = ",preferred,auto,auto";
+      monitor = [
+         "eDP-1,preferred,auto,1" # main monitor
+         "DP-1,preferred,auto,1" # drawing tablet
+         ",preferred,auto,1" # fallback
+      ];
 
       exec-once = [
          "sleep 1 && swww init" # workaround for bug where cached wallpaper doesn't load
@@ -14,16 +19,16 @@
       ];
 
       general = {
-         gaps_in = 0;
-         gaps_out = 0;
-         border_size = 1;
+         gaps_in = 2;
+         gaps_out = 4;
+         border_size = 2;
          "col.active_border" = "rgb(${colors.base03})";
          "col.inactive_border" = "rgb(${colors.base01})";
          layout = "dwindle";
       };
 
       decoration = {
-         rounding = 0;
+         rounding = 5;
          drop_shadow = "no";
       };
 
@@ -37,8 +42,8 @@
          "$mod,Return,exec,footclient"
          "$mod,R,exec,rofi -show drun"
          "$mod,B,exec,firefox"
-         "$mod,Escape,exec,swaylock -fi $(${bin + /wallpaper.sh} get_random_wallpaper ${../../wallpapers})"
-         "$mod,W,exec,swww img $(${bin + /wallpaper.sh} get_random_wallpaper ${../../wallpapers})"
+         "$mod,Escape,exec,swaylock -fi $(${bin.wallpaper} get_random_wallpaper ${wallpapers})"
+         "$mod,W,exec,swww img $(${bin.wallpaper} get_random_wallpaper ${wallpapers})"
 
          "$mod SHIFT,C,killactive,"
          "$mod SHIFT,Q,exit,"
@@ -55,17 +60,17 @@
          "$mod SHIFT,K,movewindow,u"
          "$mod SHIFT,J,movewindow,d"
 
-         "$mod,T,exec,notify-send 'Date/Time' \"$(date)\""
-         "$mod,P,exec,${bin + /battery.sh} send_current_battery_notif"
+         "$mod,T,exec,notify-send \"$(date +'%I:%M %p')\" \"$(date +'%a %b %d')\""
+         "$mod,P,exec,${bin.battery} send_current_battery_notif"
          "$mod SHIFT,M,exec,mpv 'https://youtube.com/playlist?list=PLksUtCwP9dNDw7oixTORlap_fsNHM2bf9' --shuffle --no-video"
 
-         ",switch:on:Lid Switch,exec,swaylock -fi $(${bin + /wallpaper.sh} get_random_wallpaper ${../../wallpapers})"
+         ",switch:on:Lid Switch,exec,swaylock -fi $(${bin.wallpaper} get_random_wallpaper ${wallpapers})"
 
          "$mod,O,exec,sleep 1 && hyprctl dispatch dpms toggle"
       ];
 
       bindl = [
-         ",XF86AudioMute,exec,${bin + /volume.sh} toggle_volume_mute"
+         ",XF86AudioMute,exec,${bin.volume} toggle_volume_mute"
 
          ",XF86AudioPlay,exec,playerctl play-pause"
          "$mod,period,exec,playerctl next"
@@ -74,11 +79,11 @@
       ];
 
       bindle = [
-         ",XF86AudioRaiseVolume,exec,${bin + /volume.sh} raise_volume"
-         ",XF86AudioLowerVolume,exec,${bin + /volume.sh} lower_volume"
+         ",XF86AudioRaiseVolume,exec,${bin.volume} raise_volume"
+         ",XF86AudioLowerVolume,exec,${bin.volume} lower_volume"
 
-         ",XF86MonBrightnessUp,exec,${bin + /brightness.sh} raise_brightness"
-         ",XF86MonBrightnessDown,exec,${bin + /brightness.sh} lower_brightness"
+         ",XF86MonBrightnessUp,exec,${bin.brightness} raise_brightness"
+         ",XF86MonBrightnessDown,exec,${bin.brightness} lower_brightness"
       ];
 
       bindm = [

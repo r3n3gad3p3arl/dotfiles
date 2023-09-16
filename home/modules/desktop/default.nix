@@ -12,7 +12,7 @@ in {
       fonts.fontconfig.enable = true;
       gtk.enable = true;
 
-      colorScheme = inputs.nix-colors.colorSchemes.tomorrow-night;
+      colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
 
       home = {
          packages = with pkgs; [
@@ -21,14 +21,15 @@ in {
             gimp
             lmms
             libsForQt5.kdenlive
-            libsForQt5.kate
             openutau
             calibre
+            prismlauncher
 
             # useful tools
             keepassxc
             virt-manager
             wl-clipboard
+            wineWowPackages.waylandFull
          ];
 
          sessionVariables = lib.mkIf osConfig.programs.gamemode.enable {

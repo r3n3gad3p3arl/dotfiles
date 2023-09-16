@@ -23,6 +23,14 @@
                   { name = "FMHY"; url = "https://fmhy.pages.dev"; }
                ];
             }
+
+            {
+               name = "School";
+
+               bookmarks = [
+                  { name = "myLoneStar Login"; url = "https://my.lonestar.edu"; }
+               ];
+            }
          ];
 
          extensions = with pkgs.nur.repos.rycee.firefox-addons; [

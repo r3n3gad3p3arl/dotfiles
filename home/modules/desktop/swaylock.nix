@@ -4,7 +4,7 @@
    in {
       color = colors.base00;
 
-      font = "Fantasque Sans Mono";
+      font = "Lexend";
 
       indicator-radius = 40;
       indicator-thickness = 4;

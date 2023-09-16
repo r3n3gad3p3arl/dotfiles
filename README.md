@@ -8,3 +8,4 @@
 * [Windows 7-tan](https://wall.alphacoders.com/big.php?i=150947)
 * [Girl Shopping](https://wall.alphacoders.com/big.php?i=797920)
 * [Venti](https://wall.alphacoders.com/big.php?i=1129597)
+* [Girl in the Pool](https://www.pixiv.net/en/artworks/81691339)

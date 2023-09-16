@@ -12,28 +12,23 @@ in {
       nix.settings = inputs.aagl.nixConfig;
       security.rtkit.enable = true;
 
-      services = {
-         pipewire = {
+      services.pipewire = {
+         enable = true;
+
+         alsa = {
             enable = true;
-
-            alsa = {
-               enable = true;
-               support32Bit = true;
-            };
-
-            pulse.enable = true;
-            jack.enable = true;
+            support32Bit = true;
          };
 
-         xserver.desktopManager.plasma5.enable = true;
+         pulse.enable = true;
+         jack.enable = true;
       };
 
       programs = {
-         hyprland.enable = false;
+         hyprland.enable = true;
          steam.enable = true;
          gamemode.enable = true;
          anime-game-launcher.enable = true;
-         dconf.enable = true;
       };
 
       fonts = {
@@ -41,9 +36,9 @@ in {
             noto-fonts
             noto-fonts-cjk
             noto-fonts-emoji
-            unifont
-            fantasque-sans-mono
-            (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
+            jetbrains-mono
+            lexend
+            (nerdfonts.override { fonts = [ "JetBrainsMono" "NerdFontsSymbolsOnly" ]; })
          ];
 
          fontconfig.defaultFonts = {

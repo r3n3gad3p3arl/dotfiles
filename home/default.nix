@@ -13,7 +13,7 @@
       home-manager.enable = true;
       neovim.enable = true;
       btop.enable = true;
-      exa.enable = true;
+      eza.enable = true;
       git.enable = true;
       starship.enable = true;
       zsh.enable = osConfig.programs.zsh.enable;
