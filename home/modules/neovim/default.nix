@@ -29,7 +29,9 @@
             vimdoc
             query
             nix
+            html
             css
+            javascript
             python
          ]))
       ];

@@ -39,6 +39,7 @@
    "app.normandy.api_url" = "";
    "breakpad.reportURL" = "";
    "browser.tabs.crashReporting.sendReport" = false;
+   "browser.crashReports.unsubmittedCheck.autoSubmit2" = false;
    "captivedetect.canonicalURL" = "";
    "network.captive-portal-service.enabled" = false;
    "network.connectivity-service.enabled" = false;
@@ -48,15 +49,20 @@
    "network.prefetch-next" = false;
    "network.dns.disablePrefetch" = true;
    "network.predictor.enabled" = false;
+   "network.predictor.enable-prefetch" = false;
    "network.http.speculative-parallel-limit" = 0;
    "browser.places.speculativeConnect.enabled" = false;
 
-   "network.dns.disableIPv6" = true;
    "network.proxy.socks_remote_dns" = true;
    "network.file.disable_unc_paths" = true;
    "network.gio.supported-protocols" = "";
+   "network.dns.skipTRR-when-parental-control-enabled" = false;
 
+   "browser.fixup.alternate.enabled" = false;
+   "browser.search.suggest.enabled" = true;
+   "browser.urlbar.suggest.searches" = true;
    "browser.urlbar.speculativeConnect.enabled" = false;
+   "browser.urlbar.dnsResolveSingleWordsAfterSearch" = 0;
    "browser.urlbar.suggest.quicksuggest.nonsponsored" = false;
    "browser.urlbar.suggest.quicksuggest.sponsored" = false;
    "browser.formfill.enable" = false;
@@ -73,6 +79,7 @@
 
    "security.ssl.require_safe_negotiation" = true;
    "security.tls.enable_0rtt_data" = false;
+   "security.OCSP.enabled" = 1;
    "security.OCSP.require" = true;
    "security.cert_pinning.enforcement_level" = 2;
    "security.remote_settings.crlite_filters.enabled" = true;
@@ -82,7 +89,6 @@
    "security.ssl.treat_unsafe_negotiation_as_broken" = true;
    "browser.xul.error_pages.expert_bad_cert" = true;
 
-   "network.http.referer.XOriginPolicy" = 2;
    "network.http.referer.XOriginTrimmingPolicy" = 2;
 
    "privacy.userContext.enabled" = true;
@@ -90,31 +96,46 @@
 
    "media.peerconnection.ice.proxy_only_if_behind_proxy" = true;
    "media.peerconnection.ice.default_address_only" = true;
-   "media.eme.enabled" = false;
 
    "dom.disable_window_move_resize" = true;
 
    "accessibility.force_disabled" = 1;
    "browser.helperApps.deleteTempFileOnExit" = true;
    "browser.uitour.enabled" = false;
+   "devtools.debugger.remote-enabled" = false;
    "permissions.manager.defaultsUrl" = "";
    "webchannel.allowObject.urlWhitelist" = "";
    "network.IDN_show_punycode" = true;
+   "pdfjs.disabled" = false;
    "pdfjs.enableScripting" = false;
    "permissions.delegation.enabled" = false;
    "browser.tabs.searchclipboardfor.middleclick" = false;
    "browser.download.useDownloadDir" = false;
-   "browser.dowload.alwaysOpenPanel" = false;
-   "browser.dowload.manager.addToRecentDocs" = false;
-   "browser.dowload.always_ask_before_handling_new_types" = true;
+   "browser.download.alwaysOpenPanel" = false;
+   "browser.download.manager.addToRecentDocs" = false;
+   "browser.download.always_ask_before_handling_new_types" = true;
    "extensions.enabledScopes" = 5;
+   "extensions.autoDisableScopes" = 15;
    "extensions.postDownloadThirdPartyPrompt" = false;
 
    "browser.contentblocking.category" = "strict";
+   "privacy.partition.serviceWorkers" = true;
+   "privacy.partition.always_partition_third_party_non_cookie_storage" = true;
+   "privacy.partition.always_partition_third_party_non_cookie_storage.exempt_sessionstorage" = false;
 
    "privacy.sanitize.sanitizeOnShutdown" = true;
+   "privacy.clearOnShutdown.cache" = true;
+   "privacy.clearOnShutdown.downloads" = true;
+   "privacy.clearOnShutdown.formdata" = true;
+   "privacy.clearOnShutdown.history" = true;
+   "privacy.clearOnShutdown.sessions" = true;
    "privacy.clearOnShutdown.cookies" = true;
    "privacy.clearOnShutdown.offlineApps" = true;
+   "privacy.cpd.cache" = true;
+   "privacy.cpd.formdata" = true;
+   "privacy.cpd.history" = true;
+   "privacy.cpd.sessions" = true;
+   "privacy.cpd.offlineApps" = false;
    "privacy.cpd.cookies" = false;
    "privacy.sanitize.timeSpan" = 0;
 
@@ -123,8 +144,20 @@
    "privacy.window.maxInnerHeight" = 900;
    "privacy.resistFingerprinting.block_mozAddonManager" = true;
    "privacy.resistFingerprinting.letterboxing" = false;
+   "browser.display.use_system_colors" = false;
+   "widget.non-native-theme.enabled" = true;
+   "browser.link.open_newwindow" = 3;
    "browser.link.open_newwindow.restriction" = 0;
-   "webgl.disabled" = true;
+   "webgl.disabled" = false;
+
+   "extensions.blocklist.enabled" = true;
+   "network.http.referer.spoofSource" = false;
+   "security.dialog_enable_delay" = 1000;
+   "privacy.firstparty.isolate" = false;
+   "extensions.webcompat.enable_shims" = true;
+   "security.tls.version.enable-deprecated" = false;
+   "extensions.webcompat-reporter.enabled" = false;
+   "extensions.quarantinedDomains.enabled" = true;
 
    "browser.startup.homepage_override.mstone" = "ignore";
    "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
@@ -133,6 +166,9 @@
    "browser.urlbar.showSearchTerms.enabled" = false;
 
    "signon.rememberSignons" = false;
+   "extensions.formautofill.addresses.enabled" = false;
+   "extensions.formautofill.creditCards.enabled" = false;
+
    "extensions.pocket.enabled" = false;
    "identity.fxaccounts.enabled" = false;
    "browser.tabs.firefox-view" = false;

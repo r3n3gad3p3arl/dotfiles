@@ -24,6 +24,7 @@ in {
             openutau
             calibre
             prismlauncher
+            katawa-shoujo
 
             # useful tools
             keepassxc

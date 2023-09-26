@@ -13,7 +13,7 @@
       ];
 
       exec-once = [
-         "sleep 1 && swww init" # workaround for bug where cached wallpaper doesn't load
+         "sleep 1 && swww init" # workaround for cache loading bug
          "foot --server"
          "hyprctl setcursor ${cursor.name} ${toString cursor.size}"
       ];
@@ -48,7 +48,7 @@
          "$mod SHIFT,C,killactive,"
          "$mod SHIFT,Q,exit,"
          "$mod,F,togglefloating,"
-         "$mod,M,fullscreen,0"
+         "$mod SHIFT,F,fullscreen,0"
 
          "$mod,H,movefocus,l"
          "$mod,L,movefocus,r"
@@ -62,11 +62,12 @@
 
          "$mod,T,exec,notify-send \"$(date +'%I:%M %p')\" \"$(date +'%a %b %d')\""
          "$mod,P,exec,${bin.battery} send_current_battery_notif"
-         "$mod SHIFT,M,exec,mpv 'https://youtube.com/playlist?list=PLksUtCwP9dNDw7oixTORlap_fsNHM2bf9' --shuffle --no-video"
+         "$mod,M,exec,mpv 'https://youtube.com/playlist?list=PLksUtCwP9dNDw7oixTORlap_fsNHM2bf9' --shuffle --no-video"
 
-         ",switch:on:Lid Switch,exec,swaylock -fi $(${bin.wallpaper} get_random_wallpaper ${wallpapers})"
+         ",Print,exec,${bin.screenshot} print_current_screen"
+         "$mod,Print,exec,${bin.screenshot} print_selection"
 
-         "$mod,O,exec,sleep 1 && hyprctl dispatch dpms toggle"
+         ",switch:on:Lid Switch,exec,swaylock -i $(${bin.wallpaper} get_random_wallpaper ${wallpapers})"
       ];
 
       bindl = [
@@ -76,6 +77,9 @@
          "$mod,period,exec,playerctl next"
          "$mod,comma,exec,playerctl previous"
          "$mod,S,exec,playerctl stop"
+
+         "$mod,Z,exec,sleep 1 && hyprctl dispatch dpms off"
+         "$mod,X,exec,sleep 1 && hyprctl dispatch dpms on"
       ];
 
       bindle = [

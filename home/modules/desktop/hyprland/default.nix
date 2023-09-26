@@ -17,6 +17,9 @@ in {
          brightnessctl
          xdg-utils
          pcmanfm
+         grim
+         slurp
+         jq
       ];
    };
 
@@ -28,6 +31,8 @@ in {
 
    services = mkIf hyprland.enable {
       dunst.enable = true;
-      swayidle.enable = false; # acting weird right now
+      swayidle.enable = false;
+      gammastep.enable = true;
+      batsignal.enable = true;
    };
 }
