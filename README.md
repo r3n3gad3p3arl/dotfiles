@@ -9,3 +9,4 @@
 * [Girl Shopping](https://wall.alphacoders.com/big.php?i=797920)
 * [Venti](https://wall.alphacoders.com/big.php?i=1129597)
 * [Girl in the Pool](https://www.pixiv.net/en/artworks/81691339)
+* [Girl on the Stairs](http://kukkakukka09.wixsite.com/kukka/background?lightbox=dataItem-jomqv33h)

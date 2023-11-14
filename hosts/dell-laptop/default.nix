@@ -1,4 +1,4 @@
-{ lib, config, inputs, outputs, ... }: {
+{ lib, config, inputs, outputs, pkgs, ... }: {
    imports = [
       ./hardware.nix
       outputs.nixosModules.distrobox
@@ -7,12 +7,12 @@
 
    networking.hostName = "dell-laptop";
 
-   virtualisation = {
-      libvirtd.enable = true;
-      distrobox.enable = true;
-   };
+   virtualisation.distrobox.enable = true;
 
-   programs.gnome-network-displays.enable = true;
+   programs = {
+      gnome-network-displays.enable = true;
+      virt-manager.enable = true;
+   };
 
    services = {
       xserver.videoDrivers = [ "nvidia" ];
@@ -44,4 +44,12 @@
       laptop.enable = true;
       stateVersion = "23.05";
    };
+
+   environment.systemPackages = with pkgs; [
+      unzrip
+      unrar
+      bc
+      ripgrep
+      fd
+   ];
 }

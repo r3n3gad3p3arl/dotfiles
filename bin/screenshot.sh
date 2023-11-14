@@ -1,4 +1,4 @@
-IMG_PATH=$XDG_PICTURES_DIR/$(date +'%F_%T_grim.png')
+IMG_PATH=$XDG_PICTURES_DIR/$(date +'%F_%H-%M-%S_grim.png')
 SCREEN=$(hyprctl -j monitors | jq -r '.[] | select(.focused) | .name')
 
 print_current_screen() {

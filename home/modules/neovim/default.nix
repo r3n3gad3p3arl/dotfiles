@@ -36,15 +36,6 @@
          ]))
       ];
 
-      extraPackages = with pkgs; [
-         lua-language-server
-         python3Packages.python-lsp-server
-         nixd
-
-         ripgrep
-         fd
-      ];
-
       extraLuaConfig = ''
          require("meow.options")
          require("meow.keybinds")

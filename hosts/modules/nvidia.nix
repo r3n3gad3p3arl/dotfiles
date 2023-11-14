@@ -7,9 +7,6 @@
          enableOffloadCmd = config.hardware.nvidia.prime.offload.enable;
       };
 
-      powerManagement = {
-         enable = true;
-         #finegrained = config.hardware.nvidia.prime.offload.enable;
-      };
+      powerManagement.enable = true;
    };
 }

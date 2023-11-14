@@ -19,16 +19,16 @@
       ];
 
       general = {
-         gaps_in = 2;
-         gaps_out = 4;
-         border_size = 2;
+         gaps_in = 0;
+         gaps_out = 0;
+         border_size = 1;
          "col.active_border" = "rgb(${colors.base03})";
          "col.inactive_border" = "rgb(${colors.base01})";
          layout = "dwindle";
       };
 
       decoration = {
-         rounding = 5;
+         rounding = 0;
          drop_shadow = "no";
       };
 
@@ -42,8 +42,9 @@
          "$mod,Return,exec,footclient"
          "$mod,R,exec,rofi -show drun"
          "$mod,B,exec,firefox"
+         "$mod,E,exec,emacs"
          "$mod,Escape,exec,swaylock -fi $(${bin.wallpaper} get_random_wallpaper ${wallpapers})"
-         "$mod,W,exec,swww img $(${bin.wallpaper} get_random_wallpaper ${wallpapers})"
+         "$mod,W,exec,swww img $(${bin.wallpaper} get_random_wallpaper ${wallpapers}) --transition-type wipe --transition-duration 0.8"
 
          "$mod SHIFT,C,killactive,"
          "$mod SHIFT,Q,exit,"
@@ -66,8 +67,6 @@
 
          ",Print,exec,${bin.screenshot} print_current_screen"
          "$mod,Print,exec,${bin.screenshot} print_selection"
-
-         ",switch:on:Lid Switch,exec,swaylock -i $(${bin.wallpaper} get_random_wallpaper ${wallpapers})"
       ];
 
       bindl = [

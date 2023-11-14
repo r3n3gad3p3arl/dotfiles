@@ -4,20 +4,20 @@ let
    colors = config.colorScheme.colors;
 in {
    "*" = {
-      bg1 = mkLiteral "#${colors.base01}";
-      bg2 = mkLiteral "#${colors.base03}";
+      bg1 = mkLiteral "#${colors.base00}";
+      bg2 = mkLiteral "#${colors.base01}";
       fg1 = mkLiteral "#${colors.base05}";
-      fg2 = mkLiteral "#${colors.base04}";
+      fg2 = mkLiteral "#${colors.base03}";
       acc = mkLiteral "#${colors.base0D}";
 
       background-color = mkLiteral "transparent";
+      border-radius = 0;
    };
 
    "window" = {
       background-color = mkLiteral "@bg1";
-      border-color = mkLiteral "@bg2";
-      border-radius = 5;
-      border = 2;
+      border-color = mkLiteral "@fg2";
+      border = 1;
       width = 400;
       padding = 8;
    };
@@ -33,7 +33,6 @@ in {
       background-color = mkLiteral "@acc";
       margin = mkLiteral "0 4 0 0";
       padding = mkLiteral "4 8";
-      border-radius = 5;
    };
 
    "entry" = {
@@ -45,7 +44,6 @@ in {
 
    "element" = {
       padding = mkLiteral "8";
-      border-radius = 5;
    };
 
    "element normal.normal, element alternate.normal".text-color = mkLiteral "@fg2";

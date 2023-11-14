@@ -1,4 +1,4 @@
-{ pkgs, lib, config, osConfig, ... }: with lib;
+{ lib, pkgs, config, osConfig, ... }: with lib;
 let cfg = config.programs.osu-lazer;
 in {
    options.programs.osu-lazer.enable = mkEnableOption "osu!";
@@ -8,6 +8,7 @@ in {
 
       xdg.desktopEntries."osu!" = {
          name = "osu!";
+         icon = "osu!";
          exec = "gamemoderun ${pkgs.osu-lazer-bin}/bin/osu!";
          categories = [ "Game" ];
       };

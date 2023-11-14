@@ -12,16 +12,31 @@ in {
       nix.settings = inputs.aagl.nixConfig;
       security.rtkit.enable = true;
 
-      services.pipewire = {
-         enable = true;
-
-         alsa = {
+      services = {
+         pipewire = {
             enable = true;
-            support32Bit = true;
+
+            alsa = {
+               enable = true;
+               support32Bit = true;
+            };
+
+            pulse.enable = true;
+            jack.enable = true;
          };
 
-         pulse.enable = true;
-         jack.enable = true;
+         greetd = {
+            enable = true;
+
+            settings = rec {
+               initial_session = {
+                  command = "${pkgs.dbus}/bin/dbus-run-session ${pkgs.hyprland}/bin/Hyprland";
+                  user = "meow";
+               };
+
+               default_session = initial_session;
+            };
+         };
       };
 
       programs = {
@@ -29,6 +44,18 @@ in {
          steam.enable = true;
          gamemode.enable = true;
          anime-game-launcher.enable = true;
+      };
+
+      hardware.opengl = {
+         enable = true;
+         driSupport32Bit = true;
+
+         extraPackages = with pkgs; [
+            intel-media-driver
+            intel-vaapi-driver
+            vaapiVdpau
+            libvdpau-va-gl
+         ];
       };
 
       fonts = {

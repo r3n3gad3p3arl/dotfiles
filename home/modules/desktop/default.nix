@@ -12,7 +12,7 @@ in {
       fonts.fontconfig.enable = true;
       gtk.enable = true;
 
-      colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
+      colorScheme = inputs.nix-colors.colorSchemes.tomorrow-night;
 
       home = {
          packages = with pkgs; [
@@ -21,14 +21,19 @@ in {
             gimp
             lmms
             libsForQt5.kdenlive
-            openutau
             calibre
             prismlauncher
-            katawa-shoujo
+            #katawa-shoujo
+            blender
+            citra
+            melonDS
+            mgba
+            godot_4
+            qbittorrent
+            obsidian
 
             # useful tools
             keepassxc
-            virt-manager
             wl-clipboard
             wineWowPackages.waylandFull
          ];
@@ -45,6 +50,8 @@ in {
          yt-dlp.enable = true;
          mpv.enable = true;
          osu-lazer.enable = true;
+         libreoffice.enable = true;
+         openutau.enable = true;
       };
 
       wayland.windowManager.hyprland.enable = osConfig.programs.hyprland.enable;

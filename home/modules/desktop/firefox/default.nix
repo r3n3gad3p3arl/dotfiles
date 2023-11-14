@@ -3,7 +3,7 @@
 
    programs.firefox = {
       package = pkgs.firefox.override {
-         cfg = { enableTridactylNative = true; };
+         nativeMessagingHosts = with pkgs; [ tridactyl-native ];
       };
 
       profiles.default = {
@@ -38,6 +38,7 @@
             tridactyl
             darkreader
             to-deepl
+            libredirect
          ];
 
          search = {
