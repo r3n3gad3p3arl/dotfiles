@@ -1,79 +1,80 @@
 { lib, pkgs, config, inputs, ... }: with lib;
-let
-   cfg = config.system.desktop;
+let cfg = config.system.desktop;
 in {
-   imports = [
-      inputs.aagl.nixosModules.default
-   ] ++ meow.mapModules ./.;
+  imports = [
+    inputs.aagl.nixosModules.default
+  ] ++ meow.mapModules ./.;
 
-   options.system.desktop.enable = mkEnableOption "desktop configuration";
+  options.system.desktop.enable = mkEnableOption "desktop configuration";
 
-   config = mkIf cfg.enable {
-      nix.settings = inputs.aagl.nixConfig;
-      security.rtkit.enable = true;
+  config = mkIf cfg.enable {
+    nix.settings = inputs.aagl.nixConfig;
+    security.rtkit.enable = true;
 
-      services = {
-         pipewire = {
-            enable = true;
+    services = {
+      pipewire = {
+        enable = true;
 
-            alsa = {
-               enable = true;
-               support32Bit = true;
-            };
+        alsa = {
+          enable = true;
+          support32Bit = true;
+        };
 
-            pulse.enable = true;
-            jack.enable = true;
-         };
-
-         greetd = {
-            enable = true;
-
-            settings = rec {
-               initial_session = {
-                  command = "${pkgs.dbus}/bin/dbus-run-session ${pkgs.hyprland}/bin/Hyprland";
-                  user = "meow";
-               };
-
-               default_session = initial_session;
-            };
-         };
+        pulse.enable = true;
+        jack.enable = true;
       };
 
-      programs = {
-         hyprland.enable = true;
-         steam.enable = true;
-         gamemode.enable = true;
-         anime-game-launcher.enable = true;
+      greetd = {
+        enable = true;
+
+        settings = rec {
+          initial_session = {
+            command = "${pkgs.dbus}/bin/dbus-run-session ${pkgs.hyprland}/bin/Hyprland";
+            user = "meow";
+          };
+
+          default_session = initial_session;
+        };
       };
+    };
 
-      hardware.opengl = {
-         enable = true;
-         driSupport32Bit = true;
+    programs = {
+      hyprland.enable = true;
+      steam.enable = true;
+      gamemode.enable = true;
+      anime-game-launcher.enable = true;
+    };
 
-         extraPackages = with pkgs; [
-            intel-media-driver
-            intel-vaapi-driver
-            vaapiVdpau
-            libvdpau-va-gl
-         ];
+    hardware.opengl = {
+      enable = true;
+      driSupport32Bit = true;
+
+      extraPackages = with pkgs; [
+        intel-media-driver
+        intel-vaapi-driver
+        vaapiVdpau
+        libvdpau-va-gl
+      ];
+    };
+
+    fonts = {
+      packages = with pkgs; [
+        noto-fonts
+        noto-fonts-cjk
+        noto-fonts-emoji
+        jetbrains-mono
+        lexend
+        iosevka-bin
+        (iosevka-bin.override { variant = "aile"; })
+        (nerdfonts.override { fonts = [ "JetBrainsMono" "NerdFontsSymbolsOnly" ]; })
+      ];
+
+      fontconfig.defaultFonts = {
+        serif = [ "Noto Serif" ];
+        sansSerif = [ "Noto Sans" ];
+        monospace = [ "Noto Sans Mono" ];
+        emoji = [ "Noto Color Emoji" ];
       };
-
-      fonts = {
-         packages = with pkgs; [
-            noto-fonts
-            noto-fonts-cjk
-            noto-fonts-emoji
-            jetbrains-mono
-            lexend
-            (nerdfonts.override { fonts = [ "JetBrainsMono" "NerdFontsSymbolsOnly" ]; })
-         ];
-
-         fontconfig.defaultFonts = {
-            serif = [ "Noto Serif" ];
-            sansSerif = [ "Noto Sans" ];
-            monospace = [ "Noto Sans Mono" ];
-            emoji = [ "Noto Color Emoji" ];
-         };
-      };
-   };
+    };
+  };
 }

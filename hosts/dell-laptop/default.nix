@@ -51,5 +51,6 @@
       bc
       ripgrep
       fd
+      ffmpeg
    ];
 }

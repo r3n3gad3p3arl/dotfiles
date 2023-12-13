@@ -23,14 +23,12 @@ in {
             libsForQt5.kdenlive
             calibre
             prismlauncher
-            #katawa-shoujo
             blender
             citra
             melonDS
             mgba
             godot_4
             qbittorrent
-            obsidian
 
             # useful tools
             keepassxc

@@ -13,8 +13,8 @@ o.expandtab = true
 o.smartindent = true
 
 -- tab size
-o.shiftwidth = 3
-o.tabstop = 3
+o.shiftwidth = 2
+o.tabstop = 2
 
 -- ignore case in search unless it contains uppercase letters
 o.ignorecase = true

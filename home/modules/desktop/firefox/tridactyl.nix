@@ -15,7 +15,7 @@
          " remove all default searchurls
          jsb Object.keys(tri.config.get("searchurls")).reduce((prev, u) => prev.then(_ => tri.config.set("searchurls", u, null)), Promise.resolve())
 
-         set searchurls.searx https://searx.tiekoetter.com/search?q=%s
+         set searchurls.searx https://priv.au/search?q=%s
          set searchurls.nixpkgs https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=%s
          set searchurls.nixopts https://search.nixos.org/options?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=%s
          set searchurls.nixwiki https://nixos.wiki/index.php?search=%s

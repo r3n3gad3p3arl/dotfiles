@@ -42,12 +42,12 @@
          ];
 
          search = {
-            default = "SearXNG (tiekoetter)";
+            default = "SearXNG (priv.au)";
             force = true;
 
             engines = {
-               "SearXNG (tiekoetter)" = {
-                  urls = [{ template = "https://searx.tiekoetter.com/search?q={searchTerms}"; }];
+               "SearXNG (priv.au)" = {
+                  urls = [{ template = "https://priv.au/search?q={searchTerms}"; }];
                   definedAliases = [ "@searx" "@sx" ];
                };
 
