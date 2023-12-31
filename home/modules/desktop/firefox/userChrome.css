@@ -3,30 +3,30 @@
 #reload-button, #stop-reload-button, toolbarspring,
 #page-action-buttons, #tabs-newtab-button, .tab-close-button,
 #tracking-protection-icon-container, #identity-box, #firefox-view-button {
-   display: none;
+  display: none;
 }
 
 #navigator-toolbox {
-   flex-direction: row;
+  flex-direction: row;
 }
 
 #titlebar {
-   width: 0;
-   flex-grow: 1;
+  width: 0;
+  flex-grow: 1;
 }
 
 .tab-background {
-   transition: background-color 0.2s;
+  transition: background-color 0.2s;
 }
 
 #nav-bar {
-   background: none !important;
+  background: none !important;
 }
 
 .urlbar-input-box {
-   margin-left: 4px;
+  margin-left: 4px;
 }
 
 #tabbrowser-tabs {
-   border-inline-start: none;
+  border-inline-start: none;
 }

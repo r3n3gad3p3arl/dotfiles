@@ -29,7 +29,7 @@ in {
 
         settings = rec {
           initial_session = {
-            command = "${pkgs.dbus}/bin/dbus-run-session ${pkgs.hyprland}/bin/Hyprland";
+            command = "${pkgs.hyprland}/bin/Hyprland";
             user = "meow";
           };
 

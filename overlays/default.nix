@@ -1,5 +1,5 @@
 { meowPkgs, ... }: {
-   meowPkgs = final: prev: {
-      meowPkgs = meowPkgs;
-   };
+  meowPkgs = final: prev: {
+    meowPkgs = meowPkgs;
+  };
 }

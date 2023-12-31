@@ -1,56 +1,51 @@
-{ lib, config, inputs, outputs, pkgs, ... }: {
-   imports = [
-      ./hardware.nix
-      outputs.nixosModules.distrobox
-      outputs.nixosModules.gnome-network-displays
-   ];
+{ outputs, pkgs, ... }: {
+  imports = [
+    ./hardware.nix
+    outputs.nixosModules.distrobox
+  ];
 
-   networking.hostName = "dell-laptop";
+  networking.hostName = "dell-laptop";
 
-   virtualisation.distrobox.enable = true;
+  virtualisation.distrobox.enable = true;
+  programs.virt-manager.enable = true;
 
-   programs = {
-      gnome-network-displays.enable = true;
-      virt-manager.enable = true;
-   };
+  services = {
+    xserver.videoDrivers = [ "nvidia" ];
+    printing.enable = true;
+  };
 
-   services = {
-      xserver.videoDrivers = [ "nvidia" ];
-      printing.enable = true;
-   };
+  hardware = {
+    nvidia.prime = {
+      nvidiaBusId = "PCI:60:0:0";
+      intelBusId = "PCI:0:2:0";
+    };
 
-   hardware = {
-      nvidia.prime = {
-         nvidiaBusId = "PCI:60:0:0";
-         intelBusId = "PCI:0:2:0";
-      };
+    opentabletdriver.enable = true;
+  };
 
-      opentabletdriver.enable = true;
-   };
+  boot = {
+    initrd.luks.devices."crypt_root" = {
+      device = "/dev/disk/by-uuid/65a72a1d-5da0-4026-a533-6f5d75cf2de1";
+      preLVM = true;
+    };
 
-   boot = {
-      initrd.luks.devices."crypt_root" = {
-         device = "/dev/disk/by-uuid/65a72a1d-5da0-4026-a533-6f5d75cf2de1";
-         preLVM = true;
-      };
+    lanzaboote.enable = true;
+  };
 
-      lanzaboote.enable = true;
-      swraid.enable = false;
-   };
+  security.tpm2.enable = true;
 
-   security.tpm2.enable = true;
+  system = {
+    laptop.enable = true;
+    stateVersion = "23.05";
+  };
 
-   system = {
-      laptop.enable = true;
-      stateVersion = "23.05";
-   };
-
-   environment.systemPackages = with pkgs; [
-      unzrip
-      unrar
-      bc
-      ripgrep
-      fd
-      ffmpeg
-   ];
+  environment.systemPackages = with pkgs; [
+    unzrip
+    unrar
+    _7zz
+    bc
+    ripgrep
+    fd
+    ffmpeg
+  ];
 }

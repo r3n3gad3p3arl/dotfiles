@@ -1,16 +1,16 @@
-{ lib, pkgs, config, osConfig, ... }: with lib;
+{ lib, pkgs, config, ... }: with lib;
 let cfg = config.programs.osu-lazer;
 in {
-   options.programs.osu-lazer.enable = mkEnableOption "osu!";
+  options.programs.osu-lazer.enable = mkEnableOption "osu!";
 
-   config = mkIf cfg.enable {
-      home.packages = with pkgs; [ osu-lazer-bin ];
+  config = mkIf cfg.enable {
+    home.packages = with pkgs; [ osu-lazer-bin ];
 
-      xdg.desktopEntries."osu!" = {
-         name = "osu!";
-         icon = "osu!";
-         exec = "gamemoderun ${pkgs.osu-lazer-bin}/bin/osu!";
-         categories = [ "Game" ];
-      };
-   };
+    xdg.desktopEntries."osu!" = {
+      name = "osu!";
+      icon = "osu!";
+      exec = "gamemoderun ${pkgs.osu-lazer-bin}/bin/osu!";
+      categories = [ "Game" ];
+    };
+  };
 }

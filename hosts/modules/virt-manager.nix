@@ -1,11 +1,13 @@
 { lib, pkgs, config, ... }: with lib; 
-let
-   virt-manager = config.programs.virt-manager.enable;
+let virt-manager = config.programs.virt-manager.enable;
 in {
-   environment.systemPackages = mkIf virt-manager (with pkgs; [
-      spice-gtk
-      virtiofsd
-   ]);
+  environment.systemPackages = mkIf virt-manager (with pkgs; [
+    spice-gtk
+    virtiofsd
+  ]);
 
-   virtualisation.libvirtd.enable = mkIf virt-manager true;
+  virtualisation.libvirtd = {
+    enable = mkIf virt-manager true;
+    qemu.swtpm.enable = true;
+  };
 }

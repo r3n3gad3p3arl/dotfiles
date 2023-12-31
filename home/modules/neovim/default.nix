@@ -1,60 +1,60 @@
-{ pkgs, config, lib, ... }: {
-   programs.neovim = {
-      defaultEditor = true;
+{ lib, config, pkgs, ... }: {
+  programs.neovim = {
+    defaultEditor = true;
 
-      plugins = with pkgs.vimPlugins; [
-         lualine-nvim
-         nvim-web-devicons
-         indent-blankline-nvim
-         nvim-base16
+    plugins = with pkgs.vimPlugins; [
+      lualine-nvim
+      nvim-web-devicons
+      indent-blankline-nvim
+      nvim-base16
 
-         nvim-lspconfig
-         nvim-cmp
-         cmp-nvim-lsp
-         cmp-buffer
-         cmp-path
+      nvim-lspconfig
+      nvim-cmp
+      cmp-nvim-lsp
+      cmp-buffer
+      cmp-path
 
-         luasnip
-         cmp_luasnip
-         friendly-snippets
+      luasnip
+      cmp_luasnip
+      friendly-snippets
 
-         plenary-nvim
-         telescope-nvim
-         telescope-fzf-native-nvim
+      plenary-nvim
+      telescope-nvim
+      telescope-fzf-native-nvim
 
-         (nvim-treesitter.withPlugins (p: with p; [
-            c
-            lua
-            vim
-            vimdoc
-            query
-            nix
-            html
-            css
-            javascript
-            python
-         ]))
-      ];
+      (nvim-treesitter.withPlugins (p: with p; [
+        c
+        lua
+        vim
+        vimdoc
+        query
+        nix
+        html
+        css
+        javascript
+        python
+      ]))
+    ];
 
-      extraLuaConfig = ''
-         require("meow.options")
-         require("meow.keybinds")
-         require("meow.lualine")
-         require("meow.treesitter")
-         require("meow.indent-blankline")
-         require("meow.lsp")
-         require("meow.cmp")
-         require("meow.telescope")
-         require("meow.base16").set_colorscheme("${config.colorScheme.slug}")
-      '';
-   };
+    extraLuaConfig = ''
+      require("meow.options")
+      require("meow.keybinds")
+      require("meow.lualine")
+      require("meow.treesitter")
+      require("meow.indent-blankline")
+      require("meow.lsp")
+      require("meow.cmp")
+      require("meow.telescope")
+      require("meow.base16").set_colorscheme("${config.colorScheme.slug}")
+    '';
+  };
 
-   xdg.configFile."nvim/lua/meow" = {
-      enable = config.programs.neovim.enable;
-      source = ./lua;
-   };
+  xdg.configFile."nvim/lua/meow" = {
+    enable = config.programs.neovim.enable;
+    source = ./lua;
+  };
 
-   home.sessionVariables = lib.mkIf config.programs.neovim.enable {
-      MANPAGER = "nvim +Man!";
-   };
+  home.sessionVariables = lib.mkIf config.programs.neovim.enable {
+    MANPAGER = "nvim +Man!";
+  };
 }
