@@ -1,14 +1,11 @@
 { lib, pkgs, config, inputs, ... }: with lib;
 let cfg = config.system.desktop;
 in {
-  imports = [
-    inputs.aagl.nixosModules.default
-  ] ++ meow.mapModules ./.;
+  imports = meow.mapModules ./.;
 
   options.system.desktop.enable = mkEnableOption "desktop configuration";
 
   config = mkIf cfg.enable {
-    nix.settings = inputs.aagl.nixConfig;
     security.rtkit.enable = true;
 
     services = {
@@ -29,20 +26,21 @@ in {
 
         settings = rec {
           initial_session = {
-            command = "${pkgs.hyprland}/bin/Hyprland";
+            command = "${pkgs.dbus}/bin/dbus-run-session ${pkgs.hyprland}/bin/Hyprland";
             user = "meow";
           };
 
           default_session = initial_session;
         };
       };
+
+      gvfs.enable = true;
     };
 
     programs = {
       hyprland.enable = true;
       steam.enable = true;
       gamemode.enable = true;
-      anime-game-launcher.enable = true;
     };
 
     hardware.opengl = {
@@ -63,10 +61,10 @@ in {
         noto-fonts-cjk
         noto-fonts-emoji
         jetbrains-mono
+        source-code-pro
         lexend
-        iosevka-bin
-        (iosevka-bin.override { variant = "aile"; })
-        (nerdfonts.override { fonts = [ "JetBrainsMono" "NerdFontsSymbolsOnly" ]; })
+        rubik
+        (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
       ];
 
       fontconfig.defaultFonts = {

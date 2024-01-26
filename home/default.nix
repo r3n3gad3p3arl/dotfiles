@@ -1,17 +1,16 @@
-{ lib, config, osConfig, ... }: {
+{ lib, osConfig, ... }: {
   imports = lib.meow.mapModules ./modules;
 
-  home = {
+  home = rec {
     username = "meow";
-    homeDirectory = "/home/${config.home.username}";
+    homeDirectory = "/home/${username}";
     stateVersion = "23.05";
     desktop.enable = osConfig.system.desktop.enable;
   };
 
   programs = {
     home-manager.enable = true;
-    neovim.enable = true;
-    emacs.enable = true;
+    nixvim.enable = true;
     btop.enable = true;
     eza.enable = true;
     git.enable = true;

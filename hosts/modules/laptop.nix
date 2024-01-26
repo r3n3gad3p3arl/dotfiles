@@ -6,6 +6,10 @@ in {
   config = mkIf cfg.enable {
     system.desktop.enable = mkDefault true;
     networking.networkmanager.enable = mkDefault true;
-    services.logind.lidSwitch = mkDefault "hibernate";
+
+    services = {
+      logind.lidSwitch = mkDefault "hibernate";
+      upower.enable = mkDefault true;
+    };
   };
 }

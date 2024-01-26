@@ -5,6 +5,7 @@
     volume = writeShellScript "volume" (builtins.readFile ../bin/volume.sh);
     wallpaper = writeShellScript "wallpaper" (builtins.readFile ../bin/wallpaper.sh);
     screenshot = writeShellScript "screenshot" (builtins.readFile ../bin/screenshot.sh);
+    music = writeShellScript "music" (builtins.readFile ../bin/music.sh);
   };
 
   mpvScripts.notify-send = callPackage ./mpv-notify-send.nix {};

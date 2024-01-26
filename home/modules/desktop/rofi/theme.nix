@@ -10,28 +10,28 @@ in {
     acc = mkLiteral "#${colors.base0D}";
 
     background-color = mkLiteral "transparent";
-    border-radius = 0;
   };
 
   "window" = {
     background-color = mkLiteral "@bg1";
     border-color = mkLiteral "@fg2";
-    border = 1;
-    width = 400;
-    padding = 8;
+    border = mkLiteral "1px";
+    padding = mkLiteral "0.6em";
+    width = mkLiteral "25%";
   };
 
   "inputbar" = {
+    background-color = mkLiteral "@bg2";
     text-color = mkLiteral "@fg1";
     children = [ "prompt" "entry" ];
-    margin = mkLiteral "0 0 8";
+    margin = mkLiteral "0 0 0.6em";
   };
 
   "prompt" = {
     text-color = mkLiteral "@bg1";
     background-color = mkLiteral "@acc";
-    margin = mkLiteral "0 4 0 0";
-    padding = mkLiteral "4 8";
+    margin = mkLiteral "0 0.6em 0 0";
+    padding = mkLiteral "0.6em";
   };
 
   "entry" = {
@@ -39,10 +39,14 @@ in {
     vertical-align = mkLiteral "0.5";
   };
 
+  "message, error-message".text-color = mkLiteral "@fg1";
+  "textbox".text-color = mkLiteral "inherit";
+
   "listview".lines = 8;
 
   "element" = {
-    padding = mkLiteral "8";
+    padding = mkLiteral "0.6em";
+    border-color = mkLiteral "@fg1";
   };
 
   "element normal.normal, element alternate.normal".text-color = mkLiteral "@fg2";
@@ -59,7 +63,7 @@ in {
   };
 
   "element-icon" = {
-    size = 24;
-    margin = mkLiteral "0 4 0 0";
+    size = mkLiteral "2em";
+    margin = mkLiteral "0 0.3em 0 0";
   };
 }

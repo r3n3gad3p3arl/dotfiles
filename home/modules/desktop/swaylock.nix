@@ -4,7 +4,7 @@
   in {
     color = colors.base00;
 
-    font = "Lexend";
+    font = "Rubik";
 
     indicator-radius = 40;
     indicator-thickness = 4;

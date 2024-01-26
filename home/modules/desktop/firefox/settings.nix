@@ -11,8 +11,6 @@
   "geo.provider.network.url" = "https://location.services.mozilla.com/v1/geolocate?key=%MOZILLA_API_KEY%";
   "geo.provider.use_gpsd" = false;
   "geo.provider.use_geoclue" = false;
-  "intl.accept_languages" = "en-US, en";
-  "javascript.use_us_english_locale" = true;
 
   "extensions.getAddons.showPane" = false;
   "extensions.htmlaboutaddons.recommendations.enabled" = false;
@@ -57,17 +55,20 @@
   "network.proxy.socks_remote_dns" = true;
   "network.file.disable_unc_paths" = true;
   "network.gio.supported-protocols" = "";
-  "network.dns.skipTRR-when-parental-control-enabled" = false;
 
   "browser.urlbar.speculativeConnect.enabled" = false;
   "browser.urlbar.suggest.quicksuggest.nonsponsored" = false;
   "browser.urlbar.suggest.quicksuggest.sponsored" = false;
+  "browser.search.suggest.enabled" = false;
+  "browser.urlbar.suggest.searches" = false;
   "browser.urlbar.trending.featureGate" = false;
   "browser.urlbar.addons.featureGate" = false;
   "browser.urlbar.mdn.featureGate" = false;
   "browser.urlbar.pocket.featureGate" = false;
   "browser.urlbar.weather.featureGate" = false;
   "browser.formfill.enable" = false;
+  "browser.search.separatePrivateDefault" = true;
+  "browser.search.separatePrivateDefault.ui.enabled" = true;
 
   "signon.autofillForms" = false;
   "signon.formlessCapture.enabled" = false;
@@ -77,7 +78,6 @@
   "browser.privatebrowsing.forceMediaMemoryCache" = true;
   "media.memory_cache_max_size" = 65536;
   "browser.sessionstore.privacy_level" = 2;
-  "browser.shell.shortcutFavicons" = false;
 
   "security.ssl.require_safe_negotiation" = true;
   "security.tls.enable_0rtt_data" = false;
@@ -116,7 +116,6 @@
   "browser.download.manager.addToRecentDocs" = false;
   "browser.download.always_ask_before_handling_new_types" = true;
   "extensions.enabledScopes" = 5;
-  "extensions.autoDisableScopes" = 15;
   "extensions.postDownloadThirdPartyPrompt" = false;
 
   "browser.contentblocking.category" = "strict";

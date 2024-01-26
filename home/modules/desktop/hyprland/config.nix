@@ -4,16 +4,23 @@
     colors = config.colorScheme.colors;
     bin = pkgs.meowPkgs.bin;
     wallpapers = ../../../wallpapers;
+    pictures = config.xdg.userDirs.pictures;
+    workspaces = builtins.concatLists (builtins.genList (x:
+      let ws = toString (x + 1);
+      in [
+        "$mod,${ws},workspace,${ws}"
+        "$mod SHIFT,${ws},movetoworkspace,${ws}"
+      ]
+    ) 9);
   in {
     monitor = [
       "eDP-1,preferred,auto,1" # main monitor
-      "DP-1,preferred,auto,1" # drawing tablet
+      "DP-1,preferred,auto,2" # secondary monitor
       ",preferred,auto,1" # fallback
     ];
 
     exec-once = [
-      "swww init"
-      "foot --server"
+      "sleep 1 && swww init" # workaround for cache loading bug
       "hyprctl setcursor ${cursor.name} ${toString cursor.size}"
     ];
 
@@ -28,7 +35,7 @@
 
     decoration = {
       rounding = 0;
-      drop_shadow = "no";
+      drop_shadow = false;
     };
 
     animations = {
@@ -38,12 +45,14 @@
     "$mod" = "SUPER";
 
     bind = [
-      "$mod,Return,exec,footclient"
+      "$mod,Return,exec,foot"
       "$mod,R,exec,rofi -show drun"
       "$mod,B,exec,firefox"
       "$mod,E,exec,emacs"
+      "$mod,Space,exec,keepassxc"
       "$mod,Escape,exec,swaylock -fi $(${bin.wallpaper} get_random_wallpaper ${wallpapers})"
-      "$mod,W,exec,swww img $(${bin.wallpaper} get_random_wallpaper ${wallpapers}) --transition-type wipe --transition-duration 0.8"
+      "$mod,W,exec,swww img $(${bin.wallpaper} pick_wallpaper ${wallpapers}) --transition-type wipe --transition-duration 0.8"
+      "$mod SHIFT,W,exec,swww img $(${bin.wallpaper} get_random_wallpaper ${wallpapers}) --transition-type wipe --transition-duration 0.8"
 
       "$mod SHIFT,C,killactive,"
       "$mod SHIFT,Q,exit,"
@@ -62,11 +71,12 @@
 
       "$mod,T,exec,notify-send \"$(date +'%I:%M %p')\" \"$(date +'%a %b %d')\""
       "$mod,P,exec,${bin.battery} send_current_battery_notif"
-      "$mod,M,exec,mpv 'https://www.youtube.com/playlist?list=PLksUtCwP9dNBICsrvltVWzyGeoaOk529j' --shuffle --no-video"
+      "$mod,M,exec,${bin.music} play_song"
+      "$mod SHIFT,M,exec,${bin.music} play_shuffle"
 
-      ",Print,exec,${bin.screenshot} print_current_screen"
-      "$mod,Print,exec,${bin.screenshot} print_selection"
-    ];
+      ",Print,exec,${bin.screenshot} print_current_screen ${pictures}"
+      "$mod,Print,exec,${bin.screenshot} print_selection ${pictures}"
+    ] ++ workspaces;
 
     bindl = [
       ",XF86AudioMute,exec,${bin.volume} toggle_volume_mute"
@@ -89,25 +99,4 @@
       "$mod,mouse:273,resizewindow"
     ];
   };
-
-  wayland.windowManager.hyprland.extraConfig = ''
-    bind = $mod CTRL,R,submap,resize
-    submap = resize
-    binde = ,H,resizeactive,-10 0
-    binde = ,L,resizeactive,10 0
-    binde = ,K,resizeactive,0 -10
-    binde = ,J,resizeactive,0 10
-    bind = ,escape,submap,reset
-    submap = reset
-
-    bind = $mod,1,workspace, 1
-    bind = $mod,2,workspace, 2
-    bind = $mod,3,workspace, 3
-    bind = $mod,4,workspace, 4
-
-    bind = $mod SHIFT,1,movetoworkspace,1
-    bind = $mod SHIFT,2,movetoworkspace,2
-    bind = $mod SHIFT,3,movetoworkspace,3
-    bind = $mod SHIFT,4,movetoworkspace,4
-  '';
 }

@@ -54,7 +54,7 @@
     fwupd.enable = true;
   };
 
-# slows down boot time + unecessary for local booting
+  # slows down boot time + unecessary for local booting
   systemd.services."NetworkManager-wait-online".enable = lib.mkDefault false;
 
   boot.loader = {

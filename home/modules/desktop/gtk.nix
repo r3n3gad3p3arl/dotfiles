@@ -1,7 +1,7 @@
 { inputs, pkgs, config, ... }: {
   gtk = {
     font = {
-      name = "Lexend";
+      name = "Rubik";
       size = 11;
     };
 

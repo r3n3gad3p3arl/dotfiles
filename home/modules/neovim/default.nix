@@ -1,60 +1,85 @@
-{ lib, config, pkgs, ... }: {
-  programs.neovim = {
-    defaultEditor = true;
+{ lib, inputs, config, ... }: {
+  imports = [
+    inputs.nixvim.homeManagerModules.nixvim
+  ] ++ lib.meow.mapModules ./.;
 
-    plugins = with pkgs.vimPlugins; [
-      lualine-nvim
-      nvim-web-devicons
-      indent-blankline-nvim
-      nvim-base16
+  programs.nixvim = {
+    colorschemes.base16 = {
+      enable = true;
+      colorscheme = config.colorScheme.slug;
+    };
 
-      nvim-lspconfig
-      nvim-cmp
-      cmp-nvim-lsp
-      cmp-buffer
-      cmp-path
+    clipboard = {
+      register = "unnamedplus";
+      providers.wl-copy.enable = true;
+    };
 
-      luasnip
-      cmp_luasnip
-      friendly-snippets
+    options = {
+      hlsearch = false;
+      number = true;
+      relativenumber = true;
+      mouse = "a";
+      undofile = true;
+      ignorecase = true;
+      smartcase = true;
+      cursorline = true;
+      smartindent = true;
+      expandtab = true;
+      shiftwidth = 2;
+      tabstop = 2;
+      wrap = false;
+    };
 
-      plenary-nvim
-      telescope-nvim
-      telescope-fzf-native-nvim
+    globals = {
+      mapleader = " ";
+      maplocalleader = " ";
+    };
 
-      (nvim-treesitter.withPlugins (p: with p; [
-        c
-        lua
-        vim
-        vimdoc
-        query
-        nix
-        html
-        css
-        javascript
-        python
-      ]))
+    keymaps = [
+      # Move lines
+      { mode = "n"; key = "<A-j>"; action = "<cmd>m .+1<cr>=="; }
+      { mode = "n"; key = "<A-k>"; action = "<cmd>m .-2<cr>=="; }
+      { mode = "i"; key = "<A-j>"; action = "<esc><cmd>m .+1<cr>==gi"; }
+      { mode = "i"; key = "<A-k>"; action = "<esc><cmd>m .-2<cr>==gi"; }
+      { mode = "v"; key = "<A-j>"; action = ":m '>+1<cr>gv=gv"; }
+      { mode = "v"; key = "<A-k>"; action = ":m '>-2<cr>gv=gv"; }
+
+      # Navigate buffers
+      { mode = "n"; key = "<S-h>"; action = "<cmd>bprevious<cr>"; }
+      { mode = "n"; key = "<S-l>"; action = "<cmd>bnext<cr>"; }
+      { mode = "n"; key = "[b"; action = "<cmd>bprevious<cr>"; }
+      { mode = "n"; key = "]b"; action = "<cmd>bnext<cr>"; }
+
+      # Navigate windows
+      { mode = "n"; key = "<C-h>"; action = "<C-w>h"; options.remap = true; }
+      { mode = "n"; key = "<C-j>"; action = "<C-w>j"; options.remap = true; }
+      { mode = "n"; key = "<C-k>"; action = "<C-w>k"; options.remap = true; }
+      { mode = "n"; key = "<C-l>"; action = "<C-w>l"; options.remap = true; }
+      { mode = "n"; key = "<leader>ww"; action = "<C-w>p"; options.remap = true; }
+
+      # Create/delete windows
+      { mode = "n"; key = "<leader>wd"; action = "<C-w>c"; options.remap = true; }
+      { mode = "n"; key = "<leader>wb"; action = "<C-w>s"; options.remap = true; }
+      { mode = "n"; key = "<leader>wr"; action = "<C-w>v"; options.remap = true; }
     ];
 
-    extraLuaConfig = ''
-      require("meow.options")
-      require("meow.keybinds")
-      require("meow.lualine")
-      require("meow.treesitter")
-      require("meow.indent-blankline")
-      require("meow.lsp")
-      require("meow.cmp")
-      require("meow.telescope")
-      require("meow.base16").set_colorscheme("${config.colorScheme.slug}")
-    '';
+    plugins = {
+      lualine.enable = true;
+      telescope.enable = true;
+      indent-blankline.enable = true;
+      treesitter.enable = true;
+      ts-context-commentstring.enable = true;
+      ts-autotag.enable = true;
+      lsp.enable = true;
+      nvim-cmp.enable = true;
+      comment-nvim.enable = true;
+      illuminate.enable = true;
+      nvim-autopairs.enable = true;
+    };
   };
 
-  xdg.configFile."nvim/lua/meow" = {
-    enable = config.programs.neovim.enable;
-    source = ./lua;
-  };
-
-  home.sessionVariables = lib.mkIf config.programs.neovim.enable {
+  home.sessionVariables = lib.mkIf config.programs.nixvim.enable {
+    EDITOR = "nvim";
     MANPAGER = "nvim +Man!";
   };
 }

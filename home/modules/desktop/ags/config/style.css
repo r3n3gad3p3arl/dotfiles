@@ -1,0 +1,51 @@
+* {
+  all: unset;
+}
+
+window.bar {
+  background-color: @theme_bg_color;
+  color: @theme_fg_color;
+}
+
+.bar > box {
+  padding: 0.5rem;
+}
+
+button {
+  min-width: 2rem;
+  min-height: 1.8rem;
+  background-color: transparent;
+  border-radius: 5px;
+}
+
+button:active {
+  background-color: @theme_selected_bg_color;
+  color: @theme_selected_fg_color;
+}
+
+.workspaces {
+  border-radius: 5px;
+  background-color: shade(@theme_bg_color, 1.8);
+}
+
+.workspaces button.focused {
+  background-color: @theme_selected_bg_color;
+  color: @theme_selected_fg_color;
+}
+
+trough {
+  min-width: 100px;
+  min-height: 1.8rem;
+  border-radius: 5px;
+  background-color: shade(@theme_bg_color, 1.8);
+}
+
+progress {
+  min-height: inherit;
+  border-radius: inherit;
+  background-color: @theme_selected_bg_color;
+}
+
+.media {
+  background-color: shade(@theme_bg_color, 1.8);
+}

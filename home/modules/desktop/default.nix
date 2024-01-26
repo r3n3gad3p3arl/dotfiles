@@ -18,11 +18,8 @@ in {
         # media
         krita
         gimp
-        lmms
         libsForQt5.kdenlive
         calibre
-        prismlauncher
-        blender
         godot_4
         qbittorrent
         wiimms-iso-tools
@@ -45,9 +42,7 @@ in {
       foot.enable = true;
       yt-dlp.enable = true;
       mpv.enable = true;
-      osu-lazer.enable = true;
       libreoffice.enable = true;
-      openutau.enable = false;
     };
 
     wayland.windowManager.hyprland.enable = osConfig.programs.hyprland.enable;

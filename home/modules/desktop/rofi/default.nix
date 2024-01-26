@@ -2,8 +2,8 @@
   programs.rofi = {
     package = pkgs.rofi-wayland;
     cycle = true;
-    font = "Lexend 9";
-    terminal = "footclient";
+    font = "Rubik 9";
+    terminal = "foot";
     theme = import ./theme.nix { inherit config; };
 
     extraConfig = {

@@ -11,7 +11,7 @@
       offset = "11x11";
       frame_width = 1;
       gap_size = 8;
-      font = "Lexend 9";
+      font = "Rubik 9";
       markup = "full";
       line_height = 4;
       corner_radius = 0;

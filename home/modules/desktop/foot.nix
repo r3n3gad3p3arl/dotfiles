@@ -3,7 +3,7 @@
 
   programs.foot.settings = {
     main = {
-      font = "JetBrains Mono:size=9,Symbols Nerd Font:size=9";
+      font = "Source Code Pro:size=10,Symbols Nerd Font:size=10";
       pad = "8x8";
     };
 
