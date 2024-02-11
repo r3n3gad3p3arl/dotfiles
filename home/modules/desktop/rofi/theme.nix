@@ -1,6 +1,6 @@
 { config, ... }: let
   mkLiteral = config.lib.formats.rasi.mkLiteral;
-  colors = config.colorScheme.colors;
+  colors = config.colorScheme.palette;
 in {
   "*" = {
     bg1 = mkLiteral "#${colors.base00}";

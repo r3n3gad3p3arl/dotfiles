@@ -12,13 +12,13 @@
       music = config.xdg.userDirs.music;
       pics = config.xdg.userDirs.pictures;
       vids = config.xdg.userDirs.videos;
-      nixcfg = "${config.xdg.configHome}/nixos";
+      cfg = "${config.xdg.configHome}/nixos";
     };
 
     shellAliases = {
-      nixupd = "sudo nixos-rebuild switch --flake ${config.xdg.configHome}/nixos#";
-      nixclean = "sudo nix-collect-garbage -d";
-      nixflup = "nix flake update";
+      rb = "sudo nixos-rebuild switch --flake ${config.programs.zsh.dirHashes.cfg}#";
+      clean = "sudo nix-collect-garbage -d";
+      flup = "nix flake update";
 
       md = "mkdir -pv";
       cp = "cp -iv";
@@ -28,11 +28,13 @@
       rmr = "rm -Ivr";
       e = "$EDITOR";
 
-      gst = "git status";
+      gst = "git status -s";
       ga = "git add";
       gcm = "git commit -m";
-      gpsh = "git push";
+      gp = "git push";
       gcl = "git clone";
+      gl = "git log --oneline";
+      gr = "git remote -v";
     };
   };
 }

@@ -3,7 +3,7 @@
     enable = config.programs.firefox.enable;
 
     text = ''
-      set theme dark
+      colors --url https://github.com/tridactyl/base16-tridactyl/raw/master/base16-${config.colorScheme.slug}.css ${config.colorScheme.slug}
       set newtab about:blank
 
       set smoothscroll true
@@ -19,7 +19,6 @@
       set searchurls.nixpkgs https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=%s
       set searchurls.nixopts https://search.nixos.org/options?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=%s
       set searchurls.nixwiki https://nixos.wiki/index.php?search=%s
-      set searchurls.archwiki https://wiki.archlinux.org/index.php?search=%s
-      '';
+    '';
   };
 }

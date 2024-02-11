@@ -8,7 +8,6 @@
 
     extraConfig = {
       modi = "drun,run";
-      show-icons = true;
     };
   };
 }

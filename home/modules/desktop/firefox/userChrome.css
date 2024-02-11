@@ -3,7 +3,7 @@
 #reload-button, #stop-reload-button, toolbarspring,
 #page-action-buttons, #tabs-newtab-button, .tab-close-button,
 #tracking-protection-icon-container, #identity-box, #firefox-view-button {
-  display: none;
+  display: none !important;
 }
 
 #navigator-toolbox {

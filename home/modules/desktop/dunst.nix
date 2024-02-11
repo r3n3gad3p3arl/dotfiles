@@ -2,7 +2,7 @@
   home.packages = lib.mkIf config.services.dunst.enable [ pkgs.libnotify ];
 
   services.dunst.settings =
-  let colors = config.colorScheme.colors;
+  let colors = config.colorScheme.palette;
   in {
     global = {
       enable_posix_regex = true;

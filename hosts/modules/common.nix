@@ -25,7 +25,6 @@
     keyMap = "us";
   };
 
-  environment.shells = with pkgs; [ zsh ];
   programs.zsh.enable = true;
 
   users = {

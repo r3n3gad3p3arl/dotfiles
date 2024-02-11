@@ -3,10 +3,11 @@
     color_theme = config.colorScheme.slug;
     theme_background = false;
     vim_keys = true;
+    clock_format = "%I:%M %p";
   };
 
   xdg.configFile."btop/themes/${config.colorScheme.slug}.theme" =
-  let colors = config.colorScheme.colors;
+  let colors = config.colorScheme.palette;
   in {
     enable = config.programs.btop.enable;
 

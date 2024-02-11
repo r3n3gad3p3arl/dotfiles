@@ -12,7 +12,7 @@
 
       directory.read_only = " 󰌾";
       git_branch.symbol = "󰘬 ";
-      git_status.deleted = "X";
+      hostname.ssh_symbol = " ";
       lua.symbol = "󰢱 ";
       python.symbol = "󰌠 ";
     };

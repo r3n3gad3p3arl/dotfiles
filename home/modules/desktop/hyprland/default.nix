@@ -27,7 +27,6 @@ in {
     rofi.enable = true;
     swaylock.enable = true;
     swww.enable = true;
-    ags.enable = true;
   };
 
   services = mkIf hyprland.enable {

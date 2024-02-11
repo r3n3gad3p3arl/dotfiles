@@ -1,7 +1,7 @@
 { pkgs, config, inputs, ... }: {
   wayland.windowManager.hyprland.settings = let
     cursor = config.home.pointerCursor;
-    colors = config.colorScheme.colors;
+    colors = config.colorScheme.palette;
     bin = pkgs.meowPkgs.bin;
     wallpapers = ../../../wallpapers;
     pictures = config.xdg.userDirs.pictures;
@@ -48,8 +48,8 @@
       "$mod,Return,exec,foot"
       "$mod,R,exec,rofi -show drun"
       "$mod,B,exec,firefox"
-      "$mod,E,exec,emacs"
       "$mod,Space,exec,keepassxc"
+      ",XF86Calculator,exec,foot bc -l"
       "$mod,Escape,exec,swaylock -fi $(${bin.wallpaper} get_random_wallpaper ${wallpapers})"
       "$mod,W,exec,swww img $(${bin.wallpaper} pick_wallpaper ${wallpapers}) --transition-type wipe --transition-duration 0.8"
       "$mod SHIFT,W,exec,swww img $(${bin.wallpaper} get_random_wallpaper ${wallpapers}) --transition-type wipe --transition-duration 0.8"

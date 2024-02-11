@@ -1,6 +1,6 @@
 { lib, config, pkgs, ... }: {
   programs.swaylock.settings =
-  let colors = config.colorScheme.colors;
+  let colors = config.colorScheme.palette;
   in {
     color = colors.base00;
 

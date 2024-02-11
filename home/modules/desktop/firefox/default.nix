@@ -8,33 +8,14 @@
 
     profiles.default = {
       bookmarks = [
-      {
-        name = "Linux";
-
-        bookmarks = [
-          { name = "Home Manager Manual"; url = "https://nix-community.github.io/home-manager/options.xhtml"; }
-        ];
-      }
-
-      {
-        name = "Media";
-
-        bookmarks = [
-          { name = "FMHY"; url = "https://fmhy.pages.dev"; }
-        ];
-      }
-
-      {
-        name = "School";
-
-        bookmarks = [
-          { name = "myLoneStar Login"; url = "https://my.lonestar.edu"; }
-        ];
-      }
+        { name = "Home Manager Manual"; url = "https://nix-community.github.io/home-manager/options.xhtml"; }
+        { name = "FMHY"; url = "https://fmhy.pages.dev"; }
+        { name = "myLoneStar Login"; url = "https://my.lonestar.edu"; }
       ];
 
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         ublock-origin
+        bypass-paywalls-clean
         tridactyl
         darkreader
         to-deepl
@@ -64,11 +45,6 @@
           "NixOS Wiki" = {
             urls = [{ template = "https://nixos.wiki/index.php?search={searchTerms}"; }];
             definedAliases = [ "@nixwiki" "@nw" ];
-          };
-
-          "Arch Linux Wiki" = {
-            urls = [{ template = "https://wiki.archlinux.org/index.php?search={searchTerms}"; }];
-            definedAliases = [ "@archwiki" "@aw" ];
           };
         };
       };
