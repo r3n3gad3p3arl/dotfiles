@@ -63,6 +63,6 @@
       theme[upload_start]="#${colors.base0B}"
       theme[upload_mid]="#${colors.base0A}"
       theme[upload_end]="#${colors.base08}"
-      '';
+    '';
   };
 }

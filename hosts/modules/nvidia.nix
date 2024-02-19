@@ -9,4 +9,8 @@
 
     powerManagement.enable = true;
   };
+
+  environment.sessionVariables = lib.mkIf config.programs.gamemode.enable {
+    GAMEMODERUNEXEC = lib.mkIf config.hardware.nvidia.prime.offload.enableOffloadCmd "nvidia-offload";
+  };
 }

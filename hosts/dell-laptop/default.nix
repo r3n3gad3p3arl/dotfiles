@@ -12,11 +12,6 @@
   services = {
     xserver.videoDrivers = [ "nvidia" ];
     printing.enable = true;
-
-    samba = {
-      enable = true;
-      openFirewall = true;
-    };
   };
 
   hardware = {

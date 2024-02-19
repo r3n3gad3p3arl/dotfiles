@@ -1,7 +1,5 @@
 { pkgs, ... }: {
   services.swayidle = {
-    systemdTarget = "graphical-session.target";
-
     timeouts = [
       {
         timeout = 90;
