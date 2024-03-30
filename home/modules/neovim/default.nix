@@ -14,7 +14,7 @@
       providers.wl-copy.enable = true;
     };
 
-    options = {
+    opts = {
       hlsearch = false;
       number = true;
       relativenumber = true;
@@ -28,6 +28,7 @@
       shiftwidth = 2;
       tabstop = 2;
       wrap = false;
+      termguicolors = true;
     };
 
     globals = {
@@ -71,8 +72,8 @@
       ts-context-commentstring.enable = true;
       ts-autotag.enable = true;
       lsp.enable = true;
-      nvim-cmp.enable = true;
-      comment-nvim.enable = true;
+      cmp.enable = true;
+      comment.enable = true;
       illuminate.enable = true;
       nvim-autopairs.enable = true;
     };

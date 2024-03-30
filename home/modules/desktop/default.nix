@@ -16,9 +16,8 @@ in {
     home = {
       packages = with pkgs; [
         # media
-        krita
         gimp
-        libsForQt5.kdenlive
+        audacity
         calibre
         godot_4
         qbittorrent
@@ -39,6 +38,7 @@ in {
       yt-dlp.enable = true;
       mpv.enable = true;
       libreoffice.enable = true;
+      openutau.enable = true;
     };
 
     wayland.windowManager.hyprland.enable = osConfig.programs.hyprland.enable;

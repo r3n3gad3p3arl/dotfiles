@@ -14,7 +14,7 @@
       }
 
       { timeout = 150; command = "${pkgs.swaylock}/bin/swaylock -fi $(${pkgs.meowPkgs.bin.wallpaper} get_random_wallpaper ${../../wallpapers})"; }
-      { timeout = 270; command = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on && ${pkgs.brightnessctl}/bin/brightnessctl -r && ${pkgs.systemd}/bin/systemctl suspend"; }
+      { timeout = 270; command = "${pkgs.systemd}/bin/systemctl suspend"; }
     ];
   };
 }

@@ -1,12 +1,8 @@
 { outputs, pkgs, ... }: {
-  imports = [
-    ./hardware.nix
-    outputs.nixosModules.distrobox
-  ];
+  imports = [ ./hardware.nix ];
 
   networking.hostName = "dell-laptop";
 
-  virtualisation.distrobox.enable = true;
   programs.virt-manager.enable = true;
 
   services = {

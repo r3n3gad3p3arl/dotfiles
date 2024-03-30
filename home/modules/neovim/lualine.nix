@@ -1,6 +1,6 @@
 {
   programs.nixvim = {
-    options.showmode = false;
+    opts.showmode = false;
 
     plugins.lualine = {
       extensions = [ "man" ];

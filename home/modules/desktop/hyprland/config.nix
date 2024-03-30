@@ -71,7 +71,7 @@
 
       "$mod,T,exec,notify-send \"$(date +'%I:%M %p')\" \"$(date +'%a %b %d')\""
       "$mod,P,exec,${bin.battery} send_current_battery_notif"
-      "$mod,M,exec,${bin.music} play_song"
+      "$mod,M,exec,${bin.music} open_youtube"
       "$mod SHIFT,M,exec,${bin.music} play_shuffle"
 
       ",Print,exec,${bin.screenshot} print_current_screen ${pictures}"

@@ -31,7 +31,6 @@ in {
 
   services = mkIf hyprland.enable {
     dunst.enable = true;
-    swayidle.enable = true;
     gammastep.enable = true;
     batsignal.enable = true;
   };
