@@ -49,7 +49,7 @@
 
       nvim-autopairs = {
         enable = config.programs.nixvim.plugins.cmp.enable;
-        checkTs = true;
+        settings.check_ts = true;
       };
     };
 

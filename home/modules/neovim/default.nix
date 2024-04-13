@@ -75,7 +75,6 @@
       cmp.enable = true;
       comment.enable = true;
       illuminate.enable = true;
-      nvim-autopairs.enable = true;
     };
   };
 

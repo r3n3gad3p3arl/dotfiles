@@ -27,6 +27,7 @@
       rm = "rm -Iv";
       rmr = "rm -Ivr";
       e = "$EDITOR";
+      ping = "ping -c 3";
 
       gst = "git status -s";
       ga = "git add";

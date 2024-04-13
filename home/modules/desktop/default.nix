@@ -23,6 +23,7 @@ in {
         qbittorrent
         wiimms-iso-tools
         dolphin-emu
+        libsForQt5.kdenlive
 
         # useful tools
         keepassxc
