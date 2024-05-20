@@ -1,7 +1,9 @@
-{ lib, config, pkgs, ... }: with lib;
+{ lib, config, pkgs, inputs, ... }: with lib;
 let hyprland = config.wayland.windowManager.hyprland;
 in {
-  imports = meow.mapModules ./.;
+  imports = [
+    inputs.ags.homeManagerModules.default
+  ] ++ meow.mapModules ./.;
 
   home = mkIf hyprland.enable {
     pointerCursor = {
@@ -27,6 +29,7 @@ in {
     rofi.enable = true;
     swaylock.enable = true;
     swww.enable = true;
+    ags.enable = true;
   };
 
   services = mkIf hyprland.enable {

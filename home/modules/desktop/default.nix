@@ -18,7 +18,6 @@ in {
         # media
         gimp
         audacity
-        calibre
         godot_4
         qbittorrent
         wiimms-iso-tools
@@ -40,6 +39,7 @@ in {
       mpv.enable = true;
       libreoffice.enable = true;
       openutau.enable = true;
+      zathura.enable = true;
     };
 
     wayland.windowManager.hyprland.enable = osConfig.programs.hyprland.enable;

@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   programs.mpv = {
-    scripts = with pkgs.mpvScripts; [ mpris notify-send ];
+    scripts = with pkgs.mpvScripts; [ mpris ];
 
     config = {
       hwdec = "auto-safe";

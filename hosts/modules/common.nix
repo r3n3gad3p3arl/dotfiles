@@ -7,7 +7,6 @@
     overlays = [
       inputs.nur.overlay
       outputs.overlays.meowPkgs
-      outputs.overlays.mpvScripts
     ];
   };
 

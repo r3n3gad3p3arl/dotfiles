@@ -20,8 +20,9 @@
     ];
 
     exec-once = [
-      "sleep 1 && swww init" # workaround for cache loading bug
+      "swww-daemon"
       "hyprctl setcursor ${cursor.name} ${toString cursor.size}"
+      "ags -b hypr"
     ];
 
     general = {
@@ -69,8 +70,8 @@
       "$mod SHIFT,K,movewindow,u"
       "$mod SHIFT,J,movewindow,d"
 
-      "$mod,T,exec,notify-send \"$(date +'%I:%M %p')\" \"$(date +'%a %b %d')\""
-      "$mod,P,exec,${bin.battery} send_current_battery_notif"
+      "$mod,I,exec,ags -b hypr -t infobox"
+      "$mod,O,exec,${bin.util} open_book"
       "$mod,M,exec,${bin.music} open_youtube"
       "$mod SHIFT,M,exec,${bin.music} play_shuffle"
 
