@@ -99,5 +99,12 @@
       "$mod,mouse:272,movewindow"
       "$mod,mouse:273,resizewindow"
     ];
+
+    windowrulev2 = [
+      "float,class:(firefox),title:(Picture-in-Picture)"
+      "pin,class:(firefox),title:(Picture-in-Picture)"
+      "size 30%,class:(firefox),title:(Picture-in-Picture)"
+      "move 100%-w-10,class:(firefox),title:(Picture-in-Picture)"
+    ];
   };
 }

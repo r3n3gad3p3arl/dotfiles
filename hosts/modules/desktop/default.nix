@@ -1,11 +1,14 @@
 { lib, pkgs, config, inputs, ... }: with lib;
 let cfg = config.system.desktop;
 in {
-  imports = meow.mapModules ./.;
+  imports = [
+    inputs.aagl.nixosModules.default
+  ] ++ meow.mapModules ./.;
 
   options.system.desktop.enable = mkEnableOption "desktop configuration";
 
   config = mkIf cfg.enable {
+    nix.settings = inputs.aagl.nixConfig;
     security.rtkit.enable = true;
 
     services = {
@@ -41,6 +44,7 @@ in {
       hyprland.enable = true;
       steam.enable = true;
       gamemode.enable = true;
+      anime-game-launcher.enable = true;
     };
 
     hardware.opengl = {

@@ -17,12 +17,9 @@ in {
       packages = with pkgs; [
         # media
         gimp
-        audacity
-        godot_4
         qbittorrent
         wiimms-iso-tools
-        dolphin-emu
-        libsForQt5.kdenlive
+        obsidian
 
         # useful tools
         keepassxc
