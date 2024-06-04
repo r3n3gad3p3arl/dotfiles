@@ -1,9 +1,9 @@
-{ lib, pkgs, config, ... }: with lib;
+{ lib, pkgs, config, ... }:
 let cfg = config.programs.openutau;
 in {
-  options.programs.openutau.enable = mkEnableOption "OpenUtau";
+  options.programs.openutau.enable = lib.mkEnableOption "OpenUtau";
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [ openutau ];
 
     xdg.desktopEntries."openutau" = {

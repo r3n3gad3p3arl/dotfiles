@@ -1,9 +1,9 @@
-{ lib, config, pkgs, ... }: with lib;
+{ lib, config, pkgs, ... }:
 let cfg = config.programs.libreoffice;
 in {
-  options.programs.libreoffice.enable = mkEnableOption "LibreOffice";
+  options.programs.libreoffice.enable = lib.mkEnableOption "LibreOffice";
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       libreoffice
       hunspell

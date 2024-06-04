@@ -1,4 +1,5 @@
-{ config, ... }: let
+{ config, ... }:
+let
   mkLiteral = config.lib.formats.rasi.mkLiteral;
   colors = config.colorScheme.palette;
 in {

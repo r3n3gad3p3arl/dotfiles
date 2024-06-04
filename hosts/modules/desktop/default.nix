@@ -1,13 +1,13 @@
-{ lib, pkgs, config, inputs, ... }: with lib;
+{ lib, pkgs, config, inputs, ... }:
 let cfg = config.system.desktop;
 in {
   imports = [
     inputs.aagl.nixosModules.default
-  ] ++ meow.mapModules ./.;
+  ] ++ lib.meow.mapModules ./.;
 
-  options.system.desktop.enable = mkEnableOption "desktop configuration";
+  options.system.desktop.enable = lib.mkEnableOption "desktop configuration";
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     nix.settings = inputs.aagl.nixConfig;
     security.rtkit.enable = true;
 

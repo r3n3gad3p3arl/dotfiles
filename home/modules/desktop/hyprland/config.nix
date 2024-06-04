@@ -1,4 +1,4 @@
-{ pkgs, config, inputs, ... }: {
+{ pkgs, config, ... }: {
   wayland.windowManager.hyprland.settings = let
     cursor = config.home.pointerCursor;
     colors = config.colorScheme.palette;
@@ -105,6 +105,7 @@
       "pin,class:(firefox),title:(Picture-in-Picture)"
       "size 30%,class:(firefox),title:(Picture-in-Picture)"
       "move 100%-w-10,class:(firefox),title:(Picture-in-Picture)"
+      "noborder,onworkspace:w[t1],floating:0"
     ];
   };
 }

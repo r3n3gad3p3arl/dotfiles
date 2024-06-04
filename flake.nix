@@ -40,7 +40,7 @@
     pkgs = nixpkgs.legacyPackages.${system};
   in {
     packages.${system} = import ./pkgs { inherit pkgs; };
-    overlays = import ./overlays { pkgs = pkgs; meowPkgs = outputs.packages.${system}; };
+    overlays = import ./overlays { meowPkgs = outputs.packages.${system}; };
 
     nixosModules = import ./modules/nixos;
     homeManagerModules = import ./modules/home-manager;

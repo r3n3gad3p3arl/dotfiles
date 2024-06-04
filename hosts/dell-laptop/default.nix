@@ -1,4 +1,4 @@
-{ outputs, pkgs, ... }: {
+{ pkgs, ... }: {
   imports = [ ./hardware.nix ];
 
   networking.hostName = "dell-laptop";

@@ -1,13 +1,14 @@
-{ lib, config, osConfig, inputs, pkgs, ... }: with lib;
-let cfg = config.home.desktop;
+{ lib, config, osConfig, inputs, pkgs, ... }:
+let
+  cfg = config.home.desktop;
 in {
   imports = [
     inputs.nix-colors.homeManagerModules.default
-  ] ++ meow.mapModules ./.;
+  ] ++ lib.meow.mapModules ./.;
 
-  options.home.desktop.enable = mkEnableOption "desktop configuration";
+  options.home.desktop.enable = lib.mkEnableOption "desktop configuration";
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     fonts.fontconfig.enable = true;
     gtk.enable = true;
 

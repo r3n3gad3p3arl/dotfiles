@@ -1,4 +1,7 @@
-{ pkgs }: with pkgs; {
+{ pkgs }:
+let
+  inherit (pkgs) writeShellScript;
+in {
   bin = {
     battery = writeShellScript "battery" (builtins.readFile ../bin/battery.sh);
     brightness = writeShellScript "brightness" (builtins.readFile ../bin/brightness.sh);

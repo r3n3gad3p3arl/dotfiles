@@ -1,7 +1,8 @@
-{ lib, config, ... }: with lib;
-let printing = config.services.printing;
+{ lib, config, ... }:
+let
+  printing = config.services.printing;
 in {
-  services.avahi = mkIf printing.enable {
+  services.avahi = lib.mkIf printing.enable {
     enable = true;
     nssmdns4 = true;
   };

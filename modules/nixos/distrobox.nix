@@ -1,5 +1,7 @@
-{ lib, config, pkgs, ... }: with lib;
-let cfg = config.virtualisation.distrobox;
+{ lib, config, pkgs, ... }:
+let
+  cfg = config.virtualisation.distrobox;
+  inherit (lib) mkEnableOption mkOption types mkIf;
 in {
   options.virtualisation.distrobox = {
     enable = mkEnableOption "Distrobox";

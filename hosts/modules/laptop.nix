@@ -1,5 +1,7 @@
-{ lib, config, ... }: with lib;
-let cfg = config.system.laptop;
+{ lib, config, ... }:
+let
+  cfg = config.system.laptop;
+  inherit (lib) mkEnableOption mkIf mkDefault;
 in {
   options.system.laptop.enable = mkEnableOption "laptop configuration";
 

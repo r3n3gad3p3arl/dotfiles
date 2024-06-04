@@ -4,6 +4,8 @@
   ] ++ lib.meow.mapModules ./.;
 
   programs.nixvim = {
+    defaultEditor = true;
+
     colorschemes.base16 = {
       enable = true;
       colorscheme = config.colorScheme.slug;
@@ -28,7 +30,6 @@
       shiftwidth = 2;
       tabstop = 2;
       wrap = false;
-      termguicolors = true;
     };
 
     globals = {
@@ -79,7 +80,6 @@
   };
 
   home.sessionVariables = lib.mkIf config.programs.nixvim.enable {
-    EDITOR = "nvim";
     MANPAGER = "nvim +Man!";
   };
 }

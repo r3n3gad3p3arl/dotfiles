@@ -1,9 +1,9 @@
-{ lib, config, pkgs, ... }: with lib;
+{ lib, config, pkgs, ... }:
 let cfg = config.programs.swww;
 in {
-  options.programs.swww.enable = mkEnableOption "SWWW";
+  options.programs.swww.enable = lib.mkEnableOption "SWWW";
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     home = {
       packages = with pkgs; [ swww ];
 

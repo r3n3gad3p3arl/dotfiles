@@ -1,5 +1,7 @@
-{ lib, config, pkgs, inputs, ... }: with lib;
-let hyprland = config.wayland.windowManager.hyprland;
+{ lib, config, pkgs, inputs, ... }:
+let
+  hyprland = config.wayland.windowManager.hyprland;
+  inherit (lib) meow mkIf;
 in {
   imports = [
     inputs.ags.homeManagerModules.default
