@@ -65,8 +65,6 @@ in {
         noto-fonts-cjk
         noto-fonts-emoji
         jetbrains-mono
-        source-code-pro
-        lexend
         rubik
         (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
       ];

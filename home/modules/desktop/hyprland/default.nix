@@ -29,14 +29,14 @@ in {
 
   programs = mkIf hyprland.enable {
     rofi.enable = true;
-    swaylock.enable = true;
-    swww.enable = true;
     ags.enable = true;
+    hyprlock.enable = true;
   };
 
   services = mkIf hyprland.enable {
     dunst.enable = true;
     gammastep.enable = true;
     batsignal.enable = true;
+    hyprpaper.enable = true;
   };
 }

@@ -1,10 +1,10 @@
 { pkgs, config, ... }: {
-  wayland.windowManager.hyprland.settings = let
+  wayland.windowManager.hyprland.settings =
+  let
     cursor = config.home.pointerCursor;
     colors = config.colorScheme.palette;
-    bin = pkgs.meowPkgs.bin;
-    wallpapers = ../../../wallpapers;
-    pictures = config.xdg.userDirs.pictures;
+    inherit (pkgs.meowPkgs) bin;
+    inherit (config.xdg.userDirs) pictures;
     workspaces = builtins.concatLists (builtins.genList (x:
       let ws = toString (x + 1);
       in [
@@ -20,7 +20,6 @@
     ];
 
     exec-once = [
-      "swww-daemon"
       "hyprctl setcursor ${cursor.name} ${toString cursor.size}"
       "ags -b hypr"
     ];
@@ -51,9 +50,7 @@
       "$mod,B,exec,firefox"
       "$mod,Space,exec,keepassxc"
       ",XF86Calculator,exec,foot bc -l"
-      "$mod,Escape,exec,swaylock -fi $(${bin.wallpaper} get_random_wallpaper ${wallpapers})"
-      "$mod,W,exec,swww img $(${bin.wallpaper} pick_wallpaper ${wallpapers}) --transition-type wipe --transition-duration 0.8"
-      "$mod SHIFT,W,exec,swww img $(${bin.wallpaper} get_random_wallpaper ${wallpapers}) --transition-type wipe --transition-duration 0.8"
+      "$mod,Escape,exec,hyprlock"
 
       "$mod SHIFT,C,killactive,"
       "$mod SHIFT,Q,exit,"

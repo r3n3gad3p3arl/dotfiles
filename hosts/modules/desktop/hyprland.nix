@@ -1,7 +1,8 @@
 { lib, config, pkgs, ... }:
-let hyprland = config.programs.hyprland;
+let
+  inherit (config.programs) hyprland;
 in {
-  security.pam.services.swaylock = lib.mkIf hyprland.enable {};
+  security.pam.services.hyprlock = lib.mkIf hyprland.enable {};
 
   xdg.portal = {
     enable = true;
