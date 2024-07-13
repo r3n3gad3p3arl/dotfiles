@@ -16,10 +16,10 @@ get_brightness_percent() {
 
   # slightly inaccurate but good enough for this purpose
   echo $((100 * $CURRENT / $MAX))
- }
+}
 
- send_brightness_notif() {
-   notify-send -h int:value:$(get_brightness_percent) 'Brightness'
- }
+send_brightness_notif() {
+  notify-send -h int:value:$(get_brightness_percent) 'Brightness'
+}
 
- $1
+$1

@@ -4,11 +4,11 @@
     wallpapers = ../../wallpapers;
   in {
     preload = [
-      "${wallpapers}/aceattorney.jpg"
+      "${wallpapers}/aapicnic.jpg"
     ];
 
     wallpaper = [
-      ",${wallpapers}/aceattorney.jpg"
+      ",${wallpapers}/aapicnic.jpg"
     ];
   };
 }

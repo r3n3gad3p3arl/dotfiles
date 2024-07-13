@@ -1,6 +1,6 @@
 {
-  programs.nixvim.plugins.treesitter = {
-    indent = true;
+  programs.nixvim.plugins.treesitter.settings = {
+    indent.enable = true;
     incrementalSelection.enable = true;
   };
 }
