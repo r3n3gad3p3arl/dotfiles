@@ -43,5 +43,6 @@
     ripgrep
     fd
     ffmpeg
+    bchunk
   ];
 }

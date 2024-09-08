@@ -1,19 +1,124 @@
+@import url("./colors.css");
+
+* {
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+  border: 0;
+}
+
 .infobox > box {
-  padding: 1rem;
   margin: 10px;
-  border: 1px solid @theme_fg_color;
-  background-color: @theme_bg_color;
-  color: @theme_fg_color;
+  background-color: @background;
+  color: @foreground;
+}
+
+.clock {
+  padding: 0.8rem 1rem;
+}
+
+.time {
+  font-size: 1.8rem;
 }
 
 .date {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
+  color: @foreground-light;
 }
 
-levelbar block.low {
-  background-color: @error_color;
+.battery-level block {
+  min-height: 4px;
 }
 
-levelbar block.full {
-  background-color: @success_color;
+.battery-level block.low {
+  background-color: @error;
+}
+
+.battery-level block.full {
+  background-color: @success;
+}
+
+.battery-level trough {
+  background-color: @background-light;
+}
+
+.applauncher > box {
+  background-color: @background;
+}
+
+.search-entry {
+  background-color: mix(@accent, @background-light, 0.2);
+  color: @background;
+  caret-color: @background-light;
+  padding: 0.2rem 0.8rem;
+}
+
+.app-item {
+  background-color: transparent;
+  color: @foreground-light;
+  padding: 1rem 0.8rem;
+  font-weight: normal;
+}
+
+.app-item:hover, .app-item:focus {
+  color: @foreground;
+  background-color: @background-light;
+}
+
+.app-item .icon {
+  margin-right: 0.8rem;
+}
+
+.notifications > box {
+  margin: 10px;
+}
+
+.notification {
+  min-width: 250px;
+  padding: 0.8rem;
+  margin-bottom: 10px;
+  background-color: @background;
+}
+
+.notification.critical .title {
+  color: @error;
+}
+
+.notification .title {
+  color: @foreground;
+  margin-bottom: 0.2rem;
+}
+
+.notification .body {
+  color: @foreground-light;
+  font-size: 0.8rem;
+}
+
+.notification .icon {
+  margin-right: 0.8rem;
+}
+
+.notification .actions {
+  margin-top: 0.8rem;
+}
+
+.notification .action-button {
+  margin-right: 0.4rem;
+}
+
+.notification .action-button:last-child {
+  margin-right: 0;
+}
+
+.osd > box {
+  margin: 10px;
+}
+
+.osd-level block.full {
+  background-color: @error;
+}
+
+.osd-level trough {
+  background-color: @background;
 }

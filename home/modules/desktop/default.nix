@@ -21,6 +21,8 @@ in {
         qbittorrent
         wiimms-iso-tools
         obsidian
+        prismlauncher
+        lmms
 
         # useful tools
         keepassxc
@@ -36,8 +38,8 @@ in {
       yt-dlp.enable = true;
       mpv.enable = true;
       libreoffice.enable = true;
-      openutau.enable = true;
       zathura.enable = true;
+      blender.enable = true;
     };
 
     wayland.windowManager.hyprland.enable = osConfig.programs.hyprland.enable;

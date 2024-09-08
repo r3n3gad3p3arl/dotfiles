@@ -28,7 +28,7 @@
       gaps_in = 0;
       gaps_out = 0;
       border_size = 1;
-      "col.active_border" = "rgb(${colors.base03})";
+      "col.active_border" = "rgb(${colors.base05})";
       "col.inactive_border" = "rgb(${colors.base01})";
       layout = "dwindle";
     };
@@ -46,7 +46,7 @@
 
     bind = [
       "$mod,Return,exec,foot"
-      "$mod,R,exec,rofi -show drun"
+      "$mod,R,exec,ags -b hypr -t applauncher"
       "$mod,B,exec,firefox"
       "$mod,Space,exec,keepassxc"
       ",XF86Calculator,exec,foot bc -l"
@@ -68,7 +68,7 @@
       "$mod SHIFT,J,movewindow,d"
 
       "$mod,I,exec,ags -b hypr -t infobox"
-      "$mod,O,exec,${bin.util} open_book"
+      # "$mod,O,exec,${bin.util} open_book"
       "$mod,M,exec,${bin.music} open_youtube"
       "$mod SHIFT,M,exec,${bin.music} play_shuffle"
 

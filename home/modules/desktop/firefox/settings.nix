@@ -8,8 +8,6 @@
   "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
   "browser.newtabpage.activity-stream.default.sites" = "";
 
-  "geo.provider.network.url" = "https://location.services.mozilla.com/v1/geolocate?key=%MOZILLA_API_KEY%";
-  "geo.provider.use_gpsd" = false;
   "geo.provider.use_geoclue" = false;
 
   "extensions.getAddons.showPane" = false;
@@ -30,7 +28,6 @@
   "toolkit.telemetry.coverage.opt-out" = true;
   "toolkit.coverage.opt-out" = true;
   "toolkit.coverage.endpoint.base" = "";
-  "browser.ping-centre.telemetry" = false;
   "browser.newtabpage.activity-stream.feeds.telemetry" = false;
   "browser.newtabpage.activity-stream.telemetry" = false;
   "app.shield.optoutstudies.enabled" = false;
@@ -47,16 +44,19 @@
 
   "network.prefetch-next" = false;
   "network.dns.disablePrefetch" = true;
+  "network.dns.disablePrefetchFromHTTPS" = true;
   "network.predictor.enabled" = false;
   "network.predictor.enable-prefetch" = false;
   "network.http.speculative-parallel-limit" = 0;
   "browser.places.speculativeConnect.enabled" = false;
+  "browser.send_pings" = false;
 
   "network.proxy.socks_remote_dns" = true;
   "network.file.disable_unc_paths" = true;
   "network.gio.supported-protocols" = "";
 
   "browser.urlbar.speculativeConnect.enabled" = false;
+  "browser.urlbar.quicksuggest.enabled" = false;
   "browser.urlbar.suggest.quicksuggest.nonsponsored" = false;
   "browser.urlbar.suggest.quicksuggest.sponsored" = false;
   "browser.search.suggest.enabled" = false;
@@ -66,6 +66,7 @@
   "browser.urlbar.mdn.featureGate" = false;
   "browser.urlbar.pocket.featureGate" = false;
   "browser.urlbar.weather.featureGate" = false;
+  "browser.urlbar.yelp.featureGate" = false;
   "browser.formfill.enable" = false;
   "browser.search.separatePrivateDefault" = true;
   "browser.search.separatePrivateDefault.ui.enabled" = true;
@@ -111,6 +112,8 @@
   "pdfjs.disabled" = false;
   "pdfjs.enableScripting" = false;
   "browser.tabs.searchclipboardfor.middleclick" = false;
+  "browser.contentanalysis.enabled" = false;
+  "browser.contentanalysis.default_result" = 0;
   "browser.download.useDownloadDir" = false;
   "browser.download.alwaysOpenPanel" = false;
   "browser.download.manager.addToRecentDocs" = false;
@@ -122,30 +125,36 @@
 
   "privacy.sanitize.sanitizeOnShutdown" = true;
   "privacy.clearOnShutdown.cache" = true;
+  "privacy.clearOnShutdown_v2.cache" = true;
   "privacy.clearOnShutdown.downloads" = true;
   "privacy.clearOnShutdown.formdata" = true;
   "privacy.clearOnShutdown.history" = true;
-  "privacy.clearOnShutdown.sessions" = true;
+  "privacy.clearOnShutdown_v2.historyFormDataAndDownloads" = true;
   "privacy.clearOnShutdown.cookies" = true;
   "privacy.clearOnShutdown.offlineApps" = true;
+  "privacy.clearOnShutdown.sessions" = true;
+  "privacy.clearOnShutdown_v2.cookiesAndStorage" = true;
+  "privacy.clearSiteData.cache" = true;
+  "privacy.clearSiteData.cookiesAndStorage" = false;
+  "privacy.clearSiteData.historyFormDataAndDownloads" = true;
   "privacy.cpd.cache" = true;
+  "privacy.clearHistory.cache" = true;
   "privacy.cpd.formdata" = true;
   "privacy.cpd.history" = true;
+  "privacy.clearHistory.historyFormDataAndDownloads" = true;
+  "privacy.cpd.cookies" = false;
   "privacy.cpd.sessions" = true;
   "privacy.cpd.offlineApps" = false;
-  "privacy.cpd.cookies" = false;
+  "privacy.clearHistory.cookiesAndStorage" = true;
   "privacy.sanitize.timeSpan" = 0;
 
-  "privacy.resistFingerprinting" = true;
   "privacy.window.maxInnerWidth" = 1600;
   "privacy.window.maxInnerHeight" = 900;
   "privacy.resistFingerprinting.block_mozAddonManager" = true;
-  "privacy.resistFingerprinting.letterboxing" = false;
+  "privacy.spoof_english" = 1;
   "browser.display.use_system_colors" = false;
-  "widget.non-native-theme.enabled" = true;
   "browser.link.open_newwindow" = 3;
   "browser.link.open_newwindow.restriction" = 0;
-  "webgl.disabled" = false;
 
   "signon.rememberSignons" = false;
   "extensions.formautofill.addresses.enabled" = false;
@@ -163,7 +172,6 @@
   "browser.startup.homepage_override.mstone" = "ignore";
   "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
   "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
-  "browser.messaging-system.whatsNewPanel.enabled" = false;
   "browser.urlbar.showSearchTerms.enabled" = false;
 
   "extensions.pocket.enabled" = false;

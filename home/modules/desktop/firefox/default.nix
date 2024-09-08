@@ -9,7 +9,7 @@
     profiles.default = {
       bookmarks = [
         { name = "Home Manager Manual"; url = "https://nix-community.github.io/home-manager/options.xhtml"; }
-        { name = "FMHY"; url = "https://fmhy.pages.dev"; }
+        { name = "FMHY"; url = "https://fmhy.net"; }
         { name = "myLoneStar Login"; url = "https://my.lonestar.edu"; }
       ];
 
@@ -17,8 +17,8 @@
         ublock-origin
         tridactyl
         darkreader
-        to-deepl
-        libredirect
+        shinigami-eyes
+        sponsorblock
       ];
 
       search = {

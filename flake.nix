@@ -25,11 +25,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    aagl = {
-      url = "github:ezkea/aagl-gtk-on-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nix-colors.url = "github:misterio77/nix-colors";
   };
 

@@ -24,19 +24,18 @@ in {
       grim
       slurp
       jq
+      libnotify
     ];
   };
 
   programs = mkIf hyprland.enable {
-    rofi.enable = true;
     ags.enable = true;
     hyprlock.enable = true;
   };
 
   services = mkIf hyprland.enable {
-    dunst.enable = true;
+    # dunst.enable = true;
     gammastep.enable = true;
-    batsignal.enable = true;
     hyprpaper.enable = true;
   };
 }
