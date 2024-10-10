@@ -157,6 +157,7 @@
   "browser.link.open_newwindow.restriction" = 0;
 
   "signon.rememberSignons" = false;
+  "browser.urlbar.suggest.topsites" = false;
   "extensions.formautofill.addresses.enabled" = false;
   "extensions.formautofill.creditCards.enabled" = false;
 

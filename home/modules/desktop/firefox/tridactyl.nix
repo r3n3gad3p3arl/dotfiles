@@ -3,7 +3,7 @@
     enable = config.programs.firefox.enable;
 
     text = ''
-      colors --url https://github.com/tridactyl/base16-tridactyl/raw/master/base16-${config.colorScheme.slug}.css ${config.colorScheme.slug}
+      colors --url https://github.com/tridactyl/base16-tridactyl/raw/master/base16-${config.scheme.slug}.css ${config.scheme.slug}
       set newtab about:blank
 
       set smoothscroll true

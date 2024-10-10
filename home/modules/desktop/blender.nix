@@ -4,7 +4,7 @@ in {
   options.programs.blender.enable = lib.mkEnableOption "Blender";
 
   config = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [blender ];
+    home.packages = with pkgs; [ blender ];
 
     xdg.desktopEntries.blender = lib.mkIf osConfig.hardware.nvidia.prime.offload.enable {
       name = "Blender";

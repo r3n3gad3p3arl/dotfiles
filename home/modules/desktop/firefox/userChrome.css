@@ -1,32 +1,67 @@
-.titlebar-buttonbox-container, .titlebar-spacer,
-#alltabs-button, #back-button, #forward-button,
-#reload-button, #stop-reload-button, toolbarspring,
-#page-action-buttons, #tabs-newtab-button, .tab-close-button,
-#tracking-protection-icon-container, #identity-box, #firefox-view-button {
+#stop-reload-button, #back-button, #forward-button,
+.tab-close-button, #tabs-newtab-button, #new-tab-button,
+#alltabs-button, .titlebar-buttonbox-container {
   display: none !important;
 }
 
-#navigator-toolbox {
-  flex-direction: row;
+#star-button-box {
+  display: none !important;
 }
 
-#titlebar {
-  width: 0;
+#firefox-view-button, #tracking-protection-icon-container, .titlebar-spacer, toolbarspring {
+  display: none !important;
+}
+
+#navigator-toolbox-background:-moz-window-inactive {
+  filter: contrast(90%);
+}
+
+#PanelUI-menu-button, #unified-extensions-button {
+  padding: 2px !important;
+}
+
+#urlbar-background {
+  border: none !important;
+  outline: none !important;
+  transition: .15s !important;
+}
+
+#nav-bar, #urlbar-container {
   flex-grow: 1;
 }
 
-.tab-background {
-  transition: background-color 0.2s;
+#tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs]):not([orient="vertical"]) > #tabbrowser-arrowscrollbox > .tabbrowser-tab:nth-child(1 of :not([pinned], [hidden])) {
+  margin-inline-start: 0 !important;
+}
+
+#navigator-toolbox {
+  border: none !important;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+#titlebar {
+  flex-grow: 8;
+  padding-left: 2px !important;
 }
 
 #nav-bar {
   background: none !important;
+  padding-right: 4px !important;
 }
 
-.urlbar-input-box {
-  margin-left: 4px;
+#urlbar:not(:hover):not([breakout][breakout-extend]) > #urlbar-background {
+  box-shadow: none !important;
+  background: none !important;
 }
 
-#tabbrowser-tabs {
-  border-inline-start: none;
+#statuspanel-label {
+  background-color: -moz-Dialog !important;
+  border: none !important;
+  padding: 5px !important;
+}
+
+#fullscreen-warning {
+  border: none !important;
+  background: -moz-Dialog !important;
 }

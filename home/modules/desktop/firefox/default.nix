@@ -17,7 +17,6 @@
         ublock-origin
         tridactyl
         darkreader
-        shinigami-eyes
         sponsorblock
       ];
 

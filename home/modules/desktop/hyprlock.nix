@@ -2,7 +2,7 @@
   programs.hyprlock.settings =
   let
     wallpapers = ../../wallpapers;
-    colors = config.colorScheme.palette;
+    colors = config.scheme;
   in {
     background = [
       {

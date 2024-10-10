@@ -1,23 +1,13 @@
-{ inputs, pkgs, config, ... }: {
+{ pkgs, ... }: {
   gtk = {
     font = {
       name = "Rubik";
       size = 11;
     };
 
-    theme =
-    let contrib = inputs.nix-colors.lib.contrib { inherit pkgs; };
-    in {
-      package = contrib.gtkThemeFromScheme { scheme = config.colorScheme; };
-      name = config.colorScheme.slug;
-    };
-
-    gtk3.extraConfig = {
-      gtk-application-prefer-dark-theme = true;
-    };
-
-    gtk4.extraConfig = {
-      gtk-application-prefer-dark-theme = true;
+    theme = {
+      name = "adw-gtk3-dark";
+      package = pkgs.adw-gtk3;
     };
 
     iconTheme = {
@@ -25,4 +15,8 @@
       package = pkgs.papirus-icon-theme;
     };
   };
+
+  # dconf.settings = {
+  #   "org/gnome/desktop/interface".color-scheme = "prefer-dark";
+  # };
 }

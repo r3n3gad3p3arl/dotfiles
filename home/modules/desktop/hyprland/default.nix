@@ -20,6 +20,7 @@ in {
       playerctl
       brightnessctl
       xdg-utils
+      xdg-terminal-exec
       pcmanfm
       grim
       slurp
@@ -34,7 +35,6 @@ in {
   };
 
   services = mkIf hyprland.enable {
-    # dunst.enable = true;
     gammastep.enable = true;
     hyprpaper.enable = true;
   };

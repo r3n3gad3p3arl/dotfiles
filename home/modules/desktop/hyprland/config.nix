@@ -2,7 +2,7 @@
   wayland.windowManager.hyprland.settings =
   let
     cursor = config.home.pointerCursor;
-    colors = config.colorScheme.palette;
+    colors = config.scheme;
     inherit (pkgs.meowPkgs) bin;
     inherit (config.xdg.userDirs) pictures;
     workspaces = builtins.concatLists (builtins.genList (x:
@@ -15,7 +15,7 @@
   in {
     monitor = [
       "eDP-1,preferred,auto,1" # main monitor
-      "DP-1,preferred,auto,2" # secondary monitor
+      "DP-1,preferred,auto,1" # secondary monitor
       ",preferred,auto,1" # fallback
     ];
 
@@ -45,11 +45,11 @@
     "$mod" = "SUPER";
 
     bind = [
-      "$mod,Return,exec,foot"
+      "$mod,Return,exec,footclient"
       "$mod,R,exec,ags -b hypr -t applauncher"
       "$mod,B,exec,firefox"
       "$mod,Space,exec,keepassxc"
-      ",XF86Calculator,exec,foot bc -l"
+      ",XF86Calculator,exec,footclient bc -l"
       "$mod,Escape,exec,hyprlock"
 
       "$mod SHIFT,C,killactive,"
@@ -68,7 +68,6 @@
       "$mod SHIFT,J,movewindow,d"
 
       "$mod,I,exec,ags -b hypr -t infobox"
-      # "$mod,O,exec,${bin.util} open_book"
       "$mod,M,exec,${bin.music} open_youtube"
       "$mod SHIFT,M,exec,${bin.music} play_shuffle"
 

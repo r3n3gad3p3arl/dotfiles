@@ -22,8 +22,8 @@
     servers = {
       nixd.enable = true;
       pylsp.enable = true;
-      lua-ls.enable = true;
-      tsserver.enable = true;
+      lua_ls.enable = true;
+      ts_ls.enable = true;
       cssls.enable = true;
       html.enable = true;
     };

@@ -17,12 +17,30 @@ toggle_volume_mute() {
 
   NOTIF_BODY=$(wpctl get-volume $ASINK | grep -o 'MUTED')
   NOTIF_BODY="${NOTIF_BODY:-UNMUTED}"
-  notify-send $NOTIF_TITLE $NOTIF_BODY
+
+  if [[ $NOTIF_BODY = "MUTED" ]]; then
+    NOTIF_ICON='audio-volume-muted-symbolic'
+  else
+    NOTIF_ICON='audio-volume-low-symbolic'
+  fi
+
+  notify-send -i $NOTIF_ICON $NOTIF_TITLE $NOTIF_BODY
 }
 
 send_volume_notif() {
   VOLUME_LEVEL=$(wpctl get-volume $ASINK | awk '{print $2*100}')
-  notify-send -h int:value:$VOLUME_LEVEL $NOTIF_TITLE
+
+  if [[ $VOLUME_LEVEL -ge 70 ]]; then
+    NOTIF_ICON='audio-volume-high-symbolic'
+  elif [[ $VOLUME_LEVEL -ge 40 ]]; then
+    NOTIF_ICON='audio-volume-medium-symbolic'
+  elif [[ $VOLUME_LEVEL -ge 1 ]]; then
+    NOTIF_ICON='audio-volume-low-symbolic'
+  else
+    NOTIF_ICON='audio-volume-muted-symbolic'
+  fi
+  
+  notify-send -i $NOTIF_ICON -h int:value:$VOLUME_LEVEL $NOTIF_TITLE $VOLUME_LEVEL
 }
 
 $1

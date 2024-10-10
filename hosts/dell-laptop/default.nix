@@ -3,8 +3,6 @@
 
   networking.hostName = "dell-laptop";
 
-  programs.virt-manager.enable = true;
-
   services = {
     xserver.videoDrivers = [ "nvidia" ];
     printing.enable = true;

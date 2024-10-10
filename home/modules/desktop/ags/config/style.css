@@ -27,8 +27,9 @@
   color: @foreground-light;
 }
 
-.battery-level block {
+.battery-level block.filled {
   min-height: 4px;
+  background-color: @accent;
 }
 
 .battery-level block.low {

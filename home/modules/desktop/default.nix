@@ -3,7 +3,7 @@ let
   cfg = config.home.desktop;
 in {
   imports = [
-    inputs.nix-colors.homeManagerModules.default
+    inputs.base16.homeManagerModule
   ] ++ lib.meow.mapModules ./.;
 
   options.home.desktop.enable = lib.mkEnableOption "desktop configuration";
@@ -12,7 +12,7 @@ in {
     fonts.fontconfig.enable = true;
     gtk.enable = true;
 
-    colorScheme = inputs.nix-colors.colorSchemes.tomorrow-night;
+    scheme = "${inputs.base16-schemes}/base16/tomorrow-night.yaml";
 
     home = {
       packages = with pkgs; [
@@ -23,6 +23,7 @@ in {
         obsidian
         prismlauncher
         lmms
+        kdenlive
 
         # useful tools
         keepassxc

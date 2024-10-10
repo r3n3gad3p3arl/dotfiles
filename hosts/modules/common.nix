@@ -35,7 +35,8 @@
       initialPassword = "nixos";
       extraGroups = [ "wheel" ]
         ++ lib.optionals config.virtualisation.libvirtd.enable [ "libvirtd" ]
-        ++ lib.optionals config.networking.networkmanager.enable [ "networkmanager" ];
+        ++ lib.optionals config.networking.networkmanager.enable [ "networkmanager" ]
+        ++ lib.optionals config.security.tpm2.enable [ "tss" ];
     };
   };
 

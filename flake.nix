@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nur.url = "github:nix-community/nur";
+    base16.url = "github:senchopens/base16.nix";
       
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -25,7 +26,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-colors.url = "github:misterio77/nix-colors";
+    base16-schemes = {
+      url = "github:tinted-theming/schemes";
+      flake = false;
+    };
   };
 
   outputs = { self, nixpkgs, ... }@inputs: let

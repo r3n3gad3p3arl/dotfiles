@@ -1,27 +1,33 @@
 {
-  programs.nixvim = {
-    opts.showmode = false;
+  programs.nixvim.plugins.lualine.settings = {
+    extensions = [ "man" ];
 
-    plugins.lualine = {
-      extensions = [ "man" ];
+    options = {
       globalstatus = true;
-      componentSeparators = { left = "|"; right = "|"; };
-      sectionSeparators = { left = ""; right = ""; };
+      component_separators = { left = "|"; right = "|"; };
+      section_separators = { left = ""; right = ""; };
+    };
 
-      sections = {
-        lualine_a = [ "mode" ];
-        lualine_b = [{ name = "branch"; icon = "󰘬"; }];
+    sections = {
+      lualine_a = [ "mode" ];
+      lualine_b = [{ __unkeyed-1 = "branch"; icon = "󰘬"; }];
 
-        lualine_c = [
-          "diagnostics"
-          { name = "filetype"; separator = { left = ""; right = ""; }; padding = { left = 1; right = 0; }; extraConfig = { icon_only = true; }; }
-        { name = "filename"; extraConfig = { path = 1; }; }
-        ];
+      lualine_c = [
+        "diagnostics"
 
-        lualine_x = [ "diff" ];
-        lualine_y = [ "progress" ];
-        lualine_z = [ "location" ];
-      };
+        {
+          __unkeyed-1 = "filetype";
+          separator = "";
+          padding = { left = 1; right = 0; };
+          icon_only = true;
+        }
+
+        { __unkeyed-1 = "filename"; path = 1; }
+      ];
+
+      lualine_x = [ "diff" ];
+      lualine_y = [ "progress" ];
+      lualine_z = [ "location" ];
     };
   };
 }
