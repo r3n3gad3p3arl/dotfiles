@@ -180,4 +180,5 @@
   "browser.tabs.firefox-view" = false;
   "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
   "browser.compactmode.show" = true;
+  "apz.overscroll.enabled" = false;
 }

@@ -36,7 +36,7 @@
   environment.systemPackages = with pkgs; [
     unzrip
     unrar
-    _7zz
+    # _7zz
     bc
     ripgrep
     fd

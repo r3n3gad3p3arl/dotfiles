@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, inputs, ... }:
 let
   colors = config.scheme.withHashtag;
 in {
@@ -22,4 +22,10 @@ in {
       '';
     };
   };
+
+  programs.ags.extraPackages = [
+    inputs.ags.packages.${pkgs.system}.battery
+    inputs.ags.packages.${pkgs.system}.apps
+    inputs.ags.packages.${pkgs.system}.notifd
+  ];
 }

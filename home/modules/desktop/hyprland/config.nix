@@ -21,7 +21,7 @@
 
     exec-once = [
       "hyprctl setcursor ${cursor.name} ${toString cursor.size}"
-      "ags -b hypr"
+      "ags run"
     ];
 
     general = {
@@ -46,7 +46,7 @@
 
     bind = [
       "$mod,Return,exec,footclient"
-      "$mod,R,exec,ags -b hypr -t applauncher"
+      "$mod,R,exec,ags toggle applauncher"
       "$mod,B,exec,firefox"
       "$mod,Space,exec,keepassxc"
       ",XF86Calculator,exec,footclient bc -l"
@@ -67,7 +67,7 @@
       "$mod SHIFT,K,movewindow,u"
       "$mod SHIFT,J,movewindow,d"
 
-      "$mod,I,exec,ags -b hypr -t infobox"
+      "$mod,I,exec,ags toggle infobox"
       "$mod,M,exec,${bin.music} open_youtube"
       "$mod SHIFT,M,exec,${bin.music} play_shuffle"
 

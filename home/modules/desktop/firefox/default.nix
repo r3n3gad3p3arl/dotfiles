@@ -16,17 +16,16 @@
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         ublock-origin
         tridactyl
-        darkreader
         sponsorblock
       ];
 
       search = {
-        default = "SearXNG (priv.au)";
+        default = "SearXNG (Inetol)";
         force = true;
 
         engines = {
-          "SearXNG (priv.au)" = {
-            urls = [{ template = "https://priv.au/search?q={searchTerms}"; }];
+          "SearXNG (Inetol)" = {
+            urls = [{ template = "https://search.inetol.net/search?q={searchTerms}"; }];
             definedAliases = [ "@searx" "@sx" ];
           };
 

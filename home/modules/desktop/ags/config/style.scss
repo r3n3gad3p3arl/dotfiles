@@ -1,0 +1,152 @@
+@use "sass:string";
+@import "colors.css";
+
+@function gtkalpha($c, $a) {
+    @return string.unquote("alpha(#{$c},#{$a})");
+}
+
+$background: #{"@background"};
+$background-light: #{"@background-light"};
+$foreground: #{"@foreground"};
+$foreground-light: #{"@foreground-light"};
+$accent: #{"@accent"};
+$error: #{"@error"};
+$success: #{"@success"};
+
+* {
+  border-radius: 0;
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
+window.infobox {
+  >box {
+    background-color: $background;
+    color: $foreground;
+    margin: 10px;
+  }
+
+  .clock {
+    padding: 0.8rem 1rem;
+
+    .time {
+      font-size: 1.8rem;
+    }
+
+    .date {
+      font-size: 0.8rem;
+      color: $foreground-light;
+    }
+  }
+
+  .battery-level {
+    trough {
+      background-color: $background-light;
+    }
+
+    block.filled {
+      min-height: 4px;
+      background-color: $accent;
+    }
+
+    block.low {
+      background-color: $error;
+    }
+
+    block.full {
+      background-color: $success;
+    }
+  }
+}
+
+window.applauncher {
+  all: unset;
+
+  >box {
+    background-color: $background;
+    padding: 0.8rem;
+    min-width: 500px;
+  }
+
+  entry {
+    background-color: $background-light;
+    color: $foreground;
+    caret-color: $foreground-light;
+    padding: 0.2rem 0.8rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .app-button {
+    background-color: transparent;
+    color: $foreground-light;
+
+    &:hover, &:focus {
+      color: $foreground;
+      background-color: gtkalpha($background-light, 0.5);
+    }
+
+    icon {
+      margin-right: 0.8rem;
+      font-size: 2rem;
+    }
+
+    label {
+      font-weight: normal;
+    }
+  }
+
+  .not-found {
+    padding: 0.8rem;
+    color: $foreground-light;
+
+    icon {
+      font-size: 6rem;
+    }
+
+    label {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+window.notification-popup {
+  all: unset;
+
+  >box {
+    margin: 10px;
+  }
+}
+
+eventbox.notification {
+  >box {
+    min-width: 250px;
+    background-color: $background;
+    margin-bottom: 10px;
+    padding: 0.8rem;
+  }
+
+  &:last-child>box {
+    margin-bottom: 0;
+  }
+
+  &.critical>box {
+    background-color: $error;
+  }
+
+  .summary {
+    font-size: 1.2rem;
+    color: $foreground;
+  }
+
+  .body {
+    color: $foreground-light;
+  }
+
+  .image {
+    min-width: 100px;
+    min-height: 100px;
+    background-size: cover;
+    background-position: center;
+  }
+}
