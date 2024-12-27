@@ -20,12 +20,12 @@
       ];
 
       search = {
-        default = "SearXNG (Inetol)";
+        default = "SearXNG";
         force = true;
 
         engines = {
-          "SearXNG (Inetol)" = {
-            urls = [{ template = "https://search.inetol.net/search?q={searchTerms}"; }];
+          "SearXNG" = {
+            urls = [{ template = "https://searx.neocities.org/?q={searchTerms}"; }];
             definedAliases = [ "@searx" "@sx" ];
           };
 
@@ -42,6 +42,11 @@
           "NixOS Wiki" = {
             urls = [{ template = "https://nixos.wiki/index.php?search={searchTerms}"; }];
             definedAliases = [ "@nixwiki" "@nw" ];
+          };
+
+          "YouTube" = {
+            urls = [{ template = "https://www.youtube.com/results?search_query={searchTerms}"; }];
+            definedAliases = [ "@youtube" "@yt" ];
           };
         };
       };

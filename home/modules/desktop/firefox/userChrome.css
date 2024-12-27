@@ -1,66 +1,80 @@
+/* hide buttons useless for keyboard user */
 #stop-reload-button, #back-button, #forward-button,
-.tab-close-button, #tabs-newtab-button, #new-tab-button,
-#alltabs-button, .titlebar-buttonbox-container {
+.tab-close-button, #tabs-newtab-button, #alltabs-button,
+.titlebar-buttonbox-container, #PanelUI-menu-button {
   display: none !important;
 }
 
+/* hide bookmark button - useless with nix */
 #star-button-box {
   display: none !important;
 }
 
-#firefox-view-button, #tracking-protection-icon-container, .titlebar-spacer, toolbarspring {
+/* hide clutter */
+#firefox-view-button, #tracking-protection-icon-container,
+.titlebar-spacer, toolbarspring {
   display: none !important;
 }
 
+/* fade when lose focus */
 #navigator-toolbox-background:-moz-window-inactive {
   filter: contrast(90%);
 }
 
-#PanelUI-menu-button, #unified-extensions-button {
-  padding: 2px !important;
-}
-
+/* hide urlbar outline */
 #urlbar-background {
-  border: none !important;
   outline: none !important;
   transition: .15s !important;
 }
 
-#nav-bar, #urlbar-container {
-  flex-grow: 1;
+/* set urlbar min width */
+#urlbar-container {
+  min-width: 25vw;
 }
 
+/* no gap after pinned tabs */
 #tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs]):not([orient="vertical"]) > #tabbrowser-arrowscrollbox > .tabbrowser-tab:nth-child(1 of :not([pinned], [hidden])) {
   margin-inline-start: 0 !important;
 }
 
+/* oneline */
 #navigator-toolbox {
   border: none !important;
   flex-direction: row;
   flex-wrap: wrap;
 }
 
-#titlebar {
-  flex-grow: 8;
+/* full width menubar and bookmark bar */
+#toolbar-menubar, #PersonalToolbar {
+  width: 100%;
+  min-height: 0 !important;
+}
+
+/* extra tabbar padding */
+#TabsToolbar {
   padding-left: 2px !important;
 }
 
+/* no navbar background */
 #nav-bar {
   background: none !important;
   padding-right: 4px !important;
 }
 
+/* no urlbar background */
 #urlbar:not(:hover):not([breakout][breakout-extend]) > #urlbar-background {
   box-shadow: none !important;
   background: none !important;
 }
 
+/* style link hover popup */
 #statuspanel-label {
   background-color: -moz-Dialog !important;
   border: none !important;
   padding: 5px !important;
 }
 
+/* style fullscreen popup */
 #fullscreen-warning {
   border: none !important;
   background: -moz-Dialog !important;

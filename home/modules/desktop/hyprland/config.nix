@@ -35,7 +35,7 @@
 
     decoration = {
       rounding = 0;
-      drop_shadow = false;
+      shadow.enabled = false;
     };
 
     animations = {

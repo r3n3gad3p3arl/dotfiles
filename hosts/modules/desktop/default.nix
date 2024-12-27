@@ -62,7 +62,7 @@ in {
         noto-fonts-emoji
         jetbrains-mono
         rubik
-        (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
+        nerd-fonts.symbols-only
       ];
 
       fontconfig.defaultFonts = {
