@@ -6,6 +6,18 @@ in {
 
   xdg.portal = {
     enable = true;
-    extraPortals = lib.mkIf hyprland.enable [ pkgs.xdg-desktop-portal-gtk ];
+
+    lxqt = {
+      enable = hyprland.enable;
+
+      styles = with pkgs; [
+        libsForQt5.qtstyleplugin-kvantum
+        qt6Packages.qtstyleplugin-kvantum
+      ];
+    };
+
+    config.hyprland."org.freedesktop.impl.portal.FileChooser" = [ "lxqt" ];
   };
+
+  programs.hyprland.withUWSM = true;
 }

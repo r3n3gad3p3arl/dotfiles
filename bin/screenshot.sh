@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 IMG_DIR=$2
 IMG_PATH=$IMG_DIR/$(date +'%F_%Hh%Mm%Ss_grim.png')
 SCREEN=$(hyprctl -j monitors | jq -r '.[] | select(.focused) | .name')

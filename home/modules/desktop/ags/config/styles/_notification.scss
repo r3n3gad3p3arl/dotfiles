@@ -1,0 +1,38 @@
+@use "base" as *;
+
+window.notification-popup>box {
+  margin: $box-margin;
+}
+
+eventbox.notification {
+  >box {
+    min-width: 250px;
+    background-color: $background;
+    margin-bottom: $box-margin;
+    padding: $p-medium;
+  }
+
+  &:last-child>box {
+    margin-bottom: 0;
+  }
+
+  &.critical>box {
+    background-color: $error;
+  }
+
+  .summary {
+    font-size: $t-large;
+    color: $foreground;
+  }
+
+  .body {
+    color: $foreground-light;
+  }
+
+  .image {
+    min-width: 100px;
+    min-height: 100px;
+    background-size: cover;
+    background-position: center;
+  }
+}

@@ -1,31 +1,72 @@
 {
-  programs.nixvim.plugins.lsp = {
-    keymaps = {
-      diagnostic = {
-        "[d" = "goto_prev";
-        "]d" = "goto_next";
-        "<leader>e" = "open_float";
-        "<leader>q" = "setloclist";
-      };
+  programs.nixvim = {
+    lsp = {
+      inlayHints.enable = true;
 
-      lspBuf = {
-        "<leader>rn" = "rename";
-        "<leader>ca" = "code_action";
-        "K" = "hover";
-        "<C-k>" = "signature_help";
-        "gD" = "declaration";
-        "<leader>sa" = "add_workspace_folder";
-        "<leader>sr" = "remove_workspace_folder";
+      keymaps = [
+        {
+          key = "gd";
+          lspBufAction = "definition";
+        }
+        {
+          key = "gr";
+          lspBufAction = "references";
+        }
+        {
+          key = "gI";
+          lspBufAction = "implementation";
+        }
+        {
+          key = "gy";
+          lspBufAction = "type_definition";
+        }
+        {
+          key = "gD";
+          lspBufAction = "declaration";
+        }
+        {
+          key = "<leader>ca";
+          lspBufAction = "code_action";
+          mode = ["n" "v"];
+        }
+        {
+          key = "<leader>cr";
+          lspBufAction = "rename";
+        }
+      ];
+
+      servers = {
+        nixd = {
+          enable = true;
+
+          settings = {
+            nixpkgs.expr = "import (builtins.getFlake \"/home/meow/.config/nixos\").inputs.nixpkgs { }";
+
+            options = {
+              nixos.expr = "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.dell-laptop.options";
+              home-manager.expr = "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.dell-laptop.options.home-manager.users.type.getSubOptions []";
+            };
+          };
+        };
+
+        basedpyright.enable = true;
+        vtsls.enable = true;
+        html.enable = true;
+        cssls.enable = true;
       };
     };
 
-    servers = {
-      nixd.enable = true;
-      pylsp.enable = true;
-      lua_ls.enable = true;
-      ts_ls.enable = true;
-      cssls.enable = true;
-      html.enable = true;
+    diagnostic.settings = {
+      virtual_text.prefix = "";
+
+      signs.text = {
+        "__rawKey__vim.diagnostic.severity.ERROR" = " ";
+        "__rawKey__vim.diagnostic.severity.WARN" = " ";
+        "__rawKey__vim.diagnostic.severity.INFO" = " ";
+        "__rawKey__vim.diagnostic.severity.HINT" = " ";
+      };
     };
+
+    plugins.lspconfig.lazyLoad.settings.event = ["BufReadPost" "BufNewFile" "BufWritePre"];
   };
 }

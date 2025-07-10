@@ -1,7 +1,8 @@
 /* hide buttons useless for keyboard user */
 #stop-reload-button, #back-button, #forward-button,
 .tab-close-button, #tabs-newtab-button, #alltabs-button,
-.titlebar-buttonbox-container, #PanelUI-menu-button {
+.titlebar-buttonbox-container, #PanelUI-menu-button,
+#sidebar-button {
   display: none !important;
 }
 

@@ -14,20 +14,6 @@
   "extensions.htmlaboutaddons.recommendations.enabled" = false;
   "browser.discovery.enabled" = false;
   "browser.shopping.experience2023.enabled" = false;
-  "datareporting.policy.dataSubmissionEnabled" = false;
-  "datareporting.healthreport.uploadEnabled" = false;
-  "toolkit.telemetry.unified" = false;
-  "toolkit.telemetry.enabled" = false;
-  "toolkit.telemetry.server" = "data:,";
-  "toolkit.telemetry.archive.enabled" = false;
-  "toolkit.telemetry.newProfilePing.enabled" = false;
-  "toolkit.telemetry.shutdownPingSender.enabled" = false;
-  "toolkit.telemetry.updatePing.enabled" = false;
-  "toolkit.telemetry.bhrPing.enabled" = false;
-  "toolkit.telemetry.firstShutdownPing.enabled" = false;
-  "toolkit.telemetry.coverage.opt-out" = true;
-  "toolkit.coverage.opt-out" = true;
-  "toolkit.coverage.endpoint.base" = "";
   "browser.newtabpage.activity-stream.feeds.telemetry" = false;
   "browser.newtabpage.activity-stream.telemetry" = false;
   "app.shield.optoutstudies.enabled" = false;
@@ -49,7 +35,6 @@
   "network.predictor.enable-prefetch" = false;
   "network.http.speculative-parallel-limit" = 0;
   "browser.places.speculativeConnect.enabled" = false;
-  "browser.send_pings" = false;
 
   "network.proxy.socks_remote_dns" = true;
   "network.file.disable_unc_paths" = true;
@@ -63,6 +48,7 @@
   "browser.urlbar.suggest.searches" = false;
   "browser.urlbar.trending.featureGate" = false;
   "browser.urlbar.addons.featureGate" = false;
+  "browser.urlbar.fakespot.featureGate" = false;
   "browser.urlbar.mdn.featureGate" = false;
   "browser.urlbar.pocket.featureGate" = false;
   "browser.urlbar.weather.featureGate" = false;
@@ -107,7 +93,6 @@
   "browser.uitour.enabled" = false;
   "devtools.debugger.remote-enabled" = false;
   "permissions.manager.defaultsUrl" = "";
-  "webchannel.allowObject.urlWhitelist" = "";
   "network.IDN_show_punycode" = true;
   "pdfjs.disabled" = false;
   "pdfjs.enableScripting" = false;
@@ -124,28 +109,22 @@
   "browser.contentblocking.category" = "strict";
 
   "privacy.sanitize.sanitizeOnShutdown" = true;
-  "privacy.clearOnShutdown.cache" = true;
   "privacy.clearOnShutdown_v2.cache" = true;
-  "privacy.clearOnShutdown.downloads" = true;
-  "privacy.clearOnShutdown.formdata" = true;
-  "privacy.clearOnShutdown.history" = true;
   "privacy.clearOnShutdown_v2.historyFormDataAndDownloads" = true;
-  "privacy.clearOnShutdown.cookies" = true;
-  "privacy.clearOnShutdown.offlineApps" = true;
-  "privacy.clearOnShutdown.sessions" = true;
+  "privacy.clearOnShutdown_v2.browsingHistoryAndDownloads" = true;
+  "privacy.clearOnShutdown_v2.downloads" = true;
+  "privacy.clearOnShutdown_v2.formdata" = true;
   "privacy.clearOnShutdown_v2.cookiesAndStorage" = true;
   "privacy.clearSiteData.cache" = true;
   "privacy.clearSiteData.cookiesAndStorage" = false;
   "privacy.clearSiteData.historyFormDataAndDownloads" = true;
-  "privacy.cpd.cache" = true;
+  "privacy.clearSiteData.browsingHistoryAndDownloads" = true;
+  "privacy.clearSiteData.formdata" = true;
   "privacy.clearHistory.cache" = true;
-  "privacy.cpd.formdata" = true;
-  "privacy.cpd.history" = true;
-  "privacy.clearHistory.historyFormDataAndDownloads" = true;
-  "privacy.cpd.cookies" = false;
-  "privacy.cpd.sessions" = true;
-  "privacy.cpd.offlineApps" = false;
   "privacy.clearHistory.cookiesAndStorage" = true;
+  "privacy.clearHistory.historyFormDataAndDownloads" = true;
+  "privacy.clearHistory.browsingHistoryAndDownloads" = true;
+  "privacy.clearHistory.formdata" = true;
   "privacy.sanitize.timeSpan" = 0;
 
   "privacy.window.maxInnerWidth" = 1600;
@@ -153,6 +132,7 @@
   "privacy.resistFingerprinting.block_mozAddonManager" = true;
   "privacy.spoof_english" = 1;
   "browser.display.use_system_colors" = false;
+  "widget.non-native-theme.use-theme.accent" = false;
   "browser.link.open_newwindow" = 3;
   "browser.link.open_newwindow.restriction" = 0;
 
@@ -170,6 +150,21 @@
   "extensions.webcompat-reporter.enabled" = false;
   "extensions.quarantinedDomains.enabled" = true;
 
+  "datareporting.policy.dataSubmissionEnabled" = false;
+  "datareporting.healthreport.uploadEnabled" = false;
+  "toolkit.telemetry.unified" = false;
+  "toolkit.telemetry.enabled" = false;
+  "toolkit.telemetry.server" = false;
+  "toolkit.telemetry.archive.enabled" = false;
+  "toolkit.telemetry.newProfilePing.enabled" = false;
+  "toolkit.telemetry.shutdownPingSender.enabled" = false;
+  "toolkit.telemetry.updatePing.enabled" = false;
+  "toolkit.telemetry.bhrPing.enabled" = false;
+  "toolkit.telemetry.firstShutdownPing.enabled" = false;
+  "toolkit.telemetry.coverage.opt-out" = true;
+  "toolkit.coverage.opt-out" = true;
+  "toolkit.coverage.endpoint.base" = "";
+
   "browser.startup.homepage_override.mstone" = "ignore";
   "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
   "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
@@ -181,4 +176,5 @@
   "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
   "browser.compactmode.show" = true;
   "apz.overscroll.enabled" = false;
+  "widget.use-xdg-desktop-portal.file-picker" = 1;
 }

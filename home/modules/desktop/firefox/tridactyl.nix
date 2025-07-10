@@ -1,4 +1,4 @@
-{ config, ... }: {
+{ config, colors, ... }: {
   xdg.configFile = {
     "tridactyl/tridactylrc" = {
       enable = config.programs.firefox.enable;
@@ -6,7 +6,6 @@
       text = ''
         sanitize tridactyllocal
 
-        " colors --url https://github.com/tridactyl/base16-tridactyl/raw/master/base16-${config.scheme.slug}.css ${config.scheme.slug}
         colors custom
         set newtab about:blank
         set editorcmd footclient nvim
@@ -20,38 +19,35 @@
         " remove all default searchurls
         jsb Object.keys(tri.config.get("searchurls")).reduce((prev, u) => prev.then(_ => tri.config.set("searchurls", u, null)), Promise.resolve())
 
-        set searchurls.searx https://searx.neocities.org/?q=%s
+        set searchurls.searx https://searx.tiekoetter.com/?q=%s&language=en&time_range=&safesearch=0&categories=general
         set searchurls.nixpkgs https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=%s
         set searchurls.nixopts https://search.nixos.org/options?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=%s
-        set searchurls.nixwiki https://nixos.wiki/index.php?search=%s
+        set searchurls.nixwiki https://wiki.nixos.org/w/index.php?search=%s
         set searchurls.youtube https://www.youtube.com/results?search_query=%s
       '';
     };
 
-    "tridactyl/themes/custom.css" =
-    let
-      colors = config.scheme.withHashtag;
-    in {
+    "tridactyl/themes/custom.css" = {
       enable = config.programs.firefox.enable;
 
       text = ''
         :root {
-          --base00: ${colors.base00};
-          --base01: ${colors.base01};
-          --base02: ${colors.base02};
-          --base03: ${colors.base03};
-          --base04: ${colors.base04};
-          --base05: ${colors.base05};
-          --base06: ${colors.base06};
-          --base07: ${colors.base07};
-          --base08: ${colors.base08};
-          --base09: ${colors.base09};
-          --base0A: ${colors.base0A};
-          --base0B: ${colors.base0B};
-          --base0C: ${colors.base0C};
-          --base0D: ${colors.base0D};
-          --base0E: ${colors.base0E};
-          --base0F: ${colors.base0F};
+          --base00: #${colors.base00};
+          --base01: #${colors.base01};
+          --base02: #${colors.base02};
+          --base03: #${colors.base03};
+          --base04: #${colors.base04};
+          --base05: #${colors.base05};
+          --base06: #${colors.base06};
+          --base07: #${colors.base07};
+          --base08: #${colors.base08};
+          --base09: #${colors.base09};
+          --base0A: #${colors.base0A};
+          --base0B: #${colors.base0B};
+          --base0C: #${colors.base0C};
+          --base0D: #${colors.base0D};
+          --base0E: #${colors.base0E};
+          --base0F: #${colors.base0F};
 
           --tridactyl-bg: var(--base00);
           --tridactyl-fg: var(--base05);

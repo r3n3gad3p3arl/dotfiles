@@ -1,8 +1,7 @@
-{ config, ... }: {
+{ colors, ... }: {
   programs.hyprlock.settings =
   let
     wallpapers = ../../wallpapers;
-    colors = config.scheme;
   in {
     background = [
       {

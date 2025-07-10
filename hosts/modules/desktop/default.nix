@@ -26,15 +26,13 @@ in {
 
         settings = rec {
           initial_session = {
-            command = "${pkgs.dbus}/bin/dbus-run-session ${pkgs.hyprland}/bin/Hyprland";
+            command = "${lib.getExe pkgs.uwsm} start -- ${lib.getExe pkgs.hyprland}";
             user = "meow";
           };
 
           default_session = initial_session;
         };
       };
-
-      gvfs.enable = true;
     };
 
     programs = {
@@ -49,9 +47,8 @@ in {
 
       extraPackages = with pkgs; [
         intel-media-driver
-        intel-vaapi-driver
-        vaapiVdpau
-        libvdpau-va-gl
+        intel-compute-runtime-legacy1
+        intel-media-sdk
       ];
     };
 
@@ -60,7 +57,7 @@ in {
         noto-fonts
         noto-fonts-cjk-sans
         noto-fonts-emoji
-        jetbrains-mono
+        roboto-mono
         rubik
         nerd-fonts.symbols-only
       ];

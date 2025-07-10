@@ -8,7 +8,7 @@ in {
 
     xdg.desktopEntries."openutau" = {
       name = "OpenUtau";
-      exec = "${pkgs.openutau}/bin/OpenUtau";
+      exec = "${lib.getExe pkgs.openutau}";
       categories = [ "AudioVideo" "Audio" "Midi" ];
     };
   };

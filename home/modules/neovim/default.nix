@@ -6,35 +6,36 @@
   programs.nixvim = {
     defaultEditor = true;
 
-    colorschemes.base16 = {
-      enable = true;
-      colorscheme = {
-        inherit (config.scheme.withHashtag)
-          base00 base01 base02 base03 base04 base05 base06 base07
-          base08 base09 base0A base0B base0C base0D base0E base0F;
-      };
-    };
-
     clipboard = {
       register = "unnamedplus";
       providers.wl-copy.enable = true;
     };
 
     opts = {
-      hlsearch = false;
+      undofile = true;
+      mouse = "a";
+      breakindent = true;
+      cursorline = true;
+      linebreak = true;
       number = true;
       relativenumber = true;
-      mouse = "a";
-      undofile = true;
+      splitbelow = true;
+      splitright = true;
+      wrap = false;
+      signcolumn = "yes";
+      fillchars = "eob: ";
       ignorecase = true;
       smartcase = true;
-      cursorline = true;
       smartindent = true;
       expandtab = true;
       shiftwidth = 2;
       tabstop = 2;
-      wrap = false;
-      showmode = !config.programs.nixvim.plugins.lualine.enable;
+      confirm = true;
+      scrolloff = 4;
+      smoothscroll = true;
+      timeoutlen = 300;
+      updatetime = 200;
+      cmdheight = 0;
     };
 
     globals = {
@@ -43,26 +44,23 @@
     };
 
     keymaps = [
-      # Move lines
-      { mode = "n"; key = "<A-j>"; action = "<cmd>m .+1<cr>=="; }
-      { mode = "n"; key = "<A-k>"; action = "<cmd>m .-2<cr>=="; }
-      { mode = "i"; key = "<A-j>"; action = "<esc><cmd>m .+1<cr>==gi"; }
-      { mode = "i"; key = "<A-k>"; action = "<esc><cmd>m .-2<cr>==gi"; }
-      { mode = "v"; key = "<A-j>"; action = ":m '>+1<cr>gv=gv"; }
-      { mode = "v"; key = "<A-k>"; action = ":m '>-2<cr>gv=gv"; }
+      # Clear highlights
+      { mode = "n"; key = "<Esc>"; action = "<cmd>nohlsearch<CR>"; }
+
+      # Better j/k
+      { mode = ["n" "x"]; key = "j"; action = "v:count == 0 ? 'gj' : 'j'"; options.expr = true; }
+      { mode = ["n" "x"]; key = "k"; action = "v:count == 0 ? 'gk' : 'k'"; options.expr = true; }
 
       # Navigate buffers
       { mode = "n"; key = "<S-h>"; action = "<cmd>bprevious<cr>"; }
       { mode = "n"; key = "<S-l>"; action = "<cmd>bnext<cr>"; }
-      { mode = "n"; key = "[b"; action = "<cmd>bprevious<cr>"; }
-      { mode = "n"; key = "]b"; action = "<cmd>bnext<cr>"; }
+      { mode = "n"; key = "<leader>bd"; action = "<cmd>bdelete<cr>"; }
 
       # Navigate windows
       { mode = "n"; key = "<C-h>"; action = "<C-w>h"; options.remap = true; }
       { mode = "n"; key = "<C-j>"; action = "<C-w>j"; options.remap = true; }
       { mode = "n"; key = "<C-k>"; action = "<C-w>k"; options.remap = true; }
       { mode = "n"; key = "<C-l>"; action = "<C-w>l"; options.remap = true; }
-      { mode = "n"; key = "<leader>ww"; action = "<C-w>p"; options.remap = true; }
 
       # Create/delete windows
       { mode = "n"; key = "<leader>wd"; action = "<C-w>c"; options.remap = true; }
@@ -71,17 +69,11 @@
     ];
 
     plugins = {
-      lualine.enable = true;
-      telescope.enable = true;
-      indent-blankline.enable = true;
+      lz-n.enable = true;
       treesitter.enable = true;
-      ts-context-commentstring.enable = true;
-      ts-autotag.enable = true;
-      lsp.enable = true;
-      cmp.enable = true;
-      comment.enable = true;
-      illuminate.enable = true;
-      web-devicons.enable = true;
+      lspconfig.enable = true;
+      blink-cmp.enable = true;
+      mini.enable = true;
     };
   };
 

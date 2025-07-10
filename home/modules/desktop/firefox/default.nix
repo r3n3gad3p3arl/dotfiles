@@ -7,44 +7,91 @@
     };
 
     profiles.default = {
-      bookmarks = [
-        { name = "Home Manager Manual"; url = "https://nix-community.github.io/home-manager/options.xhtml"; }
-        { name = "FMHY"; url = "https://fmhy.net"; }
-        { name = "myLoneStar Login"; url = "https://my.lonestar.edu"; }
-      ];
+      bookmarks = {
+        force = true;
 
-      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-        ublock-origin
-        tridactyl
-        sponsorblock
-      ];
+        settings = [
+          {
+            name = "Home Manager Manual";
+            url = "https://nix-community.github.io/home-manager/options.xhtml";
+          }
+          {
+            name = "FMHY";
+            url = "https://fmhy.net";
+          }
+        ];
+      };
+
+      extensions = {
+        force = true;
+
+        packages = with pkgs.nur.repos.rycee.firefox-addons; [
+          ublock-origin
+          tridactyl
+          sponsorblock
+        ];
+      };
 
       search = {
-        default = "SearXNG";
+        default = "searxng";
         force = true;
 
         engines = {
-          "SearXNG" = {
-            urls = [{ template = "https://searx.neocities.org/?q={searchTerms}"; }];
+          searxng = {
+            name = "SearXNG";
+            urls = [{
+              template = "https://searx.tiekoetter.com/search";
+              params = [
+                { name = "q"; value = "{searchTerms}"; }
+                { name = "language"; value = "en"; }
+                { name = "time_range"; value = ""; }
+                { name = "safesearch"; value = "0"; }
+                { name = "categories"; value = "general"; }
+              ];
+            }];
             definedAliases = [ "@searx" "@sx" ];
           };
 
-          "NixOS Packages" = {
-            urls = [{ template = "https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={searchTerms}"; }];
+          nixpkgs = {
+            name = "NixOS Packages";
+            urls = [{
+              template = "https://search.nixos.org/packages";
+              params = [
+                { name = "channel"; value = "unstable"; }
+                { name = "from"; value = "0"; }
+                { name = "size"; value = "50"; }
+                { name = "sort"; value = "relevance"; }
+                { name = "type"; value = "packages"; }
+                { name = "query"; value = "{searchTerms}"; }
+              ];
+            }];
             definedAliases = [ "@nixpkgs" "@np" ];
           };
 
-          "NixOS Options" = {
-            urls = [{ template = "https://search.nixos.org/options?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={searchTerms}"; }];
+          nixopts = {
+            name = "NixOS Options";
+            urls = [{
+              template = "https://search.nixos.org/options";
+              params = [
+                { name = "channel"; value = "unstable"; }
+                { name = "from"; value = "0"; }
+                { name = "size"; value = "50"; }
+                { name = "sort"; value = "relevance"; }
+                { name = "type"; value = "packages"; }
+                { name = "query"; value = "{searchTerms}"; }
+              ];
+            }];
             definedAliases = [ "@nixopts" "@no" ];
           };
 
-          "NixOS Wiki" = {
-            urls = [{ template = "https://nixos.wiki/index.php?search={searchTerms}"; }];
+          nixwiki = {
+            name = "NixOS Wiki";
+            urls = [{ template = "https://wiki.nixos.org/w/index.php?search={searchTerms}"; }];
             definedAliases = [ "@nixwiki" "@nw" ];
           };
 
-          "YouTube" = {
+          youtube = {
+            name = "YouTube";
             urls = [{ template = "https://www.youtube.com/results?search_query={searchTerms}"; }];
             definedAliases = [ "@youtube" "@yt" ];
           };

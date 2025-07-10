@@ -53,7 +53,7 @@ export default function AppLauncher() {
         onChanged={self => text.set(self.text)}
         onActivate={onEnter}
       />
-      <box spacing={8} vertical>
+      <box spacing={8} className="listbox" vertical>
         {list.as(list => list.map((app: Apps.Application) => (
           <AppButton app={app} />
         )))}

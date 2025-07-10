@@ -1,0 +1,56 @@
+@use "base" as *;
+
+window.applauncher {
+  >box {
+    background-color: $background;
+    border-radius: $box-radius;
+    padding: $p-large;
+    min-width: 500px;
+  }
+
+  entry {
+    background-color: $background-light;
+    color: $foreground;
+    caret-color: $foreground-light;
+    padding: $p-medium $p-large;
+    margin-bottom: $p-large;
+    font-size: $t-large;
+    border-radius: $box-radius;
+  }
+
+  .app-button {
+    background-color: transparent;
+    color: $foreground-light;
+    border-radius: $box-radius;
+    padding: $p-medium;
+
+    &:hover, &:focus {
+      color: $foreground;
+      background-color: $background-light;
+    }
+
+    icon {
+      font-size: 2rem;
+      margin-right: $p-medium;
+    }
+
+    label {
+      font-weight: normal;
+    }
+  }
+
+  .not-found {
+    padding: $p-medium;
+    color: $foreground-light;
+
+    icon {
+      font-size: 6rem;
+      margin-bottom: $p-medium;
+    }
+
+    label {
+      font-size: $t-large;
+      margin-bottom: $p-large;
+    }
+  }
+}

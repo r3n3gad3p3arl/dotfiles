@@ -1,0 +1,20 @@
+@use "base" as *;
+
+window.OSD {
+  box.OSD {
+    background-color: $background;
+    padding: $p-medium;
+    margin-bottom: $box-margin;
+    border-radius: $box-radius;
+  }
+
+  icon {
+    font-size: 2rem;
+    margin-right: $p-medium;
+  }
+
+  label {
+    font-size: $t-large;
+    margin-left: $p-medium;
+  }
+}

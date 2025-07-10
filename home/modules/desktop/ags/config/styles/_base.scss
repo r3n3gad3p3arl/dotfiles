@@ -1,0 +1,57 @@
+@import "colors.css";
+
+$base00: #{"@base00"};
+$base01: #{"@base01"};
+$base02: #{"@base02"};
+$base03: #{"@base03"};
+$base04: #{"@base04"};
+$base05: #{"@base05"};
+$base06: #{"@base06"};
+$base07: #{"@base07"};
+$base08: #{"@base08"};
+$base09: #{"@base09"};
+$base0A: #{"@base0A"};
+$base0B: #{"@base0B"};
+$base0C: #{"@base0C"};
+$base0D: #{"@base0D"};
+$base0E: #{"@base0E"};
+$base0F: #{"@base0F"};
+
+$background: $base01;
+$background-light: $base02;
+$foreground: $base05;
+$foreground-light: $base03;
+$accent: $base0D;
+$error: $base08;
+$success: $base0B;
+
+$box-margin: 10px;
+$box-radius: 12px;
+$bar-radius: 999px;
+
+$p-small: 0.4rem;
+$p-medium: 0.8rem;
+$p-large: 1.2rem;
+$p-xlarge: 1.6rem;
+
+$t-small: 0.8rem;
+$t-medium: 1rem;
+$t-large: 1.2rem;
+$t-xlarge: 1.4rem;
+
+* {
+  all: unset;
+}
+
+levelbar {
+  trough {
+    background-color: $background-light;
+    min-height: 2rem;
+    border-radius: $bar-radius;
+  }
+
+  block:not(.empty) {
+    background-color: $accent;
+    border-radius: $bar-radius;
+  }
+}

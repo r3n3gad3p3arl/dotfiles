@@ -1,20 +1,18 @@
-{ pkgs, ... }: {
-  imports = [ ./hardware.nix ];
+{ pkgs, outputs, ... }: {
+  imports = [
+    ./hardware.nix
+    outputs.nixosModules.distrobox
+  ];
 
   networking.hostName = "dell-laptop";
 
-  services = {
-    xserver.videoDrivers = [ "nvidia" ];
-    printing.enable = true;
-  };
+  virtualisation.distrobox.enable = true;
 
-  hardware = {
-    nvidia.prime = {
-      nvidiaBusId = "PCI:60:0:0";
-      intelBusId = "PCI:0:2:0";
-    };
+  services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
 
-    opentabletdriver.enable = true;
+  hardware.nvidia.prime = {
+    nvidiaBusId = "PCI:60:0:0";
+    intelBusId = "PCI:0:2:0";
   };
 
   boot = {
@@ -24,6 +22,11 @@
     };
 
     lanzaboote.enable = true;
+
+    kernelParams = [
+      "i915.enable_guc=2"
+      "zswap.enabled=1"
+    ];
   };
 
   security.tpm2.enable = true;
@@ -35,12 +38,6 @@
 
   environment.systemPackages = with pkgs; [
     unzrip
-    unrar
-    _7zz
     bc
-    ripgrep
-    fd
-    ffmpeg
-    bchunk
   ];
 }

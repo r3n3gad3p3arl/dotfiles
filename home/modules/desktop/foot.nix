@@ -1,29 +1,28 @@
-{ lib, config, pkgs, ... }: {
+{ lib, config, pkgs, colors, ... }: {
   home.packages = lib.mkIf config.programs.foot.enable [ pkgs.libsixel ];
+  systemd.user.services.foot.Service.Slice = lib.mkIf config.programs.foot.server.enable "app-graphical.slice";
 
   programs.foot = {
     server.enable = true;
 
     settings = {
       main = {
-        font = "JetBrains Mono:size=11,Symbols Nerd Font:size=11";
+        font = "Roboto Mono:size=11,Symbols Nerd Font:size=11";
         pad = "8x8";
       };
 
-      colors =
-      let colors = config.scheme;
-      in {
+      colors = {
         background = colors.base00;
         foreground = colors.base05;
 
-        regular0 = colors.base00;
+        regular0 = colors.base01;
         regular1 = colors.base08;
         regular2 = colors.base0B;
         regular3 = colors.base0A;
         regular4 = colors.base0D;
         regular5 = colors.base0E;
         regular6 = colors.base0C;
-        regular7 = colors.base05;
+        regular7 = colors.base06;
 
         bright0 = colors.base02;
         bright1 = colors.base08;
@@ -43,4 +42,9 @@
       };
     };
   };
+
+  xdg.configFile."xdg-terminals.list".text = ''
+    footclient.desktop
+    foot.desktop
+  '';
 }

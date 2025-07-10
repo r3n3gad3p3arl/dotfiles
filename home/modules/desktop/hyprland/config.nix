@@ -1,10 +1,10 @@
-{ pkgs, config, ... }: {
+{ pkgs, config, colors, ... }: {
   wayland.windowManager.hyprland.settings =
   let
     cursor = config.home.pointerCursor;
-    colors = config.scheme;
     inherit (pkgs.meowPkgs) bin;
     inherit (config.xdg.userDirs) pictures;
+
     workspaces = builtins.concatLists (builtins.genList (x:
       let ws = toString (x + 1);
       in [
@@ -21,39 +21,48 @@
 
     exec-once = [
       "hyprctl setcursor ${cursor.name} ${toString cursor.size}"
-      "ags run"
     ];
 
     general = {
       gaps_in = 0;
       gaps_out = 0;
-      border_size = 1;
       "col.active_border" = "rgb(${colors.base05})";
       "col.inactive_border" = "rgb(${colors.base01})";
-      layout = "dwindle";
     };
 
-    decoration = {
-      rounding = 0;
-      shadow.enabled = false;
+    decoration.shadow.enabled = false;
+    input.numlock_by_default = true;
+    dwindle.preserve_split = true;
+
+    misc = {
+      enable_swallow = true;
+      swallow_regex = "(footclient|foot)";
     };
 
     animations = {
-      animation = "global,1,4,default";
-    };
+      bezier = [
+        "easeOutQuint,0.22,1,0.36,1"
+        "linear,0,0,1,1"
+      ];
 
+      animation = [
+        "windows,1,4.5,easeOutQuint,popin 90%"
+        "workspaces,1,4.5,easeOutQuint,slide"
+        "fade,1,1.5,linear"
+      ];
+    };
+    
     "$mod" = "SUPER";
 
     bind = [
-      "$mod,Return,exec,footclient"
-      "$mod,R,exec,ags toggle applauncher"
-      "$mod,B,exec,firefox"
-      "$mod,Space,exec,keepassxc"
-      ",XF86Calculator,exec,footclient bc -l"
-      "$mod,Escape,exec,hyprlock"
+      "$mod,Return,exec,uwsm app -T"
+      "$mod,R,global,quickshell:launcherToggle"
+      "$mod,B,exec,uwsm app -- firefox.desktop"
+      "$mod,Space,exec,uwsm app -- keepassxc"
+      ",XF86Calculator,exec,uwsm app -T -- bc -l"
+      "$mod,Escape,exec,uwsm app -- hyprlock"
 
       "$mod SHIFT,C,killactive,"
-      "$mod SHIFT,Q,exit,"
       "$mod,F,togglefloating,"
       "$mod SHIFT,F,fullscreen,0"
 
@@ -67,7 +76,7 @@
       "$mod SHIFT,K,movewindow,u"
       "$mod SHIFT,J,movewindow,d"
 
-      "$mod,I,exec,ags toggle infobox"
+      "$mod,I,global,quickshell:infoBoxToggle"
       "$mod,M,exec,${bin.music} open_youtube"
       "$mod SHIFT,M,exec,${bin.music} play_shuffle"
 
@@ -76,7 +85,7 @@
     ] ++ workspaces;
 
     bindl = [
-      ",XF86AudioMute,exec,${bin.volume} toggle_volume_mute"
+      ",XF86AudioMute,exec,wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
       ",XF86AudioPlay,exec,playerctl play-pause"
       "$mod,period,exec,playerctl next"
       "$mod,comma,exec,playerctl previous"
@@ -84,11 +93,11 @@
     ];
 
     bindle = [
-      ",XF86AudioRaiseVolume,exec,${bin.volume} raise_volume"
-      ",XF86AudioLowerVolume,exec,${bin.volume} lower_volume"
+      ",XF86AudioRaiseVolume,exec,wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 2%+"
+      ",XF86AudioLowerVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-"
 
-      ",XF86MonBrightnessUp,exec,${bin.brightness} raise_brightness"
-      ",XF86MonBrightnessDown,exec,${bin.brightness} lower_brightness"
+      ",XF86MonBrightnessUp,exec,brightnessctl -e4 -n2 set 2%+"
+      ",XF86MonBrightnessDown,exec,brightnessctl -e4 -n2 set 2%-"
     ];
 
     bindm = [
@@ -96,11 +105,22 @@
       "$mod,mouse:273,resizewindow"
     ];
 
-    windowrulev2 = [
+    windowrule = [
       "float,class:(firefox),title:(Picture-in-Picture)"
-      "pin,class:(firefox),title:(Picture-in-Picture)"
-      "size 30%,class:(firefox),title:(Picture-in-Picture)"
+      "keepaspectratio,class:(firefox),title:(Picture-in-Picture)"
       "move 100%-w-10,class:(firefox),title:(Picture-in-Picture)"
+      "size 25%,class:(firefox),title:(Picture-in-Picture)"
+      "pin,class:(firefox),title:(Picture-in-Picture)"
+
+      "float,title:(Save As)"
+      "size 50%,title:(Save As)"
+      "float,title:(Save Image)"
+      "size 50%,title:(Save Image)"
+      "float,title:(Open File)"
+      "size 50%,title:(Open File)"
+      "float,title:(Enter name of file to save to…)"
+      "size 50%,title:(Enter name of file to save to…)"
+
       "noborder,onworkspace:w[t1],floating:0"
     ];
   };

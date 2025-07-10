@@ -20,6 +20,6 @@ in {
       podman.enable = cfg.backend == "podman";
     };
 
-    environment.systemPackages = with pkgs; [ distrobox ];
+    environment.systemPackages = [ pkgs.distrobox ];
   };
 }

@@ -1,8 +1,8 @@
-{
+{ lib, config, ... }: {
   services.hyprpaper.settings =
   let
     wallpapers = ../../wallpapers;
-    current = "${wallpapers}/xmen97.jpeg";
+    current = "${wallpapers}/franziska.png";
   in {
     preload = [
       current
@@ -12,4 +12,6 @@
       ",${current}"
     ];
   };
+
+  systemd.user.services.hyprpaper.Service.Slice = lib.mkIf config.services.hyprpaper.enable "background-graphical.slice";
 }

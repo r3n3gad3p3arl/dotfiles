@@ -1,0 +1,32 @@
+@use "base" as *;
+
+window.infobox {
+  >box {
+    background-color: $background;
+    color: $foreground;
+    margin: $box-margin;
+  }
+
+  .clock {
+    padding: $p-medium $p-large;
+
+    .time {
+      font-size: $t-xlarge;
+    }
+
+    .date {
+      font-size: $t-small;
+      color: $foreground-light;
+    }
+  }
+
+  .battery-level {
+    block.low {
+      background-color: $error;
+    }
+
+    block.full {
+      background-color: $success;
+    }
+  }
+}

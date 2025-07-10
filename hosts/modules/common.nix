@@ -10,9 +10,13 @@
     ];
   };
 
-  nix.settings = {
-    experimental-features = "nix-command flakes";
-    auto-optimise-store = true;
+  nix = {
+    settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+      auto-optimise-store = true;
+    };
+
+    package = pkgs.lixPackageSets.latest.lix;
   };
 
   time.timeZone = "America/Chicago";
@@ -35,6 +39,7 @@
       initialPassword = "nixos";
       extraGroups = [ "wheel" ]
         ++ lib.optionals config.virtualisation.libvirtd.enable [ "libvirtd" ]
+        ++ lib.optionals config.virtualisation.podman.enable [ "podman" ]
         ++ lib.optionals config.networking.networkmanager.enable [ "networkmanager" ]
         ++ lib.optionals config.security.tpm2.enable [ "tss" ];
     };
@@ -43,7 +48,7 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = { inherit inputs; colors = import ../../home/colors.nix; };
     users.meow = import ../../home;
   };
 
@@ -53,9 +58,6 @@
     fstrim.enable = true;
     fwupd.enable = true;
   };
-
-  # slows down boot time
-  systemd.services."NetworkManager-wait-online".enable = lib.mkDefault false;
 
   boot.loader = {
     systemd-boot = {

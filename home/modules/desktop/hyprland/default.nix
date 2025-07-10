@@ -1,11 +1,9 @@
-{ lib, config, pkgs, inputs, ... }:
+{ lib, config, pkgs, osConfig, ... }:
 let
   hyprland = config.wayland.windowManager.hyprland;
   inherit (lib) meow mkIf;
 in {
-  imports = [
-    inputs.ags.homeManagerModules.default
-  ] ++ meow.mapModules ./.;
+  imports = meow.mapModules ./.;
 
   home = mkIf hyprland.enable {
     pointerCursor = {
@@ -13,24 +11,21 @@ in {
       name = "capitaine-cursors-white";
       size = 24;
       gtk.enable = config.gtk.enable;
-      x11.enable = true;
     };
 
     packages = with pkgs; [
       playerctl
       brightnessctl
       xdg-utils
-      xdg-terminal-exec
-      pcmanfm
+      pcmanfm-qt
       grim
       slurp
-      jq
       libnotify
     ];
   };
 
   programs = mkIf hyprland.enable {
-    ags.enable = true;
+    quickshell.enable = true;
     hyprlock.enable = true;
   };
 
@@ -38,4 +33,6 @@ in {
     gammastep.enable = true;
     hyprpaper.enable = true;
   };
+
+  wayland.windowManager.hyprland.systemd.enable = !osConfig.programs.hyprland.withUWSM;
 }

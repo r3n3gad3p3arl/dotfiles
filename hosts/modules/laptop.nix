@@ -8,10 +8,12 @@ in {
   config = mkIf cfg.enable {
     system.desktop.enable = mkDefault true;
     networking.networkmanager.enable = mkDefault true;
+    systemd.sleep.extraConfig = "HibernateDelaySec=1h";
 
     services = {
-      logind.lidSwitch = mkDefault "hibernate";
+      logind.lidSwitch = mkDefault "sleep";
       upower.enable = mkDefault true;
+      tlp.enable = mkDefault true;
     };
   };
 }

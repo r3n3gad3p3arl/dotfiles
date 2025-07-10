@@ -15,8 +15,7 @@
     eza.enable = true;
     git.enable = true;
     starship.enable = true;
+    ripgrep.enable = true;
     zsh.enable = osConfig.programs.zsh.enable;
   };
-
-  systemd.user.startServices = "sd-switch";
 }
