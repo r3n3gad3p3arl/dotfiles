@@ -1,5 +1,4 @@
-import "../services/"
-import Quickshell
+import qs.services
 import Quickshell.Widgets
 import QtQuick
 import QtQuick.Layouts
@@ -25,7 +24,6 @@ Button {
   property color backgroundColor: Style.colors.base0D
   property color backgroundFocusedColor: backgroundColor
   property color textColor: Style.colors.base01
-  property real radius: Style.rounding.full
   property bool outlineOnFocus: true
 
   background: Item {
@@ -35,7 +33,6 @@ Button {
       implicitHeight: parent.height
       implicitWidth: parent.width
       color: root.activeFocus ? backgroundFocusedColor : backgroundColor
-      radius: root.radius
     }
 
     Loader {
@@ -46,7 +43,6 @@ Button {
         implicitHeight: background.height + 10
         implicitWidth: background.width + 10
         color: "transparent"
-        radius: root.radius
 
         border {
           color: backgroundFocusedColor

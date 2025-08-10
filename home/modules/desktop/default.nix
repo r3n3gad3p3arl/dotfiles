@@ -14,11 +14,8 @@ in {
     home = {
       packages = with pkgs; [
         # media
-        gimp
+        gimp3
         prismlauncher
-        melonDS
-        dolphin-emu
-        kdePackages.kdenlive
         osu-lazer-bin
 
         # useful tools

@@ -26,11 +26,15 @@
     general = {
       gaps_in = 0;
       gaps_out = 0;
-      "col.active_border" = "rgb(${colors.base05})";
+      "col.active_border" = "rgb(${colors.base03})";
       "col.inactive_border" = "rgb(${colors.base01})";
     };
 
-    decoration.shadow.enabled = false;
+    decoration = {
+      shadow.enabled = false;
+      blur.enabled = false;
+    };
+
     input.numlock_by_default = true;
     dwindle.preserve_split = true;
 

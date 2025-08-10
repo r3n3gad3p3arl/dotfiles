@@ -1,18 +1,16 @@
-import "../services/"
-import Quickshell
+import qs.services
 import Quickshell.Widgets
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
 
-M3Button {
+StyledButton {
   id: root
   implicitHeight: 72
   width: parent.width
   backgroundColor: "transparent"
   backgroundFocusedColor: Style.colors.base02
   textColor: Style.colors.base05
-  radius: 0
   spacing: 16
   outlineOnFocus: false
 

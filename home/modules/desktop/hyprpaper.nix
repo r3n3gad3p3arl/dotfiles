@@ -2,7 +2,7 @@
   services.hyprpaper.settings =
   let
     wallpapers = ../../wallpapers;
-    current = "${wallpapers}/franziska.png";
+    current = "${wallpapers}/phoenixmaya.png";
   in {
     preload = [
       current

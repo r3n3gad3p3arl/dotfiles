@@ -8,7 +8,7 @@ import Quickshell.Io
 Singleton {
   id: root
 
-  readonly property string font: "Rubik"
+  readonly property string font: "Inter"
 
   readonly property QtObject fontSize: QtObject {
     property int small: 10

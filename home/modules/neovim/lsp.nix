@@ -53,6 +53,7 @@
         vtsls.enable = true;
         html.enable = true;
         cssls.enable = true;
+        qmlls.enable = true;
       };
     };
 

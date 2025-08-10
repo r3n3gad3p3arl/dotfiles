@@ -1,4 +1,4 @@
-{ lib, pkgs, config, ... }:
+{ lib, pkgs, config, inputs, ... }:
 let cfg = config.system.desktop;
 in {
   imports = lib.meow.mapModules ./.;
@@ -47,8 +47,9 @@ in {
 
       extraPackages = with pkgs; [
         intel-media-driver
-        intel-compute-runtime-legacy1
-        intel-media-sdk
+        intel-compute-runtime
+        vpl-gpu-rt
+        intel-ocl
       ];
     };
 
@@ -57,9 +58,6 @@ in {
         noto-fonts
         noto-fonts-cjk-sans
         noto-fonts-emoji
-        roboto-mono
-        rubik
-        nerd-fonts.symbols-only
       ];
 
       fontconfig.defaultFonts = {

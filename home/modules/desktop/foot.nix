@@ -7,7 +7,7 @@
 
     settings = {
       main = {
-        font = "Roboto Mono:size=11,Symbols Nerd Font:size=11";
+        font = "${builtins.elemAt config.fonts.fontconfig.defaultFonts.monospace 0}:size=11,Symbols Nerd Font:size=11";
         pad = "8x8";
       };
 

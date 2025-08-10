@@ -2,7 +2,6 @@ pragma Singleton
 
 import "../scripts/fuzzysort.js" as Fuzzy
 import Quickshell
-import Quickshell.Io
 
 Singleton {
   readonly property list<DesktopEntry> list: [...DesktopEntries.applications.values]

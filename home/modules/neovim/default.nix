@@ -1,6 +1,6 @@
 { lib, inputs, config, ... }: {
   imports = [
-    inputs.nixvim.homeManagerModules.nixvim
+    inputs.nixvim.homeModules.nixvim
   ] ++ lib.meow.mapModules ./.;
 
   programs.nixvim = {
@@ -35,7 +35,6 @@
       smoothscroll = true;
       timeoutlen = 300;
       updatetime = 200;
-      cmdheight = 0;
     };
 
     globals = {

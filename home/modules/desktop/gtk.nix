@@ -1,7 +1,7 @@
-{ pkgs, ... }: {
+{ pkgs, config, ... }: {
   gtk = {
     font = {
-      name = "Rubik";
+      name = builtins.elemAt config.fonts.fontconfig.defaultFonts.sansSerif 0;
       size = 11;
     };
 
@@ -14,5 +14,9 @@
       name = "Colloid-Dark";
       package = pkgs.colloid-icon-theme;
     };
+
+    gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
   };
+
+  dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
 }

@@ -1,4 +1,5 @@
-import "../services/"
+import qs.services
+import qs.modules.common
 import Quickshell
 import Quickshell.Hyprland
 import QtQuick
@@ -26,8 +27,9 @@ Scope {
 
       Rectangle {
         anchors.fill: parent
-        color: Style.colors.base01
-        radius: Style.rounding.large
+        color: Style.colors.base00
+        border.color: Style.colors.base02
+        border.width: 1
       }
 
       ColumnLayout {
@@ -38,7 +40,7 @@ Scope {
 
         ClockWidget {}
 
-        M3ProgressBar {
+        StyledProgressBar {
           visible: Battery.available
           value: Battery.percentage
 

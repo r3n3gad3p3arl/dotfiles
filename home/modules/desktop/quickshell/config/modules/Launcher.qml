@@ -1,11 +1,11 @@
-import "../services/"
+import qs.services
+import qs.modules.common
 import Quickshell
 import Quickshell.Hyprland
 import Quickshell.Widgets
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
-import QtQuick.Effects
 
 Scope {
   id: root
@@ -19,19 +19,21 @@ Scope {
 
     sourceComponent: PanelWindow {
       id: window
+      exclusionMode: ExclusionMode.Ignore
 
       anchors.top: true
       margins.top: 20
 
       implicitWidth: 440
-      implicitHeight: 72 * 5 + 56
+      implicitHeight: 72 * 5 + 57
       color: "transparent"
 
       Rectangle {
         id: rect
         anchors.fill: parent
-        color: Style.colors.base01
-        radius: Style.rounding.xlarge
+        color: Style.colors.base00
+        border.color: Style.colors.base02
+        border.width: 1
         layer.enabled: true
       }
 
@@ -39,15 +41,6 @@ Scope {
         anchors.fill: parent
         spacing: 0
         Keys.onEscapePressed: loader.active = false
-        layer.enabled: true
-        layer.smooth: true
-
-        layer.effect: MultiEffect {
-          maskEnabled: true
-          maskSource: rect
-          maskThresholdMin: 0.5
-          maskSpreadAtMin: 1
-        }
 
         RowLayout {
           Layout.margins: 14
@@ -59,7 +52,7 @@ Scope {
             source: Quickshell.iconPath("search-symbolic")
           }
 
-          M3TextField {
+          StyledTextField {
             Layout.fillWidth: true
             KeyNavigation.down: list
             focus: true
@@ -76,7 +69,7 @@ Scope {
         Rectangle {
           Layout.fillWidth: true
           height: 1
-          color: Style.colors.base03
+          color: Style.colors.base02
         }
 
         ListView {
@@ -90,7 +83,7 @@ Scope {
             onValuesChanged: list.currentIndex = 0
           }
 
-          delegate: M3ListItem {
+          delegate: StyledListItem {
             required property DesktopEntry modelData
             width: list.width
 

@@ -6,6 +6,16 @@
 
   networking.hostName = "dell-laptop";
 
+  networking.firewall = {
+    allowedUDPPortRanges = [
+      { from = 30000; to = 49999; }
+    ];
+
+    allowedTCPPortRanges = [
+      { from = 30000; to = 49999; }
+    ];
+  };
+
   virtualisation.distrobox.enable = true;
 
   services.xserver.videoDrivers = [ "modesetting" "nvidia" ];

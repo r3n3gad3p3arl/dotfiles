@@ -1,4 +1,4 @@
-import "../services/"
+import qs.services
 import QtQuick
 import QtQuick.Controls
 
@@ -23,7 +23,6 @@ ProgressBar {
     Rectangle {
       width: root.visualPosition * parent.width
       height: parent.height
-      radius: Style.rounding.full
       color: activeColor
     }
 
@@ -31,7 +30,6 @@ ProgressBar {
       anchors.right: parent.right
       width: (1 - root.visualPosition) * parent.width - gap
       height: parent.height
-      radius: Style.rounding.full
       color: trackColor
     }
 
@@ -44,7 +42,6 @@ ProgressBar {
 
       width: gap
       height: gap
-      radius: Style.rounding.full
       color: activeColor
     }
   }

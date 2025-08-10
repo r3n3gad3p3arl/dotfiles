@@ -3,7 +3,7 @@
     syntaxHighlighting.enable = true;
     autocd = true;
     defaultKeymap = "viins";
-    dotDir = ".config/zsh";
+    dotDir = "${config.xdg.configHome}/zsh";
     history.path = "${config.xdg.stateHome}/zsh/history";
 
     dirHashes = {
@@ -37,6 +37,7 @@
       gcl = "git clone";
       gl = "git log --oneline";
       gr = "git remote -v";
+      gd = "git diff";
     };
   };
 }
