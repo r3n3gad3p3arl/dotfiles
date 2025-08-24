@@ -30,9 +30,9 @@ in {
       chromium = {
         enable = true;
 
-        package = pkgs.chromium.override {
-          enableWideVine = true;
-        };
+        # package = pkgs.chromium.override {
+        #   enableWideVine = true;
+        # };
       };
 
       foot.enable = true;

@@ -74,6 +74,8 @@
       blink-cmp.enable = true;
       mini.enable = true;
     };
+
+    filetype.extension.njk = "html";
   };
 
   home.sessionVariables = lib.mkIf config.programs.nixvim.enable {
