@@ -6,8 +6,8 @@
     };
 
     theme = {
-      name = "Colloid-Dark";
-      package = pkgs.colloid-gtk-theme;
+      name = "Breeze-Dark";
+      package = pkgs.kdePackages.breeze-gtk;
     };
 
     iconTheme = {

@@ -16,7 +16,7 @@ in {
     systemd.sleep.extraConfig = "HibernateDelaySec=1h";
 
     services = {
-      logind.lidSwitch = mkDefault "sleep";
+      logind.settings.Login.HandleLidSwitch = mkDefault "sleep";
       upower.enable = mkDefault true;
       power-profiles-daemon.enable = mkDefault true;
       thermald.enable = mkDefault true;

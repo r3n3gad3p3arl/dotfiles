@@ -11,8 +11,7 @@ in {
       enable = hyprland.enable;
 
       styles = with pkgs; [
-        libsForQt5.qtstyleplugin-kvantum
-        qt6Packages.qtstyleplugin-kvantum
+        kdePackages.breeze
       ];
     };
 

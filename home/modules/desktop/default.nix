@@ -26,15 +26,7 @@ in {
 
     programs = {
       firefox.enable = true;
-
-      chromium = {
-        enable = true;
-
-        # package = pkgs.chromium.override {
-        #   enableWideVine = true;
-        # };
-      };
-
+      chromium.enable = true;
       foot.enable = true;
       yt-dlp.enable = true;
       mpv.enable = true;
@@ -46,7 +38,6 @@ in {
 
     xdg = {
       enable = true;
-
       userDirs = {
         enable = true;
         createDirectories = true;
