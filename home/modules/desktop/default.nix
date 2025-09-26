@@ -16,6 +16,7 @@ in {
         # media
         gimp3
         prismlauncher
+        mesen
         osu-lazer-bin
 
         # useful tools
