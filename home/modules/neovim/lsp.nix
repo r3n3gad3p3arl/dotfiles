@@ -39,7 +39,7 @@
         nixd = {
           enable = true;
 
-          settings = {
+          config.settings = {
             nixpkgs.expr = "import (builtins.getFlake \"/home/meow/.config/nixos\").inputs.nixpkgs { }";
 
             options = {
