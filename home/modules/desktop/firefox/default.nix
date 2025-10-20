@@ -19,6 +19,14 @@
             name = "FMHY";
             url = "https://fmhy.net";
           }
+          {
+            name = "LSC Login";
+            url = "https://my.lonestar.edu";
+          }
+          {
+            name = "YouTube";
+            url = "https://youtube.com";
+          }
         ];
       };
 
@@ -88,12 +96,6 @@
             name = "NixOS Wiki";
             urls = [{ template = "https://wiki.nixos.org/w/index.php?search={searchTerms}"; }];
             definedAliases = [ "@nixwiki" "@nw" ];
-          };
-
-          youtube = {
-            name = "YouTube";
-            urls = [{ template = "https://www.youtube.com/results?search_query={searchTerms}"; }];
-            definedAliases = [ "@youtube" "@yt" ];
           };
         };
       };

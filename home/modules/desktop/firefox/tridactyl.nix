@@ -23,7 +23,7 @@
         set searchurls.nixpkgs https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=%s
         set searchurls.nixopts https://search.nixos.org/options?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=%s
         set searchurls.nixwiki https://wiki.nixos.org/w/index.php?search=%s
-        set searchurls.youtube https://www.youtube.com/results?search_query=%s
+        set searchurls.duckduckgo https://duckduckgo.com/?q=%s&kbj=1&k1=-1&kak=-1&kax=-1&kaq=-1&kap=-1&kao=-1&kau=-1&kpsb=-1&kbg=-1&kbe=0
       '';
     };
 
