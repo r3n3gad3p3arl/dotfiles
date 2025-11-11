@@ -15,6 +15,7 @@ in {
       packages = with pkgs; [
         # media
         gimp3
+        kdePackages.kdenlive
         prismlauncher
         mesen
         osu-lazer-bin

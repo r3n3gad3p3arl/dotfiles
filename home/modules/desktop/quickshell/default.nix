@@ -1,8 +1,5 @@
-{ lib, config, colors, inputs, pkgs, ... }: {
-  programs.quickshell = {
-    package = inputs.quickshell.packages.${pkgs.system}.default;
-    systemd.enable = true;
-  };
+{ lib, config, colors, ... }: {
+  programs.quickshell.systemd.enable = true;
 
   systemd.user.services.quickshell.Service = {
     Slice = "app-graphical.slice";
