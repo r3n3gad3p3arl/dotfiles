@@ -2,7 +2,8 @@
 let
   cfg = config.system.laptop;
   inherit (lib) mkEnableOption mkIf mkDefault;
-in {
+in
+{
   options.system.laptop.enable = mkEnableOption "laptop configuration";
 
   config = mkIf cfg.enable {

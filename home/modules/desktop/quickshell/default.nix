@@ -1,4 +1,10 @@
-{ lib, config, colors, ... }: {
+{
+  lib,
+  config,
+  colors,
+  ...
+}:
+{
   programs.quickshell.systemd.enable = true;
 
   systemd.user.services.quickshell.Service = {
@@ -12,7 +18,6 @@
       recursive = true;
     };
 
-    "quickshell/colors.json".text = builtins.toJSON
-      (lib.mapAttrs (name: value: "#${value}") colors);
+    "quickshell/colors.json".text = builtins.toJSON (lib.mapAttrs (name: value: "#${value}") colors);
   };
 }

@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   services.swayidle = {
     timeouts = [
       {
@@ -13,8 +14,14 @@
         resumeCommand = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
       }
 
-      { timeout = 150; command = "${pkgs.swaylock}/bin/swaylock -fi $(${pkgs.meowPkgs.bin.wallpaper} get_random_wallpaper ${../../wallpapers})"; }
-      { timeout = 270; command = "${pkgs.systemd}/bin/systemctl suspend"; }
+      {
+        timeout = 150;
+        command = "${pkgs.swaylock}/bin/swaylock -fi $(${pkgs.meowPkgs.bin.wallpaper} get_random_wallpaper ${../../wallpapers})";
+      }
+      {
+        timeout = 270;
+        command = "${pkgs.systemd}/bin/systemctl suspend";
+      }
     ];
   };
 }

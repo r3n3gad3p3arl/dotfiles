@@ -1,4 +1,5 @@
-{ pkgs, config, ... }: {
+{ pkgs, config, ... }:
+{
   gtk = {
     font = {
       name = builtins.elemAt config.fonts.fontconfig.defaultFonts.sansSerif 0;

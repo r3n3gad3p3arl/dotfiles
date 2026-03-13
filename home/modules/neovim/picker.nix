@@ -13,10 +13,31 @@
     '';
 
     keymaps = [
-      { mode = "n"; key = "<leader><space>"; action.__raw = "function() MiniPick.builtin.files() end"; }
-      { mode = "n"; key = "<leader>/"; action.__raw = "function() MiniPick.builtin.grep_live() end"; }
-      { mode = "n"; key = "<leader>,"; action.__raw = "function() MiniPick.builtin.buffers() end"; }
-      { mode = "n"; key = "<leader>fh"; action.__raw = "function() MiniPick.builtin.help() end"; }
+      {
+        mode = "n";
+        key = "<leader><space>";
+        action = "<cmd>Pick files<cr>";
+      }
+      {
+        mode = "n";
+        key = "<leader>fF";
+        action.__raw = "function() MiniPick.builtin.files(nil, { source = { cwd = vim.lsp.get_client_by_id(1).root_dir } }) end";
+      }
+      {
+        mode = "n";
+        key = "<leader>/";
+        action = "<cmd>Pick grep_live<cr>";
+      }
+      {
+        mode = "n";
+        key = "<leader>,";
+        action = "<cmd>Pick buffers<cr>";
+      }
+      {
+        mode = "n";
+        key = "<leader>fh";
+        action = "<cmd>Pick help<cr>";
+      }
     ];
   };
 }

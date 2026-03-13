@@ -1,4 +1,5 @@
-{ config, colors, ... }: {
+{ config, colors, ... }:
+{
   xdg.configFile = {
     "tridactyl/tridactylrc" = {
       enable = config.programs.firefox.enable;
@@ -61,7 +62,7 @@
           --tridactyl-cmplt-fg: var(--base03);
           --tridactyl-cmplt-font-size: var(--tridactyl-small-font-size);
           --tridactyl-cmplt-border-top: none;
- 
+
           --tridactyl-header-border-bottom: none;
           --tridactyl-header-font-weight: normal;
 

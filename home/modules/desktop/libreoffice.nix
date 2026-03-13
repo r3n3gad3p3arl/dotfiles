@@ -1,6 +1,13 @@
-{ lib, config, pkgs, ... }:
-let cfg = config.programs.libreoffice;
-in {
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+let
+  cfg = config.programs.libreoffice;
+in
+{
   options.programs.libreoffice.enable = lib.mkEnableOption "LibreOffice";
 
   config = lib.mkIf cfg.enable {

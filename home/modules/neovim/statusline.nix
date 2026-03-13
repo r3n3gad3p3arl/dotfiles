@@ -1,49 +1,48 @@
-{ colors, ... }: {
+{ colors, ... }:
+{
   programs.nixvim = {
-    plugins.mini = {
-      modules.statusline.content.active.__raw = ''
-        function()
-          local MiniStatusline = require('mini.statusline')
-          local MiniIcons = require('mini.icons')
+    plugins.mini.modules.statusline.content.active.__raw = ''
+      function()
+        local MiniStatusline = require('mini.statusline')
+        local MiniIcons = require('mini.icons')
 
-          local filetype = function()
-            local ft = vim.bo.filetype
-            local icon = MiniIcons.get('filetype', ft)
+        local filetype = function()
+          local ft = vim.bo.filetype
+          local icon = MiniIcons.get('filetype', ft)
 
-            return string.format('%s %s', icon, ft)
-          end
-
-          local location = function(args)
-            if MiniStatusline.is_truncated(args.trunc_width) then
-              return ' %02l │ %02v '
-            end
-
-            return ' %02l|%02L │ %02v|%02{virtcol("$") - 1} '
-          end
-
-          local mode, mode_hl = MiniStatusline.section_mode({ trunc_width = 120 })
-          local git           = MiniStatusline.section_git({ trunc_width = 40 })
-          local diff          = MiniStatusline.section_diff({ trunc_width = 75, icon = ''' })
-          local diagnostics   = MiniStatusline.section_diagnostics({ trunc_width = 75, icon = ''',
-                                signs = {
-                                  ERROR = ' ', WARN = ' ', INFO = ' ', HINT = ' '
-                                } })
-          local filename      = MiniStatusline.section_filename({ trunc_width = 140 })
-          local location      = location({ trunc_width = 75 })
-          local search        = MiniStatusline.section_searchcount({ trunc_width = 75 })
-          
-          return MiniStatusline.combine_groups({
-            { hl = mode_hl,                  strings = { mode:upper() } },
-            { hl = 'MiniStatuslineDevinfo',  strings = { git, diff } },
-            '%<', -- Mark general truncate point
-            { hl = 'MiniStatuslineFilename', strings = { filename } },
-            '%=', -- End left alignment
-            { hl = 'MiniStatuslineDevinfo',  strings = { filetype(), diagnostics } },
-            { hl = mode_hl,                  strings = { search, location } },
-          })
+          return string.format('%s %s', icon, ft)
         end
-      '';
-    };
+
+        local location = function(args)
+          if MiniStatusline.is_truncated(args.trunc_width) then
+            return ' %02l │ %02v '
+          end
+
+          return ' %02l|%02L │ %02v|%02{virtcol("$") - 1} '
+        end
+
+        local mode, mode_hl = MiniStatusline.section_mode({ trunc_width = 120 })
+        local git           = MiniStatusline.section_git({ trunc_width = 40 })
+        local diff          = MiniStatusline.section_diff({ trunc_width = 75, icon = ''' })
+        local diagnostics   = MiniStatusline.section_diagnostics({ trunc_width = 75, icon = ''',
+                              signs = {
+                                ERROR = ' ', WARN = ' ', INFO = ' ', HINT = ' '
+                              } })
+        local filename      = MiniStatusline.section_filename({ trunc_width = 140 })
+        local location      = location({ trunc_width = 75 })
+        local search        = MiniStatusline.section_searchcount({ trunc_width = 75 })
+
+        return MiniStatusline.combine_groups({
+          { hl = mode_hl,                  strings = { mode:upper() } },
+          { hl = 'MiniStatuslineDevinfo',  strings = { git, diff } },
+          '%<', -- Mark general truncate point
+          { hl = 'MiniStatuslineFilename', strings = { filename } },
+          '%=', -- End left alignment
+          { hl = 'MiniStatuslineDevinfo',  strings = { filetype(), diagnostics } },
+          { hl = mode_hl,                  strings = { search, location } },
+        })
+      end
+    '';
 
     opts = {
       laststatus = 3;

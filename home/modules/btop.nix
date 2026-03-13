@@ -1,4 +1,5 @@
-{ colors, ... }: {
+{ colors, ... }:
+{
   programs.btop = {
     settings = {
       color_theme = "base16";

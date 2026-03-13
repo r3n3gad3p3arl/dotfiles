@@ -1,4 +1,10 @@
-{ lib, inputs, config, ... }: {
+{
+  lib,
+  inputs,
+  config,
+  ...
+}:
+{
   imports = [ inputs.lanzaboote.nixosModules.lanzaboote ];
 
   boot = lib.mkIf config.boot.lanzaboote.enable {

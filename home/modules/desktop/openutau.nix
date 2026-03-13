@@ -1,6 +1,13 @@
-{ lib, pkgs, config, ... }:
-let cfg = config.programs.openutau;
-in {
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
+let
+  cfg = config.programs.openutau;
+in
+{
   options.programs.openutau.enable = lib.mkEnableOption "OpenUtau";
 
   config = lib.mkIf cfg.enable {
@@ -9,7 +16,11 @@ in {
     xdg.desktopEntries."openutau" = {
       name = "OpenUtau";
       exec = "${lib.getExe pkgs.openutau}";
-      categories = [ "AudioVideo" "Audio" "Midi" ];
+      categories = [
+        "AudioVideo"
+        "Audio"
+        "Midi"
+      ];
     };
   };
 }

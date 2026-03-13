@@ -1,4 +1,10 @@
-{ lib, config, colors, ... }: {
+{
+  lib,
+  config,
+  colors,
+  ...
+}:
+{
   qt = {
     style.name = "breeze";
     platformTheme.name = "qtct";
@@ -6,7 +12,7 @@
 
   xdg = {
     configFile = {
-      "qt6ct/qt6ct.conf".text = lib.generators.toINI {} {
+      "qt6ct/qt6ct.conf".text = lib.generators.toINI { } {
         Appearance = {
           color_scheme_path = "${config.xdg.configHome}/qt6ct/style-colors.conf";
           custom_palette = true;

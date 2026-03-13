@@ -1,6 +1,14 @@
-{ lib, config, pkgs, colors, ... }: {
+{
+  lib,
+  config,
+  pkgs,
+  colors,
+  ...
+}:
+{
   home.packages = lib.mkIf config.programs.foot.enable [ pkgs.libsixel ];
-  systemd.user.services.foot.Service.Slice = lib.mkIf config.programs.foot.server.enable "app-graphical.slice";
+  systemd.user.services.foot.Service.Slice =
+    lib.mkIf config.programs.foot.server.enable "app-graphical.slice";
 
   programs.foot = {
     server.enable = true;

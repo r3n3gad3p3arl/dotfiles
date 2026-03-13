@@ -56,6 +56,11 @@
   padding-left: 2px !important;
 }
 
+/* no line before tabs */
+#tabbrowser-tabs{
+  border-inline-start: none !important;
+}
+
 /* no navbar background */
 #nav-bar {
   background: none !important;

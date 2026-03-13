@@ -1,6 +1,13 @@
-{ lib, pkgs, config, inputs, ... }:
-let cfg = config.system.desktop;
-in {
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
+let
+  cfg = config.system.desktop;
+in
+{
   imports = lib.meow.mapModules ./.;
 
   options.system.desktop.enable = lib.mkEnableOption "desktop configuration";
@@ -26,7 +33,7 @@ in {
 
         settings = rec {
           initial_session = {
-            command = "${lib.getExe pkgs.uwsm} start -- ${lib.getExe pkgs.hyprland}";
+            command = "${lib.getExe pkgs.uwsm} start -eD Hyprland hyprland-uwsm.desktop";
             user = "meow";
           };
 
@@ -39,6 +46,7 @@ in {
       hyprland.enable = true;
       steam.enable = true;
       gamemode.enable = true;
+      ydotool.enable = true;
     };
 
     hardware.graphics = {

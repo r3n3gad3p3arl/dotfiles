@@ -1,4 +1,5 @@
-{ pkgs, outputs, ... }: {
+{ pkgs, outputs, ... }:
+{
   imports = [
     ./hardware.nix
     outputs.nixosModules.distrobox
@@ -6,19 +7,15 @@
 
   networking.hostName = "dell-laptop";
 
-  networking.firewall = {
-    allowedUDPPortRanges = [
-      { from = 30000; to = 49999; }
-    ];
-
-    allowedTCPPortRanges = [
-      { from = 30000; to = 49999; }
-    ];
-  };
-
   virtualisation.distrobox.enable = true;
 
-  services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
+  services = {
+    xserver.videoDrivers = [
+      "modesetting"
+      "nvidia"
+    ];
+    printing.enable = true;
+  };
 
   hardware.nvidia.prime = {
     nvidiaBusId = "PCI:60:0:0";
@@ -27,11 +24,11 @@
 
   boot = {
     initrd.luks.devices."crypt_root" = {
-      device = "/dev/disk/by-uuid/65a72a1d-5da0-4026-a533-6f5d75cf2de1";
+      device = "/dev/disk/by-uuid/27b9dfa3-2048-42c9-865a-c800ed3f2094";
       preLVM = true;
     };
 
-    lanzaboote.enable = true;
+    #lanzaboote.enable = true;
 
     kernelParams = [
       "i915.enable_guc=2"
@@ -47,7 +44,8 @@
   };
 
   environment.systemPackages = with pkgs; [
-    unzrip
+    unzipNLS
     bc
+    nixfmt
   ];
 }

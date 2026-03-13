@@ -8,7 +8,7 @@
       url = "github:nix-community/nur";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-      
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -19,7 +19,7 @@
 
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        pre-commit-hooks-nix.follows = "";
+        pre-commit.follows = "";
       };
     };
 
@@ -29,23 +29,27 @@
     };
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: let
-    inherit (self) outputs;
-    lib = nixpkgs.lib.extend (final: prev: { meow = import ./lib; });
-    system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
-  in {
-    packages.${system} = import ./pkgs { inherit pkgs; };
-    overlays = import ./overlays { meowPkgs = outputs.packages.${system}; };
+  outputs =
+    { self, nixpkgs, ... }@inputs:
+    let
+      inherit (self) outputs;
+      lib = nixpkgs.lib.extend (final: prev: { meow = import ./lib; });
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+    in
+    {
+      packages.${system} = import ./pkgs { inherit pkgs lib; };
+      formatter.${system} = pkgs.nixfmt-tree;
+      overlays = import ./overlays { meowPkgs = outputs.packages.${system}; };
 
-    nixosModules = import ./modules/nixos;
-    homeManagerModules = import ./modules/home-manager;
+      nixosModules = import ./modules/nixos;
+      homeManagerModules = import ./modules/home-manager;
 
-    nixosConfigurations = {
-      dell-laptop = lib.nixosSystem {
-        specialArgs = { inherit lib inputs outputs; };
-        modules = [ ./hosts/dell-laptop ] ++ lib.meow.mapModules ./hosts/modules;
+      nixosConfigurations = {
+        dell-laptop = lib.nixosSystem {
+          specialArgs = { inherit lib inputs outputs; };
+          modules = [ ./hosts/dell-laptop ] ++ lib.meow.mapModules ./hosts/modules;
+        };
       };
     };
-  };
 }

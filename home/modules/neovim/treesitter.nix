@@ -1,7 +1,13 @@
-{ config, ... }: {
+{ config, ... }:
+{
   programs.nixvim.plugins = {
     treesitter = {
-      lazyLoad.settings.event = ["BufReadPost" "BufNewFile" "BufWritePre" "DeferredUIEnter"];
+      lazyLoad.settings.event = [
+        "BufReadPost"
+        "BufNewFile"
+        "BufWritePre"
+        "DeferredUIEnter"
+      ];
 
       settings = {
         indent.enable = true;
@@ -11,7 +17,11 @@
 
     ts-autotag = {
       enable = config.programs.nixvim.plugins.treesitter.enable;
-      lazyLoad.settings.event = ["BufReadPost" "BufNewFile" "BufWritePre"];
+      lazyLoad.settings.event = [
+        "BufReadPost"
+        "BufNewFile"
+        "BufWritePre"
+      ];
     };
   };
 }

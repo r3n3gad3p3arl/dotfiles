@@ -1,8 +1,15 @@
-{ lib, config, pkgs, osConfig, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  osConfig,
+  ...
+}:
 let
   hyprland = config.wayland.windowManager.hyprland;
   inherit (lib) meow mkIf;
-in {
+in
+{
   imports = meow.mapModules ./.;
 
   home = mkIf hyprland.enable {
@@ -30,7 +37,8 @@ in {
   };
 
   services = mkIf hyprland.enable {
-    gammastep.enable = true;
+    # gammastep.enable = true;
+    hyprsunset.enable = true;
     hyprpaper.enable = true;
   };
 

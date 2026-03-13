@@ -1,7 +1,14 @@
-{ lib, config, osConfig, pkgs, ... }:
+{
+  lib,
+  config,
+  osConfig,
+  pkgs,
+  ...
+}:
 let
   cfg = config.home.desktop;
-in {
+in
+{
   imports = lib.meow.mapModules ./.;
 
   options.home.desktop.enable = lib.mkEnableOption "desktop configuration";
@@ -18,11 +25,12 @@ in {
         kdePackages.kdenlive
         prismlauncher
         mesen
+        dolphin-emu
         osu-lazer-bin
 
         # useful tools
         wl-clipboard
-        wineWowPackages.waylandFull
+        wineWow64Packages.waylandFull
       ];
     };
 
@@ -32,14 +40,19 @@ in {
       foot.enable = true;
       yt-dlp.enable = true;
       mpv.enable = true;
-      keepassxc.enable = true;
       obsidian.enable = true;
+
+      keepassxc = {
+        enable = true;
+        autostart = true;
+      };
     };
 
     wayland.windowManager.hyprland.enable = osConfig.programs.hyprland.enable;
 
     xdg = {
       enable = true;
+      autostart.enable = true;
       userDirs = {
         enable = true;
         createDirectories = true;

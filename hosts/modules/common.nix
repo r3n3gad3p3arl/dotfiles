@@ -1,4 +1,12 @@
-{ lib, inputs, outputs, pkgs, config, ... }: {
+{
+  lib,
+  inputs,
+  outputs,
+  pkgs,
+  config,
+  ...
+}:
+{
   imports = [ inputs.home-manager.nixosModules.home-manager ];
 
   nixpkgs = {
@@ -12,7 +20,10 @@
 
   nix = {
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       auto-optimise-store = true;
     };
 
@@ -37,18 +48,24 @@
     users.meow = {
       isNormalUser = true;
       initialPassword = "nixos";
-      extraGroups = [ "wheel" ]
-        ++ lib.optionals config.virtualisation.libvirtd.enable [ "libvirtd" ]
-        ++ lib.optionals config.virtualisation.podman.enable [ "podman" ]
-        ++ lib.optionals config.networking.networkmanager.enable [ "networkmanager" ]
-        ++ lib.optionals config.security.tpm2.enable [ "tss" ];
+      extraGroups = [
+        "wheel"
+      ]
+      ++ lib.optionals config.virtualisation.libvirtd.enable [ "libvirtd" ]
+      ++ lib.optionals config.virtualisation.podman.enable [ "podman" ]
+      ++ lib.optionals config.networking.networkmanager.enable [ "networkmanager" ]
+      ++ lib.optionals config.security.tpm2.enable [ "tss" ]
+      ++ lib.optionals config.programs.ydotool.enable [ "ydotool" ];
     };
   };
 
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = { inherit inputs; colors = import ../../home/colors.nix; };
+    extraSpecialArgs = {
+      inherit inputs;
+      colors = import ../../home/colors.nix;
+    };
     users.meow = import ../../home;
   };
 

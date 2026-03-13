@@ -4,4 +4,5 @@ import Quickshell
 ShellRoot {
   InfoBox {}
   Launcher {}
+  Osd {}
 }

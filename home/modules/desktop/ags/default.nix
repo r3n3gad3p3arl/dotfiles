@@ -1,4 +1,11 @@
-{ config, pkgs, inputs, colors, ... }: {
+{
+  config,
+  pkgs,
+  inputs,
+  colors,
+  ...
+}:
+{
   xdg.configFile = {
     "ags" = {
       source = ./config;
@@ -7,7 +14,7 @@
 
     "ags/colors.css" = {
       # enable = config.programs.ags.enable;
-    
+
       text = ''
         @define-color base00 #${colors.base00};
         @define-color base01 #${colors.base01};

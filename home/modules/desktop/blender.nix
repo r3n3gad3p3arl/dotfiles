@@ -1,6 +1,14 @@
-{ pkgs, lib, config, osConfig, ... }:
-let cfg = config.programs.blender;
-in {
+{
+  pkgs,
+  lib,
+  config,
+  osConfig,
+  ...
+}:
+let
+  cfg = config.programs.blender;
+in
+{
   options.programs.blender.enable = lib.mkEnableOption "Blender";
 
   config = lib.mkIf cfg.enable {
@@ -14,7 +22,10 @@ in {
       icon = "blender";
       terminal = false;
       type = "Application";
-      categories = [ "Graphics" "3DGraphics" ];
+      categories = [
+        "Graphics"
+        "3DGraphics"
+      ];
       mimeType = [ "application/x-blender" ];
 
       settings = {

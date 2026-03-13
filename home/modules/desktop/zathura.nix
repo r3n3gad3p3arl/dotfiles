@@ -1,4 +1,5 @@
-{ colors, ... }: {
+{ colors, ... }:
+{
   programs.zathura.options = {
     default-bg = "#${colors.base00}";
     default-fg = "#${colors.base01}";

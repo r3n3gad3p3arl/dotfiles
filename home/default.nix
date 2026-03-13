@@ -1,4 +1,5 @@
-{ lib, osConfig, ... }: {
+{ lib, osConfig, ... }:
+{
   imports = lib.meow.mapModules ./modules;
 
   home = rec {

@@ -1,14 +1,17 @@
 { config, ... }: {
   programs.nixvim.plugins = {
     blink-cmp = {
-      lazyLoad.settings.event = ["InsertEnter" "CmdlineEnter"];
+      lazyLoad.settings.event = [
+        "InsertEnter"
+        "CmdlineEnter"
+      ];
 
       settings = {
         appearance.use_nvim_cmp_as_default = true;
 
         completion = {
           menu.draw = {
-            treesitter = ["lsp"];
+            treesitter = [ "lsp" ];
 
             components.kind_icon.text.__raw = ''
               function(ctx)
@@ -28,10 +31,23 @@
 
         keymap = {
           preset = "enter";
-          "<Tab>" = ["select_next" "snippet_forward" "fallback"];
-          "<S-Tab>" = ["select_prev" "snippet_backward" "fallback"];
-          "<Esc>" = ["cancel" "fallback"];
+          "<Tab>" = [
+            "select_next"
+            "snippet_forward"
+            "fallback"
+          ];
+          "<S-Tab>" = [
+            "select_prev"
+            "snippet_backward"
+            "fallback"
+          ];
+          "<Esc>" = [
+            "cancel"
+            "fallback"
+          ];
         };
+
+        cmdline.completion.list.selection.preselect = false;
       };
     };
 

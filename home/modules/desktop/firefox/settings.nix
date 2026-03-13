@@ -2,10 +2,11 @@
   "browser.aboutConfig.showWarning" = false;
 
   "browser.startup.page" = 0;
-  "browser.startup.homepage" = "about:blank";
+  "browser.startup.homepage" = "chrome://browser/content/blanktab.html";
   "browser.newtabpage.enabled" = false;
   "browser.newtabpage.activity-stream.showSponsored" = false;
   "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
+  "browser.newtabpage.activity-stream.showSponsoredCheckboxes" = false;
   "browser.newtabpage.activity-stream.default.sites" = "";
 
   "geo.provider.use_geoclue" = false;
@@ -13,7 +14,6 @@
   "extensions.getAddons.showPane" = false;
   "extensions.htmlaboutaddons.recommendations.enabled" = false;
   "browser.discovery.enabled" = false;
-  "browser.shopping.experience2023.enabled" = false;
   "browser.newtabpage.activity-stream.feeds.telemetry" = false;
   "browser.newtabpage.activity-stream.telemetry" = false;
   "app.shield.optoutstudies.enabled" = false;
@@ -48,10 +48,11 @@
   "browser.urlbar.suggest.searches" = false;
   "browser.urlbar.trending.featureGate" = false;
   "browser.urlbar.addons.featureGate" = false;
+  "browser.urlbar.amp.featureGate" = false;
   "browser.urlbar.fakespot.featureGate" = false;
   "browser.urlbar.mdn.featureGate" = false;
-  "browser.urlbar.pocket.featureGate" = false;
   "browser.urlbar.weather.featureGate" = false;
+  "browser.urlbar.wikipedia.featureGate" = false;
   "browser.urlbar.yelp.featureGate" = false;
   "browser.formfill.enable" = false;
   "browser.search.separatePrivateDefault" = true;
@@ -99,6 +100,7 @@
   "browser.tabs.searchclipboardfor.middleclick" = false;
   "browser.contentanalysis.enabled" = false;
   "browser.contentanalysis.default_result" = 0;
+  "security.csp.reporting.enabled" = false;
   "browser.download.useDownloadDir" = false;
   "browser.download.alwaysOpenPanel" = false;
   "browser.download.manager.addToRecentDocs" = false;
@@ -121,7 +123,7 @@
   "privacy.clearSiteData.browsingHistoryAndDownloads" = true;
   "privacy.clearSiteData.formdata" = true;
   "privacy.clearHistory.cache" = true;
-  "privacy.clearHistory.cookiesAndStorage" = true;
+  "privacy.clearHistory.cookiesAndStorage" = false;
   "privacy.clearHistory.historyFormDataAndDownloads" = true;
   "privacy.clearHistory.browsingHistoryAndDownloads" = true;
   "privacy.clearHistory.formdata" = true;
@@ -131,7 +133,6 @@
   "privacy.window.maxInnerHeight" = 900;
   "privacy.resistFingerprinting.block_mozAddonManager" = true;
   "privacy.spoof_english" = 1;
-  "browser.display.use_system_colors" = false;
   "widget.non-native-theme.use-theme.accent" = false;
   "browser.link.open_newwindow" = 3;
   "browser.link.open_newwindow.restriction" = 0;
@@ -154,7 +155,7 @@
   "datareporting.healthreport.uploadEnabled" = false;
   "toolkit.telemetry.unified" = false;
   "toolkit.telemetry.enabled" = false;
-  "toolkit.telemetry.server" = false;
+  "toolkit.telemetry.server" = "data:,";
   "toolkit.telemetry.archive.enabled" = false;
   "toolkit.telemetry.newProfilePing.enabled" = false;
   "toolkit.telemetry.shutdownPingSender.enabled" = false;

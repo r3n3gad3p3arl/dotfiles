@@ -25,9 +25,12 @@
           lspBufAction = "declaration";
         }
         {
+          mode = [
+            "n"
+            "v"
+          ];
           key = "<leader>ca";
           lspBufAction = "code_action";
-          mode = ["n" "v"];
         }
         {
           key = "<leader>cr";
@@ -41,6 +44,7 @@
 
           config.settings = {
             nixpkgs.expr = "import (builtins.getFlake \"/home/meow/.config/nixos\").inputs.nixpkgs { }";
+            formatting.command = ["nixfmt"];
 
             options = {
               nixos.expr = "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.dell-laptop.options";
@@ -53,7 +57,7 @@
         vtsls.enable = true;
         html.enable = true;
         cssls.enable = true;
-        qmlls.enable = true;
+        jdtls.enable = true;
       };
     };
 
@@ -68,6 +72,9 @@
       };
     };
 
-    plugins.lspconfig.lazyLoad.settings.event = ["BufReadPost" "BufNewFile" "BufWritePre"];
+    plugins.lspconfig.lazyLoad.settings.event = [
+      "BufReadPre"
+      "BufNewFile"
+    ];
   };
 }
