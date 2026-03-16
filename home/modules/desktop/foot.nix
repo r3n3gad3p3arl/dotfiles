@@ -19,7 +19,7 @@
         pad = "8x8";
       };
 
-      colors = {
+      colors-dark = {
         background = colors.base00;
         foreground = colors.base05;
 
