@@ -31,8 +31,8 @@
     #lanzaboote.enable = true;
 
     kernelParams = [
-      "i915.enable_guc=2"
       "zswap.enabled=1"
+      "zswap.shrinker_enabled=1"
     ];
   };
 

@@ -40,6 +40,7 @@
         gaps_out = 0;
         "col.active_border" = "rgb(${colors.base03})";
         "col.inactive_border" = "rgb(${colors.base01})";
+        # layout = "scrolling";
       };
 
       decoration = {
@@ -64,6 +65,7 @@
         animation = [
           "windows,1,4.5,easeOutQuint,popin 90%"
           "workspaces,1,4.5,easeOutQuint,slide"
+          "specialWorkspace,1,4.5,easeOutQuint,slidevert"
           "fade,1,1.5,linear"
         ];
       };
@@ -71,13 +73,13 @@
       "$mod" = "SUPER";
 
       bind = [
+        # programs
         "$mod,Return,exec,uwsm app -T"
-        "$mod,R,global,quickshell:launcherToggle"
         "$mod,B,exec,uwsm app -- firefox.desktop"
-        "$mod,Space,exec,uwsm app -- keepassxc"
         ",XF86Calculator,exec,uwsm app -T -- bc -l"
         "$mod,Escape,exec,uwsm app -- hyprlock"
 
+        # basic keybinds
         "$mod SHIFT,C,killactive,"
         "$mod,F,togglefloating,"
         "$mod SHIFT,F,fullscreen,0"
@@ -92,12 +94,33 @@
         "$mod SHIFT,K,movewindow,u"
         "$mod SHIFT,J,movewindow,d"
 
+        "$mod,equal,workspace,r+1"
+        "$mod,minus,workspace,r-1"
+
+        "$mod SHIFT,equal,movetoworkspace,r+1"
+        "$mod SHIFT,minus,movetoworkspace,r-1"
+
         "$mod,0,togglespecialworkspace"
         "$mod SHIFT,0,movetoworkspace,special"
 
-        "$mod,I,global,quickshell:infoBoxToggle"
-        "$mod,M,exec,${bin.music} open_youtube"
-        "$mod SHIFT,M,exec,${bin.music} play_shuffle"
+        # scrolling
+        # "$mod,H,layoutmsg,focus l"
+        # "$mod,L,layoutmsg,focus r"
+        # "$mod,K,layoutmsg,focus u"
+        # "$mod,J,layoutmsg,focus d"
+
+        "$mod,comma,layoutmsg,swapcol l"
+        "$mod,period,layoutmsg,swapcol r"
+
+        "$mod,M,layoutmsg,colresize +conf"
+        "$mod SHIFT,M,layoutmsg,colresize -conf"
+
+        # utilities
+        "$mod,slash,global,quickshell:infoBoxToggle"
+        "$mod,Space,global,quickshell:launcherToggle"
+
+        "$mod,O,exec,${bin.music} open_youtube"
+        "$mod SHIFT,O,exec,${bin.music} play_shuffle"
 
         ",Print,exec,${bin.screenshot} print_current_screen ${pictures}"
         "$mod,Print,exec,${bin.screenshot} print_selection ${pictures}"
@@ -110,9 +133,9 @@
       bindl = [
         ",XF86AudioMute,exec,wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
         ",XF86AudioPlay,exec,playerctl play-pause"
-        "$mod,period,exec,playerctl next"
-        "$mod,comma,exec,playerctl previous"
-        "$mod,S,exec,playerctl stop"
+        "$mod,bracketleft,exec,playerctl previous"
+        "$mod,bracketright,exec,playerctl next"
+        "$mod,P,exec,playerctl stop"
       ];
 
       bindle = [
@@ -132,7 +155,7 @@
         "float on,match:class firefox,match:title Picture-in-Picture"
         "keep_aspect_ratio on,match:class firefox,match:title Picture-in-Picture"
         "move (monitor_w-window_w-10) (monitor_h-window_h-10),match:class firefox,match:title Picture-in-Picture"
-        "size 1920/4 1080/4,match:class firefox,match:title Picture-in-Picture"
+        "size 25% 25%,match:class firefox,match:title Picture-in-Picture"
         "pin on,match:class firefox,match:title Picture-in-Picture"
 
         "float on,match:title Save.*"
@@ -141,7 +164,7 @@
 
         "workspace special silent,match:class org.keepassxc.KeePassXC"
 
-        "border_size 0,match:workspace w[t1],match:float 0"
+        "border_size 0,match:float 0,match:workspace w[tv1]"
       ];
     };
 }

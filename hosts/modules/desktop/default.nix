@@ -55,9 +55,7 @@ in
 
       extraPackages = with pkgs; [
         intel-media-driver
-        intel-compute-runtime
-        vpl-gpu-rt
-        intel-ocl
+        intel-compute-runtime-legacy1
       ];
     };
 

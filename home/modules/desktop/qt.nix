@@ -8,46 +8,46 @@
   qt = {
     style.name = "breeze";
     platformTheme.name = "qtct";
+
+    qt6ctSettings = {
+      Appearance = {
+        color_scheme_path = "${config.xdg.configHome}/qt6ct/style-colors.conf";
+        custom_palette = true;
+        icon_theme = config.gtk.iconTheme.name;
+        standard_dialogs = "default";
+        style = "breeze";
+      };
+
+      Fonts = {
+        fixed = "${builtins.elemAt config.fonts.fontconfig.defaultFonts.monospace 0},11,-1,5,400,0,0,0,0,0,0,0,0,0,0,1";
+        general = "${builtins.elemAt config.fonts.fontconfig.defaultFonts.sansSerif 0},11,-1,5,400,0,0,0,0,0,0,0,0,0,0,1";
+      };
+
+      Interface = {
+        activate_item_on_single_click = 1;
+        buttonbox_layout = 0;
+        cursor_flash_time = 1000;
+        dialog_buttons_have_icons = 1;
+        double_click_interval = 400;
+        gui_effects = "@Invalid()";
+        keyboard_scheme = 2;
+        menus_have_icons = true;
+        show_shortcuts_in_context_menus = true;
+        stylesheets = "@Invalid()";
+        toolbutton_style = 4;
+        underline_shortcut = 1;
+        wheel_scroll_lines = 3;
+      };
+
+      Troubleshooting = {
+        force_raster_widgets = 1;
+        ignored_applications = "@Invalid()";
+      };
+    };
   };
 
   xdg = {
     configFile = {
-      "qt6ct/qt6ct.conf".text = lib.generators.toINI { } {
-        Appearance = {
-          color_scheme_path = "${config.xdg.configHome}/qt6ct/style-colors.conf";
-          custom_palette = true;
-          icon_theme = config.gtk.iconTheme.name;
-          standard_dialogs = "default";
-          style = "breeze";
-        };
-
-        Fonts = {
-          fixed = "${builtins.elemAt config.fonts.fontconfig.defaultFonts.monospace 0},11,-1,5,400,0,0,0,0,0,0,0,0,0,0,1";
-          general = "${builtins.elemAt config.fonts.fontconfig.defaultFonts.sansSerif 0},11,-1,5,400,0,0,0,0,0,0,0,0,0,0,1";
-        };
-
-        Interface = {
-          activate_item_on_single_click = 1;
-          buttonbox_layout = 0;
-          cursor_flash_time = 1000;
-          dialog_buttons_have_icons = 1;
-          double_click_interval = 400;
-          gui_effects = "@Invalid()";
-          keyboard_scheme = 2;
-          menus_have_icons = true;
-          show_shortcuts_in_context_menus = true;
-          stylesheets = "@Invalid()";
-          toolbutton_style = 4;
-          underline_shortcut = 1;
-          wheel_scroll_lines = 3;
-        };
-
-        Troubleshooting = {
-          force_raster_widgets = 1;
-          ignored_applications = "@Invalid()";
-        };
-      };
-
       # "qt6ct/colors/base16.conf".text = lib.generators.toINI {} {
       #   ColorScheme = {      # window text        # button bg          # bright             # less bright        # dark               # less dark          # normal text        # bright text        # button text        # normal bg          # window             # shadow             # highlight          # hightlight text    # link               # visited link       # alt bg             # default            # tooltip bg         # tooltip text       # placeholder text   # accent
       #     active_colors =   "#ff${colors.base05}, #ff${colors.base01}, #ff${colors.base01}, #ff${colors.base05}, #ff${colors.base03}, #ff${colors.base04}, #ff${colors.base05}, #ff${colors.base06}, #ff${colors.base05}, #ff${colors.base01}, #ff${colors.base00}, #ff${colors.base03}, #ff${colors.base0D}, #ff${colors.base00}, #ff${colors.base0D}, #ff${colors.base04}, #ff${colors.base02}, #ff${colors.base07}, #ff${colors.base01}, #ff${colors.base05}, #8f${colors.base05}, #ff${colors.base0D}";
