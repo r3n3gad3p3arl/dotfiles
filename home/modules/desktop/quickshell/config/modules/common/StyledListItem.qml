@@ -1,8 +1,9 @@
+pragma ComponentBehavior: Bound
+
 import qs.services
 import Quickshell.Widgets
 import QtQuick
 import QtQuick.Layouts
-import QtQuick.Controls
 
 StyledButton {
   id: root
@@ -41,7 +42,7 @@ StyledButton {
         Layout.fillWidth: true
         text: root.text
         font: root.font
-        color: textColor
+        color: root.textColor
       }
 
       Text {
@@ -51,7 +52,7 @@ StyledButton {
         font.family: root.font.family
         font.pointSize: Style.fontSize.small
         elide: Text.ElideRight
-        color: subtextColor
+        color: root.subtextColor
       }
     }
   }

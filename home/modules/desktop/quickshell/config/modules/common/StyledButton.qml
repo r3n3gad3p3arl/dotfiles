@@ -1,3 +1,5 @@
+pragma ComponentBehavior: Bound
+
 import qs.services
 import Quickshell.Widgets
 import QtQuick
@@ -32,12 +34,12 @@ Button {
     Rectangle {
       implicitHeight: parent.height
       implicitWidth: parent.width
-      color: root.activeFocus ? backgroundFocusedColor : backgroundColor
+      color: root.activeFocus ? root.backgroundFocusedColor : root.backgroundColor
     }
 
     Loader {
       anchors.centerIn: parent
-      active: root.activeFocus && outlineOnFocus
+      active: root.activeFocus && root.outlineOnFocus
 
       sourceComponent: Rectangle {
         implicitHeight: background.height + 10
@@ -45,7 +47,7 @@ Button {
         color: "transparent"
 
         border {
-          color: backgroundFocusedColor
+          color: root.backgroundFocusedColor
           width: 3
         }
       }
@@ -69,7 +71,7 @@ Button {
     Text {
       Layout.fillWidth: true
       font: root.font 
-      color: textColor
+      color: root.textColor
       text: root.text
     }
   }

@@ -3,6 +3,7 @@
   programs.nixvim = {
     plugins.mini = {
       mockDevIcons = true;
+      luaConfig.post = "MiniIcons.tweak_lsp_kind()";
       modules = {
         ai = { };
         icons = { };
@@ -11,6 +12,7 @@
         cursorword = { };
         move = { };
         bufremove = { };
+        keymap = { };
         indentscope.symbol = "▎";
         base16.palette = lib.mapAttrs (name: value: "#${value}") colors;
       };

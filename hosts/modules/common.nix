@@ -67,6 +67,7 @@
       colors = import ../../home/colors.nix;
     };
     users.meow = import ../../home;
+    sharedModules = [ inputs.nixvim.homeModules.nixvim ];
   };
 
   hardware.enableRedistributableFirmware = true;

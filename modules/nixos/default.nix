@@ -1,3 +1,1 @@
-{
-  distrobox = import ./distrobox.nix;
-}
+{ }

@@ -1,4 +1,5 @@
-{ config, ... }: {
+{ config, ... }:
+{
   programs.nixvim.plugins = {
     blink-cmp = {
       lazyLoad.settings.event = [
@@ -47,8 +48,25 @@
           ];
         };
 
+        snippets.preset = "mini_snippets";
         cmdline.completion.list.selection.preselect = false;
       };
+    };
+
+    mini.modules.snippets = {
+      snippets.__unkeyed-1.__raw =
+        let
+          latex_patterns = "{ 'latex/**/*.json', '**/latex.json' }";
+        in
+        ''
+          require('mini.snippets').gen_loader.from_lang({
+            lang_patterns = {
+              tex = ${latex_patterns},
+              plaintex = ${latex_patterns},
+              markdown_inline = { 'markdown.json' },
+            }
+          })
+        '';
     };
 
     friendly-snippets.enable = config.programs.nixvim.plugins.blink-cmp.enable;

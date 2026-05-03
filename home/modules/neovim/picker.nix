@@ -15,7 +15,7 @@
     keymaps = [
       {
         mode = "n";
-        key = "<leader><space>";
+        key = "<leader>ff";
         action = "<cmd>Pick files<cr>";
       }
       {
@@ -25,12 +25,12 @@
       }
       {
         mode = "n";
-        key = "<leader>/";
+        key = "<leader>fg";
         action = "<cmd>Pick grep_live<cr>";
       }
       {
         mode = "n";
-        key = "<leader>,";
+        key = "<leader>fb";
         action = "<cmd>Pick buffers<cr>";
       }
       {

@@ -11,7 +11,7 @@
 
       settings = {
         indent.enable = true;
-        incrementalSelection.enable = true;
+        folding.enable = true;
       };
     };
 
@@ -22,6 +22,11 @@
         "BufNewFile"
         "BufWritePre"
       ];
+    };
+
+    treesitter-textobjects = {
+      enable = true;
+      lazyLoad.settings.event = "DeferredUIEnter";
     };
   };
 }

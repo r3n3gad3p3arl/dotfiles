@@ -28,6 +28,7 @@ in
       grim
       slurp
       libnotify
+      jq
     ];
   };
 
@@ -37,9 +38,9 @@ in
   };
 
   services = mkIf hyprland.enable {
-    # gammastep.enable = true;
     hyprsunset.enable = true;
     hyprpaper.enable = true;
+    dunst.enable = true;
   };
 
   wayland.windowManager.hyprland.systemd.enable = !osConfig.programs.hyprland.withUWSM;

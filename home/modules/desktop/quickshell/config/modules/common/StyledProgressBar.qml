@@ -23,26 +23,26 @@ ProgressBar {
     Rectangle {
       width: root.visualPosition * parent.width
       height: parent.height
-      color: activeColor
+      color: root.activeColor
     }
 
     Rectangle {
       anchors.right: parent.right
-      width: (1 - root.visualPosition) * parent.width - gap
+      width: (1 - root.visualPosition) * parent.width - root.gap
       height: parent.height
-      color: trackColor
+      color: root.trackColor
     }
 
     Rectangle {
       anchors {
         right: parent.right
         verticalCenter: parent.verticalCenter
-        rightMargin: parent.height / gap
+        rightMargin: parent.height / root.gap
       }
 
-      width: gap
-      height: gap
-      color: activeColor
+      width: root.gap
+      height: root.gap
+      color: root.activeColor
     }
   }
 }

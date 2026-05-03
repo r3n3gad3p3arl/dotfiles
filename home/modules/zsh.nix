@@ -19,9 +19,11 @@
     shellAliases = {
       rb = "sudo nixos-rebuild switch --flake ${config.programs.zsh.dirHashes.cfg}#";
       rbt = "sudo nixos-rebuild test --flake ${config.programs.zsh.dirHashes.cfg}#";
+
       nixcl = "sudo nix-collect-garbage -d";
       hmcl = "nix-collect-garbage -d";
       flup = "nix flake update";
+      dev = "nix develop -c $SHELL";
 
       md = "mkdir -pv";
       cp = "cp -iv";

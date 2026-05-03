@@ -1,14 +1,10 @@
 {
   lib,
-  inputs,
   config,
   ...
 }:
 {
-  imports = [
-    inputs.nixvim.homeModules.nixvim
-  ]
-  ++ lib.meow.mapModules ./.;
+  imports = lib.meow.mapModules ./.;
 
   programs.nixvim = {
     defaultEditor = true;
@@ -42,6 +38,8 @@
       smoothscroll = true;
       timeoutlen = 300;
       updatetime = 200;
+      pumheight = 10;
+      pummaxwidth = 100;
     };
 
     globals = {
@@ -155,6 +153,7 @@
       lspconfig.enable = true;
       blink-cmp.enable = true;
       mini.enable = true;
+      conform-nvim.enable = true;
     };
 
     filetype.extension.njk = "html";

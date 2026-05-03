@@ -3,8 +3,6 @@ import qs.modules.common
 import QtQuick
 import QtQuick.Layouts
 import Quickshell
-import Quickshell.Services.Pipewire
-import Quickshell.Widgets
 
 Scope {
   id: root
@@ -27,7 +25,7 @@ Scope {
 
   Timer {
     id: timer
-    interval: 1500
+    interval: 2000
     onTriggered: root.showOsd = false
   }
 

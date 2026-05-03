@@ -7,6 +7,8 @@
       nativeMessagingHosts = with pkgs; [ tridactyl-native ];
     };
 
+    configPath = ".mozilla/firefox";
+
     profiles.default = {
       bookmarks = {
         force = true;

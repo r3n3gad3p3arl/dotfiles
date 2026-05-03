@@ -5,24 +5,20 @@
 
       keymaps = [
         {
-          key = "gd";
+          key = "<leader>cd";
           lspBufAction = "definition";
         }
         {
-          key = "gr";
+          key = "<leader>cR";
           lspBufAction = "references";
         }
         {
-          key = "gI";
+          key = "<leader>ci";
           lspBufAction = "implementation";
         }
         {
-          key = "gy";
+          key = "<leader>ct";
           lspBufAction = "type_definition";
-        }
-        {
-          key = "gD";
-          lspBufAction = "declaration";
         }
         {
           mode = [
@@ -42,13 +38,22 @@
         nixd = {
           enable = true;
 
-          config.settings = {
-            nixpkgs.expr = "import (builtins.getFlake \"/home/meow/.config/nixos\").inputs.nixpkgs { }";
-            formatting.command = ["nixfmt"];
+          config = {
+            cmd = [ "nixd" ];
+            filetypes = [ "nix" ];
+            root_markers = [
+              "flake.nix"
+              ".git"
+            ];
 
-            options = {
-              nixos.expr = "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.dell-laptop.options";
-              home-manager.expr = "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.dell-laptop.options.home-manager.users.type.getSubOptions []";
+            settings.nixd = {
+              nixpkgs.expr = "import (builtins.getFlake \"/home/meow/.config/nixos\").inputs.nixpkgs { }";
+
+              options = rec {
+                nixos.expr = "(builtins.getFlake \"/home/meow/.config/nixos\").nixosConfigurations.dell-laptop.options";
+                home-manager.expr = "${nixos.expr}.home-manager.users.type.getSubOptions []";
+                nixvim.expr = "(${home-manager.expr}).programs.nixvim.type.getSubOptions []";
+              };
             };
           };
         };
@@ -58,6 +63,7 @@
         html.enable = true;
         cssls.enable = true;
         jdtls.enable = true;
+        qmlls.enable = true;
       };
     };
 

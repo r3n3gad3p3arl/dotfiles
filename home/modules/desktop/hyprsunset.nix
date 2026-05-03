@@ -2,11 +2,11 @@
 {
   services.hyprsunset.settings.profile = [
     {
-      time = "7:15";
+      time = "7:00";
       identity = true;
     }
     {
-      time = "20:15";
+      time = "21:00";
       temperature = 4500;
       gamma = 0.8;
     }

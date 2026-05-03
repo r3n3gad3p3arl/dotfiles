@@ -26,7 +26,9 @@ in
         prismlauncher
         mesen
         dolphin-emu
+        azahar
         osu-lazer-bin
+        openutau
 
         # useful tools
         wl-clipboard
@@ -48,6 +50,8 @@ in
       };
     };
 
+    services.mpris-proxy.enable = true;
+
     wayland.windowManager.hyprland.enable = osConfig.programs.hyprland.enable;
 
     xdg = {
@@ -56,6 +60,7 @@ in
       userDirs = {
         enable = true;
         createDirectories = true;
+        setSessionVariables = true;
       };
     };
   };

@@ -1,3 +1,5 @@
+pragma ComponentBehavior: Bound
+
 import qs.services
 import qs.modules.common
 import Quickshell
@@ -5,7 +7,6 @@ import Quickshell.Hyprland
 import Quickshell.Widgets
 import QtQuick
 import QtQuick.Layouts
-import QtQuick.Controls
 
 Scope {
   id: root
@@ -68,7 +69,7 @@ Scope {
 
         Rectangle {
           Layout.fillWidth: true
-          height: 1
+          implicitHeight: 1
           color: Style.colors.base02
         }
 
@@ -79,7 +80,7 @@ Scope {
           clip: true
 
           model: ScriptModel {
-            values: Apps.fuzzyQuery(query)
+            values: Apps.fuzzyQuery(root.query)
             onValuesChanged: list.currentIndex = 0
           }
 

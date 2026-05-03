@@ -2,7 +2,6 @@
 {
   hardware.nvidia = {
     modesetting.enable = true;
-    open = false;
 
     prime.offload = {
       enable = config.system.laptop.enable;

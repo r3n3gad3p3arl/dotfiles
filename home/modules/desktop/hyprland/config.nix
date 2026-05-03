@@ -40,7 +40,6 @@
         gaps_out = 0;
         "col.active_border" = "rgb(${colors.base03})";
         "col.inactive_border" = "rgb(${colors.base01})";
-        # layout = "scrolling";
       };
 
       decoration = {
@@ -76,7 +75,7 @@
         # programs
         "$mod,Return,exec,uwsm app -T"
         "$mod,B,exec,uwsm app -- firefox.desktop"
-        ",XF86Calculator,exec,uwsm app -T -- bc -l"
+        ",XF86Calculator,exec,uwsm app -T -- qalc"
         "$mod,Escape,exec,uwsm app -- hyprlock"
 
         # basic keybinds
@@ -103,6 +102,9 @@
         "$mod,0,togglespecialworkspace"
         "$mod SHIFT,0,movetoworkspace,special"
 
+        "$mod,apostrophe,focusmonitor,+1"
+        "$mod,semicolon,focusmonitor,-1"
+
         # scrolling
         # "$mod,H,layoutmsg,focus l"
         # "$mod,L,layoutmsg,focus r"
@@ -112,18 +114,18 @@
         "$mod,comma,layoutmsg,swapcol l"
         "$mod,period,layoutmsg,swapcol r"
 
-        "$mod,M,layoutmsg,colresize +conf"
-        "$mod SHIFT,M,layoutmsg,colresize -conf"
+        "$mod,slash,layoutmsg,colresize +conf"
+        "$mod SHIFT,slash,layoutmsg,colresize -conf"
 
         # utilities
-        "$mod,slash,global,quickshell:infoBoxToggle"
+        "$mod,I,global,quickshell:infoBoxToggle"
         "$mod,Space,global,quickshell:launcherToggle"
 
         "$mod,O,exec,${bin.music} open_youtube"
         "$mod SHIFT,O,exec,${bin.music} play_shuffle"
 
         ",Print,exec,${bin.screenshot} print_current_screen ${pictures}"
-        "$mod,Print,exec,${bin.screenshot} print_selection ${pictures}"
+        "CTRL,Print,exec,${bin.screenshot} print_selection ${pictures}"
 
         "$mod,A,exec,${bin.autoclicker}"
         "$mod SHIFT,A,exec,pkill -f autoclicker"
@@ -133,14 +135,19 @@
       bindl = [
         ",XF86AudioMute,exec,wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
         ",XF86AudioPlay,exec,playerctl play-pause"
+        ",XF86AudioPrev,exec,playerctl previous"
+        ",XF86AudioNext,exec,playerctl next"
+
+        # for keyboards without media keys
         "$mod,bracketleft,exec,playerctl previous"
         "$mod,bracketright,exec,playerctl next"
-        "$mod,P,exec,playerctl stop"
+        "$mod,P,exec,playerctl play-pause"
+        "$mod,backslash,exec,playerctl stop"
       ];
 
       bindle = [
-        ",XF86AudioRaiseVolume,exec,wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 2%+"
-        ",XF86AudioLowerVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-"
+        ",XF86AudioRaiseVolume,exec,wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 4%+"
+        ",XF86AudioLowerVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 4%-"
 
         ",XF86MonBrightnessUp,exec,brightnessctl -e4 -n2 set 2%+"
         ",XF86MonBrightnessDown,exec,brightnessctl -e4 -n2 set 2%-"
@@ -148,7 +155,9 @@
 
       bindm = [
         "$mod,mouse:272,movewindow"
+        "$mod,Control_L,movewindow"
         "$mod,mouse:273,resizewindow"
+        "$mod,Alt_L,resizewindow"
       ];
 
       windowrule = [

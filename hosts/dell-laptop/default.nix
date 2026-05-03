@@ -1,13 +1,12 @@
-{ pkgs, outputs, ... }:
 {
-  imports = [
-    ./hardware.nix
-    outputs.nixosModules.distrobox
-  ];
+  pkgs,
+  config,
+  ...
+}:
+{
+  imports = [ ./hardware.nix ];
 
   networking.hostName = "dell-laptop";
-
-  virtualisation.distrobox.enable = true;
 
   services = {
     xserver.videoDrivers = [
@@ -17,9 +16,18 @@
     printing.enable = true;
   };
 
-  hardware.nvidia.prime = {
-    nvidiaBusId = "PCI:60:0:0";
-    intelBusId = "PCI:0:2:0";
+  hardware = {
+    nvidia = {
+      prime = {
+        nvidiaBusId = "PCI:60@0:0:0";
+        intelBusId = "PCI:0@0:2:0";
+      };
+
+      package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
+      open = false;
+    };
+
+    bluetooth.enable = true;
   };
 
   boot = {
@@ -28,7 +36,7 @@
       preLVM = true;
     };
 
-    #lanzaboote.enable = true;
+    # lanzaboote.enable = true;
 
     kernelParams = [
       "zswap.enabled=1"
@@ -45,7 +53,6 @@
 
   environment.systemPackages = with pkgs; [
     unzipNLS
-    bc
-    nixfmt
+    libqalculate
   ];
 }
