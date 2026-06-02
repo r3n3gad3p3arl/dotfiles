@@ -14,9 +14,7 @@ in
       wifi.powersave = mkDefault true;
     };
 
-    systemd.sleep.settings.Sleep = {
-      HibernateDelaySec = "1h";
-    };
+    systemd.sleep.settings.Sleep.HibernateDelaySec = "1h";
 
     services = {
       logind.settings.Login.HandleLidSwitch = mkDefault "sleep";

@@ -13,6 +13,7 @@
       music = config.xdg.userDirs.music;
       pics = config.xdg.userDirs.pictures;
       vids = config.xdg.userDirs.videos;
+      proj = config.xdg.userDirs.projects;
       cfg = "${config.xdg.configHome}/nixos";
     };
 

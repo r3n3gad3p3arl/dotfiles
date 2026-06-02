@@ -41,7 +41,11 @@ in
     hyprsunset.enable = true;
     hyprpaper.enable = true;
     dunst.enable = true;
+    batsignal.enable = true;
   };
 
-  wayland.windowManager.hyprland.systemd.enable = !osConfig.programs.hyprland.withUWSM;
+  wayland.windowManager.hyprland = {
+    systemd.enable = !osConfig.programs.hyprland.withUWSM;
+    configType = "hyprlang";
+  };
 }

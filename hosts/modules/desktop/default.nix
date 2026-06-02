@@ -40,6 +40,8 @@ in
           default_session = initial_session;
         };
       };
+
+      gvfs.enable = true;
     };
 
     programs = {

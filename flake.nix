@@ -23,10 +23,10 @@
       };
     };
 
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixvim.url = "github:nix-community/nixvim";
+
+    # flake-parts.url = "github:hercules-ci/flake-parts";
+    # import-tree.url = "github:denful/import-tree";
   };
 
   outputs =
@@ -42,8 +42,8 @@
       formatter.${system} = pkgs.nixfmt-tree;
       overlays = import ./overlays { meowPkgs = outputs.packages.${system}; };
 
-      nixosModules = import ./modules/nixos;
-      homeManagerModules = import ./modules/home-manager;
+      # nixosModules = import ./modules/nixos;
+      # homeManagerModules = import ./modules/home-manager;
 
       nixosConfigurations = {
         dell-laptop = lib.nixosSystem {

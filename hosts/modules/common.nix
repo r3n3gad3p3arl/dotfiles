@@ -50,6 +50,7 @@
       initialPassword = "nixos";
       extraGroups = [
         "wheel"
+        "video"
       ]
       ++ lib.optionals config.virtualisation.libvirtd.enable [ "libvirtd" ]
       ++ lib.optionals config.virtualisation.podman.enable [ "podman" ]

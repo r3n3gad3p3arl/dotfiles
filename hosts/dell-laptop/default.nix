@@ -34,14 +34,12 @@
     initrd.luks.devices."crypt_root" = {
       device = "/dev/disk/by-uuid/27b9dfa3-2048-42c9-865a-c800ed3f2094";
       preLVM = true;
+      allowDiscards = true;
     };
 
     # lanzaboote.enable = true;
 
-    kernelParams = [
-      "zswap.enabled=1"
-      "zswap.shrinker_enabled=1"
-    ];
+    zswap.enable = true;
   };
 
   security.tpm2.enable = true;

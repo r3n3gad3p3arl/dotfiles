@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   config,
   colors,
   ...
@@ -121,13 +122,13 @@
         "$mod,I,global,quickshell:infoBoxToggle"
         "$mod,Space,global,quickshell:launcherToggle"
 
-        "$mod,O,exec,${bin.music} open_youtube"
-        "$mod SHIFT,O,exec,${bin.music} play_shuffle"
+        "$mod,O,exec,${lib.getExe bin.music} open_youtube"
+        "$mod SHIFT,O,exec,${lib.getExe bin.music} play_shuffle"
 
-        ",Print,exec,${bin.screenshot} print_current_screen ${pictures}"
-        "CTRL,Print,exec,${bin.screenshot} print_selection ${pictures}"
+        ",Print,exec,${lib.getExe bin.screenshot} print_current_screen ${pictures}"
+        "CTRL,Print,exec,${lib.getExe bin.screenshot} print_selection ${pictures}"
 
-        "$mod,A,exec,${bin.autoclicker}"
+        "$mod,A,exec,${lib.getExe bin.autoclicker}"
         "$mod SHIFT,A,exec,pkill -f autoclicker"
       ]
       ++ workspaces;
