@@ -1,0 +1,110 @@
+{
+  flake.modules.homeManager.neovim = {
+    programs.nixvim = {
+      globals = {
+        mapleader = " ";
+        maplocalleader = " ";
+      };
+
+      keymaps = [
+        # Clear highlights
+        {
+          mode = "n";
+          key = "<Esc>";
+          action = "<cmd>nohlsearch<cr>";
+        }
+
+        # Better j/k
+        {
+          mode = [
+            "n"
+            "x"
+          ];
+          key = "j";
+          action = "v:count == 0 ? 'gj' : 'j'";
+          options = {
+            expr = true;
+            silent = true;
+          };
+        }
+        {
+          mode = [
+            "n"
+            "x"
+          ];
+          key = "k";
+          action = "v:count == 0 ? 'gk' : 'k'";
+          options = {
+            expr = true;
+            silent = true;
+          };
+        }
+
+        # Create files
+        {
+          mode = "n";
+          key = "<leader>en";
+          action = "<cmd>enew<cr>";
+        }
+
+        # Delete buffers
+        {
+          mode = "n";
+          key = "<leader>bd";
+          action = "<cmd>lua MiniBufremove.delete()<cr>";
+        }
+        {
+          mode = "n";
+          key = "<leader>bD";
+          action = "<cmd>lua MiniBufremove.delete(0, true)<cr>";
+        }
+
+        # Navigate windows
+        {
+          mode = "n";
+          key = "<C-h>";
+          action = "<C-w>h";
+          options.remap = true;
+        }
+        {
+          mode = "n";
+          key = "<C-j>";
+          action = "<C-w>j";
+          options.remap = true;
+        }
+        {
+          mode = "n";
+          key = "<C-k>";
+          action = "<C-w>k";
+          options.remap = true;
+        }
+        {
+          mode = "n";
+          key = "<C-l>";
+          action = "<C-w>l";
+          options.remap = true;
+        }
+
+        # Create/delete windows
+        {
+          mode = "n";
+          key = "<leader>wd";
+          action = "<C-w>c";
+          options.remap = true;
+        }
+        {
+          mode = "n";
+          key = "<leader>wb";
+          action = "<C-w>s";
+          options.remap = true;
+        }
+        {
+          mode = "n";
+          key = "<leader>wr";
+          action = "<C-w>v";
+          options.remap = true;
+        }
+      ];
+    };
+  };
+}

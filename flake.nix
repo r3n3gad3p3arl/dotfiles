@@ -1,6 +1,8 @@
 {
   description = "meow's nixowos config";
 
+  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
@@ -24,32 +26,7 @@
     };
 
     nixvim.url = "github:nix-community/nixvim";
-
-    # flake-parts.url = "github:hercules-ci/flake-parts";
-    # import-tree.url = "github:denful/import-tree";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    import-tree.url = "github:denful/import-tree";
   };
-
-  outputs =
-    { self, nixpkgs, ... }@inputs:
-    let
-      inherit (self) outputs;
-      lib = nixpkgs.lib.extend (final: prev: { meow = import ./lib; });
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-    in
-    {
-      packages.${system} = import ./pkgs { inherit pkgs lib; };
-      formatter.${system} = pkgs.nixfmt-tree;
-      overlays = import ./overlays { meowPkgs = outputs.packages.${system}; };
-
-      # nixosModules = import ./modules/nixos;
-      # homeManagerModules = import ./modules/home-manager;
-
-      nixosConfigurations = {
-        dell-laptop = lib.nixosSystem {
-          specialArgs = { inherit lib inputs outputs; };
-          modules = [ ./hosts/dell-laptop ] ++ lib.meow.mapModules ./hosts/modules;
-        };
-      };
-    };
 }
